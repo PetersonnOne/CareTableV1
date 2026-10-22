@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.private/
+*.pdf
+coverage/
+test-results/
+*.log
+Post Hackathon App Idea.txt
+.next/
+.vercel/
+*.tsbuildinfo
+output/playwright/
+archive/
+.convex/
+retrospective-catalog/
+.playwright-cli/
