@@ -1,6 +1,6 @@
 # CareTable demonstration and submission draft
 
-**Current status:** The core app works locally against the cloud development backend. Live 3/7/14-day planning, targeted revision, onboarding, persistence, and reset have been exercised. Hosting/public repository and production email setup are pending. Insert verified public links only after those gates pass.
+**Current status:** [Hosted app](https://caretable-v1.vercel.app) and [public source](https://github.com/PetersonnOne/CareTableV1) are available. GitHub `main` triggers automatic Vercel/production Convex deployment. Live 3/7/14-day planning was verified locally; hosted sample generation also passed. Email remains limited to Resend's authorized test recipient until GeneaOne DNS is verified.
 
 ## Project description
 
@@ -26,7 +26,7 @@ For a deterministic fallback demonstration, use **Local preview** and explicitly
 
 - Live 3-day plan and revision, 7-day partner plan with separate peanut/wheat exclusions, and 14-day/42-slot plan completed.
 - Actual returned dining affinities visibly mapped to selected tomato pasta and carrot-and-ginger rice in different runs.
-- 22 automated checks cover access boundaries, exclusions, variants, completeness, invalid output repair, persistence, revision preservation, and durable usage limits.
+- 24 automated checks cover access boundaries, exclusions, variants, completeness, invalid output repair, relevant quicker-meal revision, persistence, revision preservation, and durable usage limits.
 - Original recipes are prototype suggestions under MIT, not clinically validated preparations. Qloo supplies cultural intelligence, not recipes or medical safety certification.
 
-See [verification](VERIFICATION.md) for the exact evidence and remaining release gates. A working local demonstration is not yet an externally hosted submission.
+See [verification](VERIFICATION.md) for exact evidence and remaining release gates. The app/source are published; no Devpost submission has been made by this workflow.

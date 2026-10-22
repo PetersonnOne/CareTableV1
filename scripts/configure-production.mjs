@@ -27,7 +27,21 @@ for (const name of [
   settings[name] = process.env[name];
 }
 const existing = convex(["get", "--prod", "JWKS"]);
-if (existing.status !== 0 || !existing.stdout.trim()) {
+if (existing.status !== 0)
+  throw new Error(
+    "Could not inspect production signing settings; refusing to generate new keys.",
+  );
+let jwks = existing.stdout.trim();
+if (jwks.includes('\\"')) {
+  jwks = jwks.replace(/\\"/g, '"');
+  JSON.parse(jwks);
+  settings.JWKS = jwks;
+}
+if (jwks && !Array.isArray(JSON.parse(jwks).keys))
+  throw new Error(
+    "Invalid existing JWKS; signing keys preserved for operator review.",
+  );
+if (!jwks) {
   const pair = await generateKeyPair("RS256", { extractable: true });
   settings.JWT_PRIVATE_KEY = (await exportPKCS8(pair.privateKey))
     .trimEnd()
@@ -41,12 +55,18 @@ const file = ".private/production-setup.env";
 await writeFile(
   file,
   Object.entries(settings)
-    .map(([k, v]) => `${k}=${JSON.stringify(v)}`)
+    .map(([k, v]) => `${k}=${k === "JWKS" ? v : JSON.stringify(v)}`)
     .join("\n") + "\n",
   { mode: 0o600 },
 );
 try {
-  const r = convex(["set", "--prod", "--from-file", file]);
+  const r = convex([
+    "set",
+    "--prod",
+    "--from-file",
+    file,
+    ...(process.argv.includes("--update") ? ["--force"] : []),
+  ]);
   if (r.status !== 0)
     throw new Error(
       "Production environment setup failed; private output suppressed.",

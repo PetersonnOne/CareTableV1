@@ -1,6 +1,8 @@
 # Deploy CareTable to Vercel and Convex
 
-The verified cloud backend currently uses the CareTable **development** deployment in `joseph-petersonn`. A public release must deliberately select and configure a production deployment. No Vercel deployment has been verified yet.
+CareTable is hosted at [caretable-v1.vercel.app](https://caretable-v1.vercel.app), backed by the separate production Convex deployment `artful-raven-948` in `joseph-petersonn`. Source lives in [PetersonnOne/CareTableV1](https://github.com/PetersonnOne/CareTableV1).
+
+**Automatic deployment:** pushing to GitHub's `main` branch triggers Vercel production deployment. `vercel.json` selects Next.js and runs `scripts/vercel-build.mjs`, which deploys production Convex functions and builds the frontend with the production public URLs. The Convex deploy key is a protected Vercel production secret. Preview builds use the separate development Convex deployment. A local CLI link only allows management of the same cloud project; hosting and automatic publication do not depend on the local computer.
 
 ## Server environment
 
@@ -17,7 +19,7 @@ Create/select production in the existing Convex CareTable project. Generate sepa
 
 Resend's restricted test sender may send only to the account owner's address. Verify a sending domain for other recipients. See [Resend sending documentation](https://resend.com/docs/api-reference/emails/send-email).
 
-The local configure scripts target development and intentionally do not deploy production secrets. Production keys belong in Convex's environment settings, outside source control. Set usage alerts/budgets in provider accounts before opening anonymous live planning broadly.
+The development configure scripts target development. `scripts/configure-production.mjs` is guarded to this CareTable workspace, configures production from local private inputs, and preserves existing signing keys. Run it with the HTTPS site origin; pass `--update` only when deliberately replacing the supplied existing settings. JWKS must be written as raw JSON in its dotenv file, not a JSON-escaped string. Production keys belong in Convex's environment settings, outside source control.
 
 ## Vercel project
 
@@ -32,11 +34,12 @@ The local configure scripts target development and intentionally do not deploy p
 
 Have the intended owner create and verify their email/password account. A trusted Convex operator can locate that user's ID in the dashboard and run internal `administration:bootstrapOwner` with `{ "userId": "the-verified-user-id" }` against the selected deployment. It refuses a second bootstrap. Never choose an anonymous sample user. The owner then assigns scoped admins from Administration.
 
-## Current setup gates
+## Email and DNS status — 22 October 2026
 
-- Resend key and verified sender are requested from the user; delivery is unverified until supplied.
-- Vercel sign-in/project selection is pending.
-- Git repository is local; no remote/public repository is connected yet.
+- Resend's temporary sender is configured for testing. Verification and recovery delivery plus code/password checks passed in development. It is restricted to the Resend account email; public UI uses `NEXT_PUBLIC_EMAIL_MODE=test` to show that limitation.
+- `notify.geneaone.com` has been added to Resend. GeneaOne is for email only; neither its root nor `www` is assigned to the CareTable website.
+- Resend's records and the currently observed root A record are prepared in a Vercel team DNS zone. Authoritative nameservers remain at Unstoppable Domains; these prepared records are not yet live. Registrar authentication, a full existing-record inventory, and the existing DNSSEC/DS transition must be resolved before nameserver cutover.
+- After domain verification, switch `RESEND_FROM` on Convex to the verified sender, repeat delivery tests, set `NEXT_PUBLIC_EMAIL_MODE=live` in Vercel and redeploy. Do not lift the UI notice before arbitrary-recipient delivery is actually supported.
 - Intended owner account has not been selected/provisioned.
 
 Keep credentials out of screenshots, support files, command output, commits, and public browser bundles. Run `node --env-file=.env.local scripts/check-public-secrets.mjs` after building to check source candidates and client assets against the configured private values.

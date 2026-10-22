@@ -2,6 +2,7 @@
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useConvexAuth, useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
 type Stage =
@@ -77,6 +78,15 @@ export function SignInForm() {
     >
       <span className="eyebrow">YOUR PLACE AT THE TABLE</span>
       <h1>{title}</h1>
+      {process.env.NEXT_PUBLIC_EMAIL_MODE === "test" && !codeStage && (
+        <p className="notice">
+          Email sign-in is limited to the test account while email delivery is
+          being configured.{" "}
+          <Link href="/planner?sample=1">
+            Try the fictional sample without email.
+          </Link>
+        </p>
+      )}
       <p>
         {codeStage
           ? "Codes expire after 15 minutes."

@@ -2,6 +2,8 @@
 
 A little more care at every meal. CareTable helps caregivers and households find appealing meal suggestions without losing each person's explicit needs. Qloo supplies aggregate dining affinities; GPT-6 Luna selects from an original recipe catalog; application code checks ingredients, equipment, time, and completeness before saving the result.
 
+[Open the hosted app](https://caretable-v1.vercel.app) · [GitHub source](https://github.com/PetersonnOne/CareTableV1). Pushes to `main` automatically build and publish through Vercel, including production Convex deployment.
+
 Built with Next.js App Router, React, TypeScript, Convex, Convex Auth, OpenAI Responses, and Resend. Deploy the web app to Vercel and its database/functions to Convex. No Express service is required.
 
 ## Run locally
@@ -46,6 +48,8 @@ Stop the development server before building; both use `.next`. See [deployment i
 - Explicit ingredient matches fail a candidate for any intended eater. Unsupported restrictions and incomplete composition remain **cannot verify**. No clinical, swallowing-safety, product-label, cross-contact, nutrition, local-availability, or verified-price claims are made.
 - Budgets identify their currency and whole-plan scope; without verified regional prices the budget result remains unknown.
 - Luna is fixed to `gpt-6-luna`; no automatic model upgrade exists. One constrained selection call and one deterministic repair pass are bounded. Requests use provider timeouts and a persisted expiry. Failure preserves profiles and earlier plan versions.
+- “Too difficult” revisions require a shorter estimated cooking time; if no quicker eligible meal exists, the previous plan is preserved. Actual preparation difficulty is not independently verified.
+- Email sign-in currently uses Resend's restricted testing sender. Judge access uses the fictional sample without email. GeneaOne sender verification is being configured before general email signup is enabled.
 - Limits: 8 household members, 20 saved households, 6 plan requests per hour per identity, one active job per identity, and a shared 200-plan daily demonstration cap. Conversational onboarding has a separate 12/hour per identity and 200/day cap. Anonymous sessions can be replaced, so these controls are not a complete bot-prevention system.
 - Names are omitted from Luna planning input; only cuisine/food preferences go to Qloo. Onboarding sends the text entered by the user to OpenAI. Avoid personal or medical details. OpenAI requests set `store: false`; this is not a claim of zero provider retention.
 

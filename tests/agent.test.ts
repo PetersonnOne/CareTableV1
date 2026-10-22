@@ -54,6 +54,39 @@ beforeEach(() => {
   mocks.create.mockReset();
 });
 describe("agent boundary", () => {
+  it("enforces a quicker alternative for too-difficult feedback even when the model chooses a slower meal", async () => {
+    mocks.create.mockResolvedValueOnce(
+      response([{ day: 1, slot: "dinner", recipeId: "fish-potato" }]),
+    );
+    const parent = await buildPlan(request, { onPhase: async () => {} });
+    mocks.create.mockResolvedValueOnce(
+      response([{ day: 1, slot: "dinner", recipeId: "chicken-rice" }]),
+    );
+    const plan = await buildPlan(request, {
+      parent,
+      feedback: { day: 1, slot: "dinner", reason: "too difficult", text: "" },
+      onPhase: async () => {},
+    });
+    const meal = plan.meals.find((m) => m.day === 1 && m.slot === "dinner");
+    expect(meal?.recipe?.minutes).toBeLessThan(35);
+    expect(meal?.reason).toContain("shorter estimated cooking time");
+    expect(plan.request.maxMinutes).toBe(45);
+    expect(plan.request.members).toEqual(request.members);
+  });
+  it("preserves the original when no quicker eligible alternative exists, without another model call", async () => {
+    mocks.create.mockResolvedValueOnce(
+      response([{ day: 1, slot: "dinner", recipeId: "tomato-pasta" }]),
+    );
+    const parent = await buildPlan(request, { onPhase: async () => {} });
+    await expect(
+      buildPlan(request, {
+        parent,
+        feedback: { day: 1, slot: "dinner", reason: "too difficult", text: "" },
+        onPhase: async () => {},
+      }),
+    ).rejects.toThrow("REVISION_NO_EASIER_MATCH");
+    expect(mocks.create).toHaveBeenCalledTimes(1);
+  });
   it("repairs invalid or missing choices across 42 slots without a second model call or exposing names", async () => {
     mocks.create.mockResolvedValue(
       response([{ day: 1, slot: "dinner", recipeId: "fabricated" }]),

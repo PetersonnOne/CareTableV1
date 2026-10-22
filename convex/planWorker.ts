@@ -37,9 +37,11 @@ export const run = internalAction({
               ? "OPENAI_MODEL"
               : e.name === "TimeoutError" || e.name === "AbortError"
                 ? "TIMEOUT"
-                : ["OPENAI_NOT_CONFIGURED", "REVISION_NO_MATCH"].includes(
-                      message,
-                    )
+                : [
+                      "OPENAI_NOT_CONFIGURED",
+                      "REVISION_NO_MATCH",
+                      "REVISION_NO_EASIER_MATCH",
+                    ].includes(message)
                   ? message
                   : "PLANNING_ERROR";
       await ctx.runMutation(internal.plansStore.fail, { id: args.id, code });

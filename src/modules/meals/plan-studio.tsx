@@ -25,6 +25,8 @@ type Input = {
   units: "metric" | "imperial";
 };
 const errors: Record<string, string> = {
+  REVISION_NO_EASIER_MATCH:
+    "No quicker eligible alternative exists in this catalog. Your previous plan is preserved. Try another feedback option or review your meal settings.",
   QLOO_NOT_CONFIGURED: "Qloo is not configured on the server.",
   QLOO_HTTP_401: "The Qloo credential was rejected.",
   QLOO_HTTP_429: "Qloo rate limit reached. Please try later.",
@@ -449,6 +451,12 @@ export function PlanStudio({
           {feedback && (
             <section className="panel feedback-panel">
               <h3>Help us find a better fit.</h3>
+              {feedback.reason === "too difficult" && (
+                <p>
+                  We will look for a shorter estimated cooking time. Actual
+                  preparation difficulty is not independently verified.
+                </p>
+              )}
               <p>
                 Day {feedback.day}, {feedback.slot}. The revision preserves the
                 saved plan's household restrictions.

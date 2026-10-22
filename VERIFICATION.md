@@ -20,9 +20,18 @@ Recorded 22 October 2026. This file reports observed results, not a production-r
 
 No measured claim about improved human preference, clinical outcomes, coverage in every country, large-scale reliability, or per-plan commercial cost follows from these runs.
 
+## Cloud deployment and email continuation
+
+- Public source pushed to [CareTableV1](https://github.com/PetersonnOne/CareTableV1). Vercel's `caretable-v1` project is connected to GitHub `main`. Its first automatic deployment cloned commit `2d9b15a`, ran the production Next.js/Convex pipeline, and reached Ready at [caretable-v1.vercel.app](https://caretable-v1.vercel.app).
+- Production uses Convex `artful-raven-948`; development and previews use `outstanding-crocodile-717`. Production credentials/signing keys are separate. The Vercel production deploy key is stored as a protected secret. Upload ignore rules exclude local environments, archives, private files, and the retrospective.
+- Hosted browser initially found an invalid JWKS response caused by escaped JSON in production environment setup. Corrected serialization and reapplied it without rotating signing keys. Public discovery/JWKS endpoints now parse correctly; hosted anonymous sign-in and a live three-day Qloo + Luna plan succeeded.
+- Hosted “Too difficult” feedback exposed selection of a slower meal. The corrected pipeline enforces a strictly shorter estimate and preserves the original when no quicker eligible option exists. Two regression tests cover successful repair of a slower model choice and no-match preservation; final hosted recheck follows the next automatic deployment.
+- Resend temporary test sender configured per user choice. Development integration sent verification and reset messages to the authorized Resend account address; both reported **delivered**. Wrong code, reused code, unverified signup, member-only access, reset sign-in, old-password rejection, and new-password success checks passed. Temporary QA credentials remain private and are not production account credentials.
+- `notify.geneaone.com` added to Resend for the future sender. Email DNS is prepared on Vercel; authoritative nameservers remain with Unstoppable Domains. Registrar login, full DNS inventory, and the existing DS/DNSSEC transition remain pending. GeneaOne is not assigned to the CareTable website.
+
 ## Automated checks
 
-22 tests passed in three files after persistence fixes. Coverage includes:
+24 tests passed in three files after persistence and feedback fixes. Root typecheck and the configured-secret scan passed. Coverage includes:
 
 - Authentication requirements, cross-account isolation, member/admin scope, delegation escalation, protected owner, explicit permissions, and second owner bootstrap refusal.
 - Site default versus personal theme isolation, idempotent changes, and household member-count validation.
@@ -56,13 +65,13 @@ No measured claim about improved human preference, clinical outcomes, coverage i
 | CT-17 | Editable region/currency/metric-imperial; no default country. English interface only. |
 | CT-18 | Durable job expiry, safe provider errors, previous-version recovery; failure and malformed-output tests. No live quota exhaustion deliberately induced. |
 | CT-19 | Labels, skip link, focus styles, reduced motion and textual states implemented. Mobile screenshot inspected; full accessibility audit not claimed. |
-| CT-20 | README, license, attribution, deployment guide prepared. **Hosted Vercel demo and public repository pending account/project setup.** |
+| CT-20 | Public GitHub source, MIT license, setup/data documentation, and hosted Vercel app are available. GitHub `main` automatically deploys the website and production Convex functions. Hosted sample generation verified; corrected feedback recheck pending next build. |
 
 ## Remaining release gates
 
-1. Resend credentials and verified sender, followed by actual signup verification, recovery delivery, and code-expiry/reuse checks. Code is implemented; delivery is not verified.
+1. General-recipient email requires GeneaOne DNS verification. Temporary-sender delivery, verification, recovery, wrong-code/reuse, and password-change checks passed in development. A full 15-minute expiry waiting test and hosted human signup remain unverified.
 2. Select/register the intended owner account and provision its role; complete staff UI checks using real authenticated staff.
-3. Production build, root typecheck, 22 tests, and client-secret scan have passed; repeat only after material changes.
-4. Connect public Git remote, Vercel login/project, production Convex environment, and repeat the hosted core loop. Development deployment success does not establish production configuration.
+3. Production build, root typecheck, 24 tests, and client-secret scan have passed; repeat relevant checks after material changes.
+4. GitHub, Vercel, and production Convex are connected. Recheck the corrected feedback behavior after the next automatic build; finish DNS migration after registrar authentication and DNSSEC review.
 
 The ignored `retrospective-catalog/` contains more detailed local recovery notes and encountered issues. Provider payloads, credentials, and browser artifacts remain outside public source.
