@@ -17,3 +17,6 @@ archive/
 .convex/
 retrospective-catalog/
 .playwright-cli/
+
+.vercel
+.env*

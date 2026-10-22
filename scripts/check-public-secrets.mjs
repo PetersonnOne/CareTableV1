@@ -6,6 +6,8 @@ const names = [
   "RESEND_API_KEY",
   "CONVEX_DEPLOY_KEY",
   "JWT_PRIVATE_KEY",
+  "VERCEL_TOKEN",
+  "VERCEL_OIDC_TOKEN",
 ];
 const secrets = names
   .map((n) => process.env[n])

@@ -1,0 +1,16 @@
+node_modules/
+.git/
+.next/
+.env
+.env.*
+.private/
+archive/
+retrospective-catalog/
+.playwright-cli/
+output/
+coverage/
+test-results/
+*.pdf
+*.log
+*.tsbuildinfo
+Post Hackathon App Idea.txt
