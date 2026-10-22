@@ -328,7 +328,15 @@ export function PlanStudio({
           {row.parentPlanId && (
             <button
               className="button outline"
-              onClick={() => setActive(row.parentPlanId || null)}
+              onClick={() => {
+                if (row.parentPlanId) {
+                  setActive(row.parentPlanId);
+                  localStorage.setItem(
+                    "caretable-active-plan",
+                    row.parentPlanId,
+                  );
+                }
+              }}
             >
               Return to the previous plan
             </button>

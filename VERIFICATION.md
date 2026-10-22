@@ -22,10 +22,11 @@ No measured claim about improved human preference, clinical outcomes, coverage i
 
 ## Cloud deployment and email continuation
 
-- Public source pushed to [CareTableV1](https://github.com/PetersonnOne/CareTableV1). Vercel's `caretable-v1` project is connected to GitHub `main`. Its first automatic deployment cloned commit `2d9b15a`, ran the production Next.js/Convex pipeline, and reached Ready at [caretable-v1.vercel.app](https://caretable-v1.vercel.app).
+- Source pushed to [CareTableV1](https://github.com/PetersonnOne/CareTableV1). GitHub owner UI confirms the repository is currently **private**; changing it to public is awaiting the user's choice. The website is public. Vercel's `caretable-v1` project is connected to GitHub `main`. Its first automatic deployment cloned commit `2d9b15a`, ran the production Next.js/Convex pipeline, and reached Ready at [caretable-v1.vercel.app](https://caretable-v1.vercel.app).
 - Production uses Convex `artful-raven-948`; development and previews use `outstanding-crocodile-717`. Production credentials/signing keys are separate. The Vercel production deploy key is stored as a protected secret. Upload ignore rules exclude local environments, archives, private files, and the retrospective.
 - Hosted browser initially found an invalid JWKS response caused by escaped JSON in production environment setup. Corrected serialization and reapplied it without rotating signing keys. Public discovery/JWKS endpoints now parse correctly; hosted anonymous sign-in and a live three-day Qloo + Luna plan succeeded.
-- Hosted “Too difficult” feedback exposed selection of a slower meal. The corrected pipeline enforces a strictly shorter estimate and preserves the original when no quicker eligible option exists. Two regression tests cover successful repair of a slower model choice and no-match preservation; final hosted recheck follows the next automatic deployment.
+- Hosted “Too difficult” feedback exposed selection of a slower meal. The corrected pipeline enforces a strictly shorter estimate and preserves the original when no quicker eligible option exists. Two regression tests cover successful repair of a slower model choice and no-match preservation. Commit `cb5ec2a` automatically deployed and reached Ready; its hosted revision replaced a 30-minute meal with a 25-minute one, retaining all three slots and the peanut exclusion. Refresh restored the session and saved plan. A scan of 14 hosted public pages/scripts found no configured private values; the health endpoint returned 200 with CSP present.
+- Hosted no-quicker recovery also passed: asking to shorten a 25-minute dinner produced an explicit catalog-shortage message and a return-to-previous-plan control. The return control now persists its selected version for refresh recovery.
 - Resend temporary test sender configured per user choice. Development integration sent verification and reset messages to the authorized Resend account address; both reported **delivered**. Wrong code, reused code, unverified signup, member-only access, reset sign-in, old-password rejection, and new-password success checks passed. Temporary QA credentials remain private and are not production account credentials.
 - `notify.geneaone.com` added to Resend for the future sender. Email DNS is prepared on Vercel; authoritative nameservers remain with Unstoppable Domains. Registrar login, full DNS inventory, and the existing DS/DNSSEC transition remain pending. GeneaOne is not assigned to the CareTable website.
 
@@ -65,13 +66,13 @@ No measured claim about improved human preference, clinical outcomes, coverage i
 | CT-17 | Editable region/currency/metric-imperial; no default country. English interface only. |
 | CT-18 | Durable job expiry, safe provider errors, previous-version recovery; failure and malformed-output tests. No live quota exhaustion deliberately induced. |
 | CT-19 | Labels, skip link, focus styles, reduced motion and textual states implemented. Mobile screenshot inspected; full accessibility audit not claimed. |
-| CT-20 | Public GitHub source, MIT license, setup/data documentation, and hosted Vercel app are available. GitHub `main` automatically deploys the website and production Convex functions. Hosted sample generation verified; corrected feedback recheck pending next build. |
+| CT-20 | GitHub source, MIT license, setup/data documentation, and public Vercel app are available. Repository currently private; public-source gate awaits user choice. GitHub `main` automatically deploys website and production Convex functions. Hosted sample generation, corrected quicker-meal revision, and refresh recovery verified. |
 
 ## Remaining release gates
 
 1. General-recipient email requires GeneaOne DNS verification. Temporary-sender delivery, verification, recovery, wrong-code/reuse, and password-change checks passed in development. A full 15-minute expiry waiting test and hosted human signup remain unverified.
 2. Select/register the intended owner account and provision its role; complete staff UI checks using real authenticated staff.
 3. Production build, root typecheck, 24 tests, and client-secret scan have passed; repeat relevant checks after material changes.
-4. GitHub, Vercel, and production Convex are connected. Recheck the corrected feedback behavior after the next automatic build; finish DNS migration after registrar authentication and DNSSEC review.
+4. GitHub, Vercel, and production Convex are connected; hosted generation, quicker-meal feedback, and refresh passed. Public repository visibility awaits user choice. Finish DNS migration after registrar authentication and DNSSEC review.
 
 The ignored `retrospective-catalog/` contains more detailed local recovery notes and encountered issues. Provider payloads, credentials, and browser artifacts remain outside public source.

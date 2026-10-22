@@ -1,6 +1,6 @@
 # CareTable demonstration and submission draft
 
-**Current status:** [Hosted app](https://caretable-v1.vercel.app) and [public source](https://github.com/PetersonnOne/CareTableV1) are available. GitHub `main` triggers automatic Vercel/production Convex deployment. Live 3/7/14-day planning was verified locally; hosted sample generation also passed. Email remains limited to Resend's authorized test recipient until GeneaOne DNS is verified.
+**Current status:** [Public hosted app](https://caretable-v1.vercel.app) and [GitHub source](https://github.com/PetersonnOne/CareTableV1) are available; the source repository is currently private, pending a visibility decision for submission. GitHub `main` triggers automatic Vercel/production Convex deployment. Live 3/7/14-day planning was verified locally; hosted sample generation, corrected quicker-meal revision, and refresh recovery also passed. Email remains limited to Resend's authorized test recipient until GeneaOne DNS is verified.
 
 ## Project description
 
