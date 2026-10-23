@@ -1,11 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
+import { MealCarousel } from "@/components/meal-carousel";
 export default function Home() {
   return (
     <div className="home">
       <section className="home-hero">
         <div>
-          <span className="eyebrow">GOOD FOOD. FAMILIAR FEELINGS.</span>
+          <span className="eyebrow home-kicker"><span aria-hidden="true">♡</span> GOOD FOOD. FAMILIAR FEELINGS.</span>
           <h1>
             A little more care
             <br />
@@ -25,16 +25,7 @@ export default function Home() {
           </div>
           <p className="fine">For individuals, partners, and families.</p>
         </div>
-        <div className="hero-meal">
-          <Image className="hero-meal-image" src="/images/caretable-hero-meal.png" width={1024} height={1024} sizes="(max-width: 650px) 88vw, 45vw" preload alt="A warmly presented meal with roasted vegetables, grains and fresh herbs." />
-          <div className="little-note">
-            <span>♡</span>
-            <div>
-              Made around your people
-              <small>A thoughtful plan starts with listening.</small>
-            </div>
-          </div>
-        </div>
+        <MealCarousel />
       </section>
       <section className="values-grid">
         <article>
@@ -61,6 +52,13 @@ export default function Home() {
             household.
           </p>
         </article>
+      </section>
+      <section className="home-journey" aria-labelledby="home-journey-title">
+        <span className="eyebrow">A LITTLE CARE, ONE STEP AT A TIME</span>
+        <h2 id="home-journey-title">Less wondering. More looking forward.</h2>
+        <p>No need to figure everything out at once. Start with your people, and take it from there.</p>
+        <ol>{[["Your table","Make space for each person’s favourites and needs."],["Plan your meals","Find a rhythm that fits your time and budget."],["Review together","Explore your meals, ingredients and checks."],["Make it more yours","Reflect, chat, or talk through a change with AI."]].map(([title,copy],i)=><li key={title}><span aria-hidden="true">{i+1}</span><h3>{title}</h3><p>{copy}</p></li>)}</ol>
+        <Link className="button" href="/planner">Let’s set your table <span aria-hidden="true">→</span></Link>
       </section>
     </div>
   );
