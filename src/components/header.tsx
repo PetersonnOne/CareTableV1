@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { BrandLogo } from "./brand-logo";
 import { usePathname } from "next/navigation";
 import { useConvexAuth, useQuery } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
@@ -13,10 +14,7 @@ export function Header() {
   return (
     <header className="header">
       <Link className="brand" href="/">
-        <span className="brand-symbol" aria-hidden="true">
-          c<span>·</span>
-        </span>
-        CareTable
+        <BrandLogo />
       </Link>
       <nav aria-label="Main navigation">
         <Link

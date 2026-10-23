@@ -152,6 +152,16 @@ main {
   letter-spacing: -1px;
   white-space: nowrap;
 }
+.brand-logo {
+  display: block;
+  width: 184px;
+  height: auto;
+  border-radius: 12px;
+}
+footer > .brand-logo { margin: 0 auto; }
+@media (max-width: 700px) {
+  .header .brand-logo { width: 150px; }
+}
 .brand-symbol {
   font-family: Georgia, serif;
   background: var(--accent);

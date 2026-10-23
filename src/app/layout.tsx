@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { Providers } from "@/components/providers";
 import { Header } from "@/components/header";
+import { BrandLogo } from "@/components/brand-logo";
 import "./globals.css";
 export const metadata: Metadata = {
   title: {
@@ -10,6 +11,10 @@ export const metadata: Metadata = {
   },
   description:
     "Thoughtful meal planning shaped around the people at your table.",
+  icons: {
+    icon: [{ url: "/brand/favicon-32.png", sizes: "32x32", type: "image/png" }],
+    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 export default function RootLayout({
   children,
@@ -27,7 +32,7 @@ export default function RootLayout({
             <Header />
             <main id="main">{children}</main>
             <footer>
-              <span className="brand-word">CareTable</span>
+              <BrandLogo />
               <p>A little more care at every meal.</p>
               <small>Qloo Agentic Hackathon · Original recipe suggestions</small>
             </footer>
