@@ -1,6 +1,6 @@
 # CareTable demonstration and submission draft
 
-**Current status:** [Public hosted app](https://caretable-v1.vercel.app) and [GitHub source](https://github.com/PetersonnOne/CareTableV1) are available; the source repository is currently private, pending a visibility decision for submission. GitHub `main` triggers automatic Vercel/production Convex deployment. Live 3/7/14-day planning was verified locally; hosted sample generation, corrected quicker-meal revision, and refresh recovery also passed. Email remains limited to Resend's authorized test recipient until GeneaOne DNS is verified.
+**Current priority, 23 October 2026:** production-readiness work is paused by the user. Use the new [CareTable demo workshop](demo-pipeline/README.md) for reference review, rehearsal captures, script/storyboard drafts and iteration. No final demo or submission is approved. The hosted app exists, but the latest local UI is not deployed; GitHub remains private. Resend's GeneaOne sender is verified. Spoken-voice acceptance, production owner provisioning and remaining release checks are tracked in [PRODUCTION_READINESS.md](PRODUCTION_READINESS.md).
 
 ## Project description
 
@@ -26,7 +26,7 @@ For a deterministic fallback demonstration, use **Local preview** and explicitly
 
 - Live 3-day plan and revision, 7-day partner plan with separate peanut/wheat exclusions, and 14-day/42-slot plan completed.
 - Actual returned dining affinities visibly mapped to selected tomato pasta and carrot-and-ginger rice in different runs.
-- 24 automated checks cover access boundaries, exclusions, variants, completeness, invalid output repair, relevant quicker-meal revision, persistence, revision preservation, and durable usage limits.
+- The last full regression run passed 40 tests; cite that dated run accurately rather than treating it as proof of the demo's exact final build.
 - Original recipes are prototype suggestions under MIT, not clinically validated preparations. Qloo supplies cultural intelligence, not recipes or medical safety certification.
 
-See [verification](VERIFICATION.md) for exact evidence and remaining release gates. The app/source are published; no Devpost submission has been made by this workflow.
+See [verification](VERIFICATION.md) for exact evidence and remaining release gates. The source is private and the latest local changes are unpublished; no Devpost submission has been made by this workflow.

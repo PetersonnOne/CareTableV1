@@ -1,5 +1,7 @@
 # CareTable production readiness — 23 October 2026
 
+**Work paused by the user on 23 October 2026.** Current priority is reference review and a CareTable demo rehearsal pipeline. Outstanding gates below are retained for resumption; no production completion percentage is inferred from the pause. No deployment or readiness claim follows from demo preparation.
+
 **Verdict: release candidate under verification; not approved as fully production-ready.** The PRD core and the added mode/theme features have implementation and test evidence. Live voice transport and hosted release verification remain blockers. A passing build or a created voice session is not end-to-end evidence.
 
 ## Scope and evidence
