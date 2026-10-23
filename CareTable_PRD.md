@@ -191,3 +191,7 @@ Collect generation completion/partial/failure rates, revision outcomes, measured
 Frontend/backend stack, database and anonymous-session storage, hosting, recipe provider, regional coverage, ingredient-normalization scope, household/usage limits, and numerical performance/cost targets remain open. These can be resolved through Stage A without delaying this PRD.
 
 **Next concrete deliverable:** dependency/coverage findings and a technical implementation plan mapped to CT-01 through CT-20. Implementation has not begun as part of creating this document.
+
+## 14. User-approved scope amendments — 23 October 2026
+
+The user added two main interaction modes (User Mode / Interactive Mode) and two feedback modes (Chat / Discuss with AI). Voice uses the exact gpt-live-1 model from the user's Life Maxim implementation. Both voice handoffs require review before the existing Qloo/Luna pipeline applies changes. A right-side lightweight dashboard/chat and four themes (Garden, Midnight, Dark, White) are included; Midnight is the default. Email/password accounts use Convex Auth and the verified GeneaOne Resend sender. Next.js, Convex and Vercel/GitHub replace the creation-time open stack choices. See [production acceptance evidence and blockers](PRODUCTION_READINESS.md); historical creation-time statements above are not a current implementation status.

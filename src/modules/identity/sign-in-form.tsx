@@ -2,7 +2,6 @@
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useConvexAuth, useQuery } from "convex/react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
 type Stage =
@@ -12,14 +11,20 @@ export function SignInForm() {
   const { isAuthenticated } = useConvexAuth();
   const viewer = useQuery(api.identity.current, isAuthenticated ? {} : "skip");
   const router = useRouter();
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("flow") === "reset";
+    if (requested) setStage("reset");
+    setReady(true);
+  }, []);
   const [stage, setStage] = useState<Stage>("signIn"),
     [email, setEmail] = useState(""),
     [pending, setPending] = useState(false),
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
   useEffect(() => {
-    if (viewer && !viewer.isAnonymous) router.replace("/account");
-  }, [viewer, router]);
+    if (ready && viewer && !viewer.isAnonymous && stage !== "reset" && stage !== "reset-verification") router.replace("/account");
+  }, [viewer, router, ready, stage]);
   const codeStage =
     stage === "email-verification" || stage === "reset-verification";
   const title =
@@ -58,6 +63,8 @@ export function SignInForm() {
             setNotice(
               "Enter the verification code sent to your email. Already verified accounts sign in immediately.",
             );
+          } else if (stage === "reset-verification") {
+            router.replace("/account");
           }
         } catch {
           if (stage === "reset") {
@@ -78,15 +85,6 @@ export function SignInForm() {
     >
       <span className="eyebrow">YOUR PLACE AT THE TABLE</span>
       <h1>{title}</h1>
-      {process.env.NEXT_PUBLIC_EMAIL_MODE === "test" && !codeStage && (
-        <p className="notice">
-          Email sign-in is limited to the test account while email delivery is
-          being configured.{" "}
-          <Link href="/planner?sample=1">
-            Try the fictional sample without email.
-          </Link>
-        </p>
-      )}
       <p>
         {codeStage
           ? "Codes expire after 15 minutes."
@@ -107,7 +105,7 @@ export function SignInForm() {
           </button>
         </div>
       )}
-      <fieldset disabled={pending || viewer?.isAnonymous === true}>
+      <fieldset disabled={!ready || pending || viewer?.isAnonymous === true}>
         {stage === "signUp" && (
           <label>
             Your name

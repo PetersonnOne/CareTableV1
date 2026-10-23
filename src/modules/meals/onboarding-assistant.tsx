@@ -1,6 +1,6 @@
 "use client";
 import { useAction, useConvexAuth } from "convex/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api } from "../../../convex/_generated/api";
 type Suggestion = {
   favorites: string[];
@@ -14,7 +14,7 @@ export function OnboardingAssistant({
   members,
   onApply,
 }: {
-  members: { name: string }[];
+  members: { id: string; name: string }[];
   onApply: (index: number, s: Suggestion) => void;
 }) {
   const { isAuthenticated } = useConvexAuth();
@@ -24,6 +24,11 @@ export function OnboardingAssistant({
     [suggestion, setSuggestion] = useState<Suggestion | null>(null),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
+  const targetId = members[Math.min(person, members.length - 1)]?.id;
+  const currentTarget = useRef(targetId);
+  currentTarget.current = targetId;
+  const [suggestionTarget, setSuggestionTarget] = useState("");
+  useEffect(() => { setSuggestion(null); }, [targetId]);
   return (
     <section className="panel assistant-panel">
       <span className="eyebrow">START WITH A CONVERSATION</span>
@@ -67,7 +72,12 @@ export function OnboardingAssistant({
           setBusy(true);
           setError("");
           try {
-            setSuggestion(await interpret({ text }));
+            const requestedTarget = targetId;
+            const result = await interpret({ text });
+            if (currentTarget.current === requestedTarget) {
+              setSuggestion(result);
+              setSuggestionTarget(requestedTarget || "");
+            }
           } catch {
             setError(
               "The assistant could not interpret this request. Try again later or use the profile fields.",
@@ -89,7 +99,7 @@ export function OnboardingAssistant({
           {error}
         </p>
       )}
-      {suggestion && (
+      {suggestion && suggestionTarget === targetId && (
         <section className="notice">
           <h3>Review before applying</h3>
           <p>{suggestion.summary}</p>

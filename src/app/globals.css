@@ -1360,3 +1360,8 @@ footer small {
 [data-theme="dark"] .stat-green { color:#c3ebd0; background:#203b2d; }
 [data-theme="dark"] .stat-amber { color:#ffe0a0; background:#45351d; }
 [data-theme="dark"] .stat-red { color:#ffd0d1; background:#46282c; }
+
+/* Hidden mode panels retain drafts without remaining visible or focusable. */
+[hidden] { display: none !important; }
+.mode-switch { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 12px; }
+.mode-switch .button[aria-pressed="true"] { color: var(--accent-text); background: var(--accent); border-color: var(--accent); }

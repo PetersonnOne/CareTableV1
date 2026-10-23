@@ -94,15 +94,20 @@ export function PlanCompanion({ result, target, working, job, onApply, planId }:
     <section className="panel companion-chat" aria-labelledby="meal-chat-title">
       <span className="eyebrow">A LITTLE BETTER, TOGETHER</span><h3 id="meal-chat-title">Meal improvement chat</h3>
       <p className="fine">Guided conversation to shape a change. Luna selects a revised meal only when you apply it.</p>
-      <button className="button outline" disabled={!planId||!selected||working||waiting||result?.mode!=="live"} onClick={()=>setVoiceOpen(v=>!v)}>Discuss with AI</button>
-      {voiceOpen&&planId&&selected&&<VoiceSession key={`${planId}:${selected.day}:${selected.slot}`} mode="discussion" context="Selected saved meal" planId={planId} day={selected.day} slot={selected.slot} onClose={()=>setVoiceOpen(false)} onReviewed={async draft=>{
+      <div className="mode-switch" role="group" aria-label="Feedback mode">
+        <button className="button outline" aria-pressed={!voiceOpen} onClick={()=>setVoiceOpen(false)}>Chat</button>
+        <button className="button outline" aria-pressed={voiceOpen} disabled={!planId||!selected||working||waiting||result?.mode!=="live"} onClick={()=>setVoiceOpen(true)}>Discuss with AI</button>
+      </div>
+      <p className="fine">{voiceOpen?"Discuss this meal by voice. Your text draft is kept when you switch back to Chat.":"Type back and forth to shape a meal improvement. Switch to Discuss with AI for a live voice conversation."}</p>
+      {planId&&selected&&<div hidden={!voiceOpen}><VoiceSession active={voiceOpen} key={`${planId}:${selected.day}:${selected.slot}`} mode="discussion" context="Selected saved meal" planId={planId} day={selected.day} slot={selected.slot} onClose={()=>setVoiceOpen(false)} onReviewed={async draft=>{
         pendingTarget.current={day:selected.day,slot:selected.slot};const id=await onApply({day:selected.day,slot:selected.slot as MealFeedback["slot"],reason:draft.reason,text:draft.feedback});if(!id)throw Error("Revision not saved");waitingJob.current=id;setWaiting(true);setMessages(m=>[...m,{role:"you",text:draft.feedback}]);setVoiceOpen(false);
-      }}/>}
+      }}/></div>}
       {selected ? <>
         <label>Meal to discuss<select value={`${selected.day}:${selected.slot}`} disabled={working || waiting || submitting} onChange={e=>{setChoice(e.target.value);setNotes("");setMessages([]);setReason("other");}}>
           {meals.filter((m,i,a)=>a.findIndex(x=>x.day===m.day&&x.slot===m.slot)===i).map(m=><option key={`${m.day}:${m.slot}`} value={`${m.day}:${m.slot}`}>Day {m.day} · {m.slot}</option>)}
         </select></label>
         <p className="chat-context">Discussing <strong>{selected.recipe?.name}</strong></p>
+        <div hidden={voiceOpen}>
         <div className="chat-log" role="log" aria-label="Meal conversation" aria-live="polite" aria-relevant="additions" tabIndex={0} ref={log}>
           <p className="chat-bubble caretable"><strong>CareTable</strong>How did this meal fit your table? Tell me what to improve. Your messages build one request for the selected meal.</p>
           {messages.map((m,i)=><p className={`chat-bubble ${m.role}`} key={i}><strong>{m.role === "you" ? "You" : "CareTable"}</strong>{m.text}</p>)}
@@ -123,6 +128,7 @@ export function PlanCompanion({ result, target, working, job, onApply, planId }:
           }}>Apply change & recheck ↗</button>
           {result?.mode!=="live"&&<p className="fine">Preview chat is a draft. Create a live plan to apply revisions.</p>}
         </div>}
+        </div>
       </> : <p>Create or open a plan to start a meal conversation.</p>}
       <details><summary>Saved feedback</summary>{result?.feedback?.length ? result.feedback.map((f,i)=><p key={i}>Day {f.day} · {f.slot}: {f.reason}</p>) : <p>No saved revisions yet.</p>}</details>
       <p className="fine">Conversation drafts stay in this session. Applied feedback is saved with the plan. For new restrictions, edit the household and create a new plan.</p>

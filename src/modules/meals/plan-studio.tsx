@@ -44,10 +44,12 @@ export function PlanStudio({
   household,
   householdId,
   initialPlan,
+  interactive = false,
 }: {
   household: Input;
   householdId?: Id<"households">;
   initialPlan?: {id:Id<"mealPlans">;request:PlanRequest};
+  interactive?: boolean;
 }) {
   const { isAuthenticated } = useConvexAuth();
   const start = useMutation(api.plans.start);
@@ -55,7 +57,7 @@ export function PlanStudio({
   const history = useQuery(api.plans.list, isAuthenticated ? {} : "skip");
   const [active, setActive] = useState<Id<"mealPlans"> | null>(initialPlan?.id || null);
   const row = useQuery(
-    api.plans.get,
+    api.plans.find,
     isAuthenticated && active ? { id: active } : "skip",
   );
   const [local, setLocal] = useState<PlanResult | null>(null);
@@ -77,6 +79,14 @@ export function PlanStudio({
     text: string;
   } | null>(null);
   useEffect(() => {
+    if (active && row === null) {
+      setActive(null);
+      setRevisionBase(null);
+      localStorage.removeItem("caretable-active-plan");
+      setError("This saved plan was removed. Your household draft is kept; open another plan or create a new one.");
+    }
+  }, [active, row]);
+  useEffect(() => {
     setConfirmed(false);
   }, [
     JSON.stringify(household),
@@ -93,7 +103,7 @@ export function PlanStudio({
         setActive(previous as Id<"mealPlans">);
     }
   }, [history, active, local]);
-  const result = (local || (row?.result as PlanResult | undefined) || revisionBase?.result) ?? null;
+  const result = (local || (row?.result as PlanResult | undefined) || (row?.parentSnapshot as PlanResult | undefined) || revisionBase?.result) ?? null;
   const working =
     pending || row?.status === "running" || row?.status === "queued";
   function request() {
@@ -137,7 +147,7 @@ export function PlanStudio({
     }
   }
   async function revise(change: MealFeedback) {
-    const parentId = row?.result ? active : revisionBase?.id;
+    const parentId = row?.result ? active : row?.parentPlanId || revisionBase?.id;
     if (!parentId || !result || working) return null;
     setError("");
     setPending(true);
@@ -169,7 +179,7 @@ export function PlanStudio({
           check your plan.
         </p>
       </div>
-      <section className="panel">
+      <section className="panel" hidden={interactive}>
         <div className="form-grid">
           <label>
             Plan duration
@@ -330,7 +340,7 @@ export function PlanStudio({
               "A provider request failed. Please try again later."}
           </strong>
           <p>{row.summary}</p>
-          {row.parentPlanId && (
+          {row.parentPlanId && history?.some(p => p.id === row.parentPlanId) && (
             <button
               className="button outline"
               onClick={() => {
@@ -345,6 +355,9 @@ export function PlanStudio({
             >
               Return to the previous plan
             </button>
+          )}
+          {row.parentSnapshot && !history?.some(p => p.id === row.parentPlanId) && (
+            <p>The original version is no longer in recent saved history. Its preserved snapshot is shown below. Create a new plan to continue from your current profile.</p>
           )}
         </section>
       )}
@@ -528,7 +541,7 @@ export function PlanStudio({
           )}
         </section>
       )}
-      </div><PlanCompanion key={conversationKey} planId={row?.result ? active || undefined : revisionBase?.id} result={result} target={feedback} working={working} job={row && active ? {id:active,status:row.status,error:errors[row.errorCode || "PLANNING_ERROR"]} : undefined} onApply={revise} /></div>
+      </div><PlanCompanion key={conversationKey} planId={row?.result ? active || undefined : row?.parentPlanId || revisionBase?.id} result={result} target={feedback} working={working} job={row && active ? {id:active,status:row.status,error:errors[row.errorCode || "PLANNING_ERROR"]} : undefined} onApply={revise} /></div>
     </section>
   );
 }

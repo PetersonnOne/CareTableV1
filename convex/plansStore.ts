@@ -7,6 +7,14 @@ export const claim = internalMutation({
   handler: async (ctx, args) => {
     const row = await ctx.db.get(args.id);
     if (!row || row.status !== "queued") return null;
+    if ((row.leaseUntil ?? row._creationTime + 180000) <= Date.now()) {
+      await ctx.db.patch(row._id, {
+        status: "failed", errorCode: "TIMEOUT", phase: "Timed out",
+        summary: "The planning deadline was reached before work began. Your profile is preserved.",
+      });
+      await recordAudit(ctx, { actorId: row.ownerId, action: "plan.expired", module: "planning", outcome: "failure", target: row._id, summary: "Queued job expired before provider calls began." });
+      return null;
+    }
     await ctx.db.patch(row._id, {
       status: "running",
       phase: "Discovering cultural taste connections",

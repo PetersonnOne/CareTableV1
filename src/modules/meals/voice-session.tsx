@@ -13,9 +13,10 @@ function captions(fragments:Fragment[]) {
   for(const f of fragments){const last=rows.at(-1);if(last&&last.speaker===f.speaker&&f.start-last.end<1500){last.text+=f.text;last.end=Math.max(last.end,f.end);}else rows.push({...f});}
   return rows;
 }
-export function VoiceSession({mode,context,planId,day,slot,onReviewed,onClose}: {
+export function VoiceSession({mode,context,planId,day,slot,onReviewed,onClose,active=true}: {
   mode:"interactive"|"discussion"; context:string; planId?:Id<"mealPlans">; day?:number;slot?:string;
   onReviewed:(draft:VoiceDraft)=>Promise<void>;onClose:()=>void;
+  active?:boolean;
 }) {
   const startVoice=useAction(api.voiceActions.start),prepare=useAction(api.voiceActions.prepare),stopVoice=useMutation(api.voice.stop);
   const [connectionId,setConnectionId]=useState<Id<"voiceConnections">|null>(null);
@@ -29,11 +30,12 @@ export function VoiceSession({mode,context,planId,day,slot,onReviewed,onClose}: 
   function cleanup(){clearTimeout(timer.current);media.current?.getTracks().forEach(t=>t.stop());media.current=null;channel.current?.close();channel.current=null;peer.current?.close();peer.current=null;if(audio.current)audio.current.srcObject=null;connecting.current=false;}
   async function stop(){epoch.current++;setBusy(false);setConnected(false);setMuted(false);connecting.current=false;media.current?.getTracks().forEach(t=>t.stop());media.current=null;if(channel.current?.readyState==="open")channel.current.send(JSON.stringify({type:"session.close"}));const closing=peer.current;clearTimeout(timer.current);timer.current=setTimeout(()=>{if(peer.current===closing)cleanup();},3000);setStatus("Microphone off · cleanup requested");if(idRef.current)try{await stopVoice({id:idRef.current});}catch{if(mounted.current)setError("Server hangup could not be confirmed. Cleanup is scheduled; do not reconnect until the server closes this session.");}}
   const stopRef=useRef(stop);useEffect(()=>{stopRef.current=stop;});
+  useEffect(()=>{if(!active&&(connecting.current||media.current||connected))void stopRef.current();},[active,connected]);
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;epoch.current++;cleanup();if(idRef.current)void stopVoice({id:idRef.current}).catch(()=>{});};},[stopVoice]);
   useEffect(()=>{if(voice&&["closed","uncertain"].includes(voice.status)&&(connected||busy))void stopRef.current();},[voice?.status,connected,busy]);
   useEffect(()=>{if(!connected)return;const interval=setInterval(()=>{const left=Math.max(0,Math.ceil((expiry.current-Date.now())/1000));setRemaining(left);if(!left||Date.now()-latestInput.current>90000)void stopRef.current();},1000);const hidden=()=>{if(document.hidden)void stopRef.current();};document.addEventListener("visibilitychange",hidden);hidden();return()=>{clearInterval(interval);document.removeEventListener("visibilitychange",hidden);};},[connected]);
   async function start(){
-    if(connecting.current||connected||(voice&&voice.status!=="closed"))return;
+    if(!active||connecting.current||connected||(voice&&voice.status!=="closed"))return;
     cleanup();connecting.current=true;const generation=++epoch.current;setBusy(true);setError("");setStatus("Requesting microphone…");setFragments([]);setDraft(null);seen.current.clear();setMuted(false);
     try{
       if(!navigator.mediaDevices?.getUserMedia||!window.RTCPeerConnection)throw Error("Unsupported browser");
@@ -58,15 +60,17 @@ export function VoiceSession({mode,context,planId,day,slot,onReviewed,onClose}: 
       dc.onclose=()=>{if(generation===epoch.current&&mounted.current){cleanup();setConnected(false);setBusy(false);setStatus("Voice disconnected.");if(idRef.current)void stopVoice({id:idRef.current}).catch(()=>{});}};
       await pc.setLocalDescription(await pc.createOffer());
       if(pc.iceGatheringState!=="complete")await new Promise<void>((resolve,reject)=>{const timeout=setTimeout(()=>{pc.removeEventListener("icegatheringstatechange",check);reject(Error("Network setup timed out"));},10000);function check(){if(pc.iceGatheringState==="complete"){clearTimeout(timeout);pc.removeEventListener("icegatheringstatechange",check);resolve();}}pc.addEventListener("icegatheringstatechange",check);check();});
-      if(generation!==epoch.current||document.hidden){cleanup();return;}
+      if(generation!==epoch.current)return;
+      if(document.hidden){await stop();return;}
       setStatus("Connecting securely…");
       const result=await startVoice({mode,context,requestId:crypto.randomUUID(),sdp:pc.localDescription?.sdp||"",...(planId?{planId}:{}),...(day?{day}:{}),...(slot?{slot}:{})});
+      if(generation!==epoch.current){await stopVoice({id:result.id});return;}
       idRef.current=result.id;
-      if(generation!==epoch.current||document.hidden){cleanup();await stopVoice({id:result.id});return;}
+      if(document.hidden){await stop();return;}
       setConnectionId(result.id);expiry.current=result.expiresAt;setRemaining(Math.max(0,Math.ceil((result.expiresAt-Date.now())/1000)));
       await pc.setRemoteDescription({type:"answer",sdp:result.sdp});
       if(connecting.current)timer.current=setTimeout(()=>{setError("Voice did not become ready. No automatic retry was made.");void stopRef.current();},15000);
-    }catch(e){cleanup();if(mounted.current&&generation===epoch.current){setBusy(false);setConnected(false);setStatus("Voice is off");setError(e instanceof ConvexError&&typeof e.data==="string"?e.data:e instanceof DOMException&&e.name==="NotAllowedError"?"Microphone permission was denied. You can continue using text.":"Could not connect voice. Check browser support, network and API access; no automatic paid retry was made.");}if(idRef.current)void stopVoice({id:idRef.current}).catch(()=>{});}
+    }catch(e){if(generation!==epoch.current)return;cleanup();if(mounted.current){setBusy(false);setConnected(false);setStatus("Voice is off");setError(e instanceof ConvexError&&typeof e.data==="string"?e.data:e instanceof DOMException&&e.name==="NotAllowedError"?"Microphone permission was denied. You can continue using text.":"Could not connect voice. Check browser support, network and API access; no automatic paid retry was made.");}if(idRef.current)void stopVoice({id:idRef.current}).catch(()=>{});}
   }
   async function review(){if(!idRef.current)return;await stop();setWorking(true);setError("");try{const text=(fragments.map(f=>`${f.speaker}: ${f.text}`).join("\n")+"\nUser notes: "+notes).slice(-12000);setDraft(voiceDraftSchema.parse(JSON.parse(await prepare({id:idRef.current,transcript:text}))));}catch(e){setError(e instanceof ConvexError&&typeof e.data==="string"?e.data:"Review preparation failed. Your local conversation notes remain.");}finally{setWorking(false);}}
   return <section className="panel voice-session" aria-label={mode==="interactive"?"Interactive Mode":"Discuss with AI"}>

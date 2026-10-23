@@ -49,7 +49,7 @@ Stop the development server before building; both use `.next`. See [deployment i
 - Budgets identify their currency and whole-plan scope; without verified regional prices the budget result remains unknown.
 - Luna is fixed to `gpt-6-luna`; no automatic model upgrade exists. One constrained selection call and one deterministic repair pass are bounded. Requests use provider timeouts and a persisted expiry. Failure preserves profiles and earlier plan versions.
 - “Too difficult” revisions require a shorter estimated cooking time; if no quicker eligible meal exists, the previous plan is preserved. Actual preparation difficulty is not independently verified.
-- Email sign-in currently uses Resend's restricted testing sender. Judge access uses the fictional sample without email. GeneaOne sender verification is being configured before general email signup is enabled.
+- Email verification and recovery use the verified `CareTable <accounts@notify.geneaone.com>` Resend sender. Cloudflare remains authoritative for GeneaOne DNS. Sample access needs no email.
 - Limits: 8 household members, 20 saved households, 6 plan requests per hour per identity, one active job per identity, and a shared 200-plan daily demonstration cap. Conversational onboarding has a separate 12/hour per identity and 200/day cap. Anonymous sessions can be replaced, so these controls are not a complete bot-prevention system.
 - Names are omitted from Luna planning input; only cuisine/food preferences go to Qloo. Onboarding sends the text entered by the user to OpenAI. Avoid personal or medical details. OpenAI requests set `store: false`; this is not a claim of zero provider retention.
 
@@ -57,7 +57,9 @@ Stop the development server before building; both use `.next`. See [deployment i
 
 Signups receive member access. A trusted operator must deliberately bootstrap the intended owner using the internal `administration:bootstrapOwner` function after that owner registers. Never promote the sample account. Superadmins manage site appearance; scoped admins can manage people or audit records only with the corresponding permission. Database functions enforce access independently of navigation.
 
-Garden and Midnight themes support a site default and a private per-user override. Staff, theme, household, planning, and assistant outcomes write bounded audit metadata. Audit records exclude credentials and ingredient lists; they are not tamper-proof compliance logs.
+Garden, Midnight (the default), Dark, and White themes support a site default and a private per-user override. Staff, theme, household, planning, and assistant outcomes write bounded audit metadata. Audit records exclude credentials and ingredient lists; they are not tamper-proof compliance logs.
+
+The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Discuss with AI**. Both voice features use `gpt-live-1`; entering a mode does not start the microphone. See [voice behavior](VOICE_FEATURES.md) and the [production readiness audit](PRODUCTION_READINESS.md) for tested paths and remaining release blockers.
 
 ## Project records
 

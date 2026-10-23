@@ -189,19 +189,23 @@ export function HouseholdPlanner() {
     }
   }
   return (
-    <>
+    <div aria-busy={!ready} inert={!ready}>
       <section className="panel voice-entry">
         <div><span className="eyebrow">LET'S TALK IT THROUGH</span><h2>A conversation can set your table.</h2><p>Use GPT Live 1 to discuss the household and meal settings, then confirm the reviewed plan request.</p></div>
-        <button className="button" disabled={!isAuthenticated} onClick={()=>setInteractive(v=>!v)}>{interactive?"Return to user mode":"Interactive Mode"}</button>
+        <div className="mode-switch" role="group" aria-label="Planning mode">
+          <button className="button outline" aria-pressed={!interactive} onClick={()=>setInteractive(false)}>User Mode</button>
+          <button className="button outline" aria-pressed={interactive} disabled={!isAuthenticated} onClick={()=>setInteractive(true)}>Interactive Mode</button>
+        </div>
+        <p className="fine">{interactive?"Talk through your setup, then review it before generation. Switching to User Mode stops voice and keeps your conversation draft.":"Use the profile fields, planning controls and text assistant. You can switch to voice at any time."}</p>
         {!isAuthenticated&&<p className="fine">Sign in or load the fictional sample to use voice. Opening this mode never starts your microphone.</p>}
       </section>
-      {interactive&&isAuthenticated&&<VoiceSession key={JSON.stringify(fields)} mode="interactive" context={JSON.stringify({...fields,voiceMode:"interactive",members:fields.members.map((m,i)=>({...m,name:`Person ${i+1}`})),label:undefined})} onClose={()=>setInteractive(false)} onReviewed={async draft=>{
+      {isAuthenticated&&<div hidden={!interactive}><VoiceSession active={interactive} key={JSON.stringify(fields)} mode="interactive" context={JSON.stringify({...fields,voiceMode:"interactive",members:fields.members.map((m,i)=>({...m,name:`Person ${i+1}`})),label:undefined})} onClose={()=>setInteractive(false)} onReviewed={async draft=>{
         const members=preserveVoiceMembers(fields.members,draft.members,()=>crypto.randomUUID());
         const input=requestSchema.parse({...draft,members,confirmed:true});
         const planId=await startPlan({request:input,requestId:crypto.randomUUID()});
         setHousehold({label:household.label,mode:input.mode,members:members.map(m=>({...m,favorites:m.favorites.join(", "),dislikes:m.dislikes.join(", "),exclusions:m.exclusions.join(", ")})),region:input.region,currency:input.currency,units:input.units});
         setId(undefined);setVoicePlan({id:planId,request:input});localStorage.setItem("caretable-active-plan",planId);setResetKey(k=>k+1);setInteractive(false);setMessage("Reviewed voice setup applied. Qloo + Luna are building and checking your plan.");
-      }}/>}
+      }}/></div>}
 
       <div className="page-heading">
         <span className="eyebrow">LET'S SET YOUR TABLE</span>
@@ -234,7 +238,7 @@ export function HouseholdPlanner() {
           {error}
         </p>
       )}
-      <div className="split">
+      <div hidden={interactive}><div className="split">
         <section className="panel">
           <form
             onSubmit={async (e) => {
@@ -530,7 +534,7 @@ export function HouseholdPlanner() {
                     ...m,
                     favorites: s.favorites.join(", "),
                     dislikes: s.dislikes.join(", "),
-                    exclusions: s.exclusions.join(", "),
+                    exclusions: [...new Set([...split(m.exclusions), ...s.exclusions])].join(", "),
                     texture: s.texture,
                   }
                 : m,
@@ -538,7 +542,8 @@ export function HouseholdPlanner() {
           }))
         }
       />
-      <PlanStudio key={resetKey} household={fields} householdId={id} initialPlan={voicePlan || undefined} />
-    </>
+      </div>
+      <PlanStudio key={resetKey} household={fields} householdId={id} initialPlan={voicePlan || undefined} interactive={interactive} />
+    </div>
   );
 }

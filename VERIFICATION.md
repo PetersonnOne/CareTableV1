@@ -80,22 +80,13 @@ The conversation is deliberately guided: local replies collect bounded preferenc
 | CT-19 | Labels, skip link, focus styles, reduced motion and textual states implemented. Mobile screenshot inspected; full accessibility audit not claimed. |
 | CT-20 | GitHub source, MIT license, setup/data documentation, and public Vercel app are available. Repository currently private; public-source gate awaits user choice. GitHub `main` automatically deploys website and production Convex functions. Hosted sample generation, corrected quicker-meal revision, and refresh recovery verified. |
 
-## Remaining release gates
+## Current release audit — 23 October 2026
 
-### 23 October continuation (supersedes earlier email/DNS status)
+The full journey catalog, corrections and current release gates are maintained in [PRODUCTION_READINESS.md](PRODUCTION_READINESS.md). It supersedes historical sender, DNS migration, theme and voice-verification notes above.
 
-- Resend reports `notify.geneaone.com` and all four authentication records **verified**. Cloudflare remains authoritative; no nameserver migration is planned. The verified `CareTable <accounts@notify.geneaone.com>` sender was configured on development and production Convex.
-- A new disposable production member account used a unique Gmail plus alias. Fresh verification and recovery OTPs were read privately from the user's explicitly authorized Gmail session. Production API checks passed: verification required, wrong OTP rejected, valid OTP signs in, OTP reuse rejected, reset signs in, old password rejected, replacement password works. Credentials and OTPs are Git-ignored. This is production backend/email evidence, not a completed hosted-form browser run.
-- Hosted page and health requests currently fail from this machine (connection timeout/fetch failure). Vercel environment update to remove the testing notice also failed with a network fetch error; do not claim the public notice was removed.
-- Development test-owner bootstrap was attempted for the existing verified disposable QA account, but the Convex operator CLI failed with a network error. Role change has not been confirmed. Production owner remains unprovisioned, reserved for the real owner.
-- Hosted-form, authenticated staff UI, and final accessibility checks remain open. A local dev server started slowly and reported a slow filesystem; this is not evidence that those browser checks passed.
-- User deferred hackathon packaging/repository publication decisions. Do not publish the repository or prepare submission materials without their next instructions.
-
-1. General-recipient email requires GeneaOne DNS verification. Temporary-sender delivery, verification, recovery, wrong-code/reuse, and password-change checks passed in development. A full 15-minute expiry waiting test and hosted human signup remain unverified.
-2. Select/register the intended owner account and provision its role; complete staff UI checks using real authenticated staff.
-3. Production build, root typecheck, 24 tests, and client-secret scan have passed; repeat relevant checks after material changes.
-4. GitHub, Vercel, and production Convex are connected; hosted generation, quicker-meal feedback, and refresh passed. Public repository visibility awaits user choice. Finish DNS migration after registrar authentication and DNSSEC review.
-
-The ignored `retrospective-catalog/` contains more detailed local recovery notes and encountered issues. Provider payloads, credentials, and browser artifacts remain outside public source.
-
-Voice UI verification (23 October 2026): local production build, fictional anonymous sample, Interactive Mode opens with Voice is off, Start voice enabled, Mute/Stop/review disabled before a session. No microphone permission or paid live session started. Screenshot: output/playwright/interactive-voice-panel.png. Final development Convex deployment completed at 11:51:19.
+- GeneaOne remains email-only, with Cloudflare nameservers preserved. The verified Resend sender is configured on development and production. No DNS migration is required.
+- The new audit exercised separate Playwright/Chromium sessions, including both voice entry points. Live audio is blocked at WebRTC ICE connection setup; session creation and server cleanup succeed. Typed-note review/generation/revision paths pass, but do not establish spoken-voice acceptance.
+- Production existing verified disposable-account login passes via API. Earlier verification/recovery OTP evidence remains valid. Full new signup/reset browser acceptance is still separate.
+- Development staff UI, theme persistence, site appearance and audit pages pass. The intended production owner is still reserved for the user.
+- Current hosted pages and GitHub requests time out from this machine. Do not claim the latest release has been published or hosted acceptance repeated.
+- The local retrospective catalog, private QA outputs, tokens and browser artifacts remain Git-ignored. Repository publication/submission remains deferred.

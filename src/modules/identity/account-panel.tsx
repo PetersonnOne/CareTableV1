@@ -1,8 +1,14 @@
 "use client";
 import { useQuery, useConvexAuth } from "convex/react";
 import Link from "next/link";
+import { useAuthActions } from "@convex-dev/auth/react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { api } from "../../../convex/_generated/api";
 export function AccountPanel() {
+  const { signOut } = useAuthActions();
+  const router = useRouter();
+  const [recoveryError, setRecoveryError] = useState("");
   const { isAuthenticated, isLoading } = useConvexAuth();
   const user = useQuery(api.identity.current, isAuthenticated ? {} : "skip");
   if (isLoading || (isAuthenticated && user === undefined))
@@ -47,8 +53,12 @@ export function AccountPanel() {
               sign-in page.
             </p>
           ) : (
-            <Link href="/sign-in">Password recovery and sign-in settings</Link>
+            <button className="text-button" onClick={async () => {
+              try { await signOut(); router.push("/sign-in?flow=reset"); }
+              catch { setRecoveryError("Could not sign out. Try the Sign out button in the header before password recovery."); }
+            }}>Sign out & recover password</button>
           )}
+          {recoveryError && <p role="alert">{recoveryError}</p>}
         </section>
         <section className="panel">
           <span className="badge">APPEARANCE</span>

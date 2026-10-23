@@ -4,6 +4,7 @@ import { internal } from "./_generated/api";
 import { requireUser } from "./model/access";
 import { recordAudit } from "./model/audit";
 import { requestSchema } from "../src/modules/meals/domain/schema.mjs";
+import schema from "./schema";
 const feedbackValidator = v.object({
   day: v.number(),
   slot: v.union(
@@ -140,6 +141,17 @@ export const get = query({
     if (!plan || plan.ownerId !== user._id)
       throw new ConvexError("PLAN_NOT_FOUND");
     return plan;
+  },
+});
+// Subscription-safe lookup: a deletion/reset must not crash the mounted planner.
+// Missing and other-account IDs have the same response.
+export const find = query({
+  args: { id: v.id("mealPlans") },
+  returns: v.union(v.null(), schema.doc("mealPlans")),
+  handler: async (ctx, { id }) => {
+    const user = await requireUser(ctx);
+    const plan = await ctx.db.get(id);
+    return plan?.ownerId === user._id ? plan : null;
   },
 });
 export const list = query({

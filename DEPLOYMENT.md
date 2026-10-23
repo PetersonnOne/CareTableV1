@@ -34,14 +34,14 @@ The development configure scripts target development. `scripts/configure-product
 
 Have the intended owner create and verify their email/password account. A trusted Convex operator can locate that user's ID in the dashboard and run internal `administration:bootstrapOwner` with `{ "userId": "the-verified-user-id" }` against the selected deployment. It refuses a second bootstrap. Never choose an anonymous sample user. The owner then assigns scoped admins from Administration.
 
-## Email and DNS status — 22 October 2026
+## Email and DNS status — 23 October 2026
 
-- Resend's temporary sender is configured for testing. Verification and recovery delivery plus code/password checks passed in development. It is restricted to the Resend account email; public UI uses `NEXT_PUBLIC_EMAIL_MODE=test` to show that limitation.
-- `notify.geneaone.com` has been added to Resend. GeneaOne is for email only; neither its root nor `www` is assigned to the CareTable website.
-- **Current decision:** retain Cloudflare as GeneaOne's authoritative DNS provider. Public nameservers were verified as `elisabeth.ns.cloudflare.com` and `yevgen.ns.cloudflare.com`. Do not migrate nameservers or change existing DNS records. The previously prepared Vercel DNS zone is inactive for public resolution and must not be treated as live email configuration.
-- Cloudflare DNS and Vercel hosting are compatible: DNS authority does not determine the app host. CareTable remains on its Vercel address with GitHub main automatic deployments. GeneaOne remains for email only. Future GeneaOne applications can connect individual hostnames to Vercel while retaining Cloudflare nameservers; use the exact records supplied by each Vercel project. See [Vercel DNS documentation](https://vercel.com/docs/domains/working-with-dns).
-- The user authorized email-only additions. All four Resend records for `notify.geneaone.com` were added in Cloudflare: DKIM TXT, return-path MX (priority 10), SPF TXT, and the Resend CNAME in DNS-only mode. The four pre-existing records and nameservers were preserved. Resend verification was triggered; retain the temporary sender until verification succeeds. No registrar login is needed for this arrangement. Follow [Resend's Cloudflare guide](https://resend.com/docs/guides/dns/cloudflare). Cloudflare nameservers alone do not put a Vercel site behind Cloudflare's HTTP proxy or enable application-level CDN/WAF services for it.
-- **23 October:** Resend domain and all four records are verified. `RESEND_FROM` on development and production Convex now uses `CareTable <accounts@notify.geneaone.com>`. Production disposable-account verification/reset emails arrived in Gmail and API authentication checks passed. The Vercel `NEXT_PUBLIC_EMAIL_MODE=live` update failed due to a network fetch error; retry that update and deploy before claiming the public testing notice is gone.
-- Intended owner account has not been selected/provisioned.
+The verified Resend sender is CareTable <accounts@notify.geneaone.com>, configured on both Convex deployments. GeneaOne is used for email only. Cloudflare remains authoritative at elisabeth.ns.cloudflare.com and yevgen.ns.cloudflare.com; no nameserver migration is needed. The four additive Resend email records are verified; pre-existing records were preserved. The inactive Vercel DNS zone is not authoritative.
 
-Keep credentials out of screenshots, support files, command output, commits, and public browser bundles. Run `node --env-file=.env.local scripts/check-public-secrets.mjs` after building to check source candidates and client assets against the configured private values.
+The obsolete restricted-testing banner has been removed in source. This does not claim the latest frontend was deployed: current GitHub/Vercel requests from this machine time out. Restore connectivity and use the existing GitHub main deployment path after release gates pass. See [the production audit](PRODUCTION_READINESS.md).
+
+## Release acceptance
+
+Do not promote this candidate as fully verified while live voice cannot establish its media/data connection. Both voice review paths work from typed clarification notes, but audio/captions/mute and full spoken workflows require successful transport verification. Production owner provisioning and the remaining hosted signup/reset browser tests also remain open.
+
+Keep credentials out of screenshots, support files, command output, commits and public browser bundles. Run node --env-file=.env.local scripts/check-public-secrets.mjs after building. Never rotate existing signing keys just to retry deployment.
