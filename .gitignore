@@ -13,8 +13,7 @@ Post Hackathon App Idea.txt
 .vercel/
 *.tsbuildinfo
 output/playwright/
-demo-pipeline/work/
-demo-pipeline/scripts/__pycache__/
+/Submission Video Workspace/
 archive/
 .convex/
 retrospective-catalog/

@@ -71,3 +71,5 @@ The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Disc
 - [Deployment](DEPLOYMENT.md)
 
 The local retrospective catalog, private credentials, provider PDFs, browser artifacts, and archived Vite/Express prototype are Git-ignored. `Post Hackathon App Idea.txt` belongs to a separate app and is excluded.
+
+Video submission materials are kept locally in [Submission Video Workspace](<Submission Video Workspace/README.md>). The entire folder is Git-ignored, including scripts, drafts, references, recordings and exports.
