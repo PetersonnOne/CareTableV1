@@ -32,6 +32,14 @@ No measured claim about improved human preference, clinical outcomes, coverage i
 
 ## Automated checks
 
+### Meal companion — 23 October
+
+The planner now has a right-hand dashboard and guided meal conversation, stacking below results on mobile. Statistics are derived from the loaded plan: filled slots, average base-recipe cooking estimates, passed/unverified/failed check counts, and saved revision count. Colors have text labels and separate dark-theme palettes. These are not nutrition, price, or medical-safety metrics.
+
+Browser preview verification: a three-day dinner preview showed 3/3 slots, 28-minute average, and six passed catalog checks. A two-turn conversation retained both quicker-meal intent and a request to keep tomato/basil flavours in one editable change request. Preview cannot apply paid/live revisions. At 1280px the companion sits to the right of meals; at 390px its cards stack and document width is 375px. Both themes were visually inspected. Screenshots remain in ignored browser artifacts.
+
+The conversation is deliberately guided: local replies collect bounded preference notes and explain plan statistics. Applying the request invokes the existing Qloo/Luna revision pipeline, not an extra LLM call for every message. Applied notes persist in plan feedback; unsent conversation drafts are session-only. Existing restrictions remain server-owned. New chat completion/failed/partial UI paths are implemented; live browser revision through the new chat has not yet been verified.
+
 24 tests passed in three files after persistence and feedback fixes. Root typecheck and the configured-secret scan passed. Coverage includes:
 
 - Authentication requirements, cross-account isolation, member/admin scope, delegation escalation, protected owner, explicit permissions, and second owner bootstrap refusal.

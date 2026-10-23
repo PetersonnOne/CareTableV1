@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
 import { requestSchema } from "./domain/schema.mjs";
+import { PlanCompanion, type MealFeedback } from "./plan-companion";
 import {
   previewPlan,
   type PlanRequest,
@@ -56,6 +57,7 @@ export function PlanStudio({
     isAuthenticated && active ? { id: active } : "skip",
   );
   const [local, setLocal] = useState<PlanResult | null>(null);
+  const [revisionBase, setRevisionBase] = useState<{ id: Id<"mealPlans">; result: PlanResult } | null>(null);
   const [days, setDays] = useState<3 | 7 | 14>(3);
   const [slots, setSlots] = useState<string[]>(["dinner"]);
   const [minutes, setMinutes] = useState(45);
@@ -63,6 +65,7 @@ export function PlanStudio({
   const [equipment, setEquipment] = useState<string[]>(["hob"]);
   const [confirmed, setConfirmed] = useState(false);
   const [pending, setPending] = useState(false);
+  const [conversationKey, setConversationKey] = useState(0);
   const [error, setError] = useState("");
   const [selectedDay, setSelectedDay] = useState(1);
   const [feedback, setFeedback] = useState<{
@@ -88,7 +91,7 @@ export function PlanStudio({
         setActive(previous as Id<"mealPlans">);
     }
   }, [history, active, local]);
-  const result = (local || (row?.result as PlanResult | undefined)) ?? null;
+  const result = (local || (row?.result as PlanResult | undefined) || revisionBase?.result) ?? null;
   const working =
     pending || row?.status === "running" || row?.status === "queued";
   function request() {
@@ -119,6 +122,9 @@ export function PlanStudio({
         ...(householdId ? { householdId } : {}),
       });
       setLocal(null);
+      setRevisionBase(null);
+      setConversationKey(k => k + 1);
+      setFeedback(null);
       setActive(id);
       localStorage.setItem("caretable-active-plan", id);
       setSelectedDay(1);
@@ -128,31 +134,25 @@ export function PlanStudio({
       setPending(false);
     }
   }
-  async function revise() {
-    if (!active || !result || !feedback) return;
+  async function revise(change: MealFeedback) {
+    const parentId = row?.result ? active : revisionBase?.id;
+    if (!parentId || !result || working) return null;
     setError("");
     setPending(true);
     try {
       const id = await start({
         request: result.request,
         requestId: crypto.randomUUID(),
-        parentId: active,
-        feedback: feedback as {
-          day: number;
-          slot: "breakfast" | "lunch" | "dinner";
-          reason:
-            | "not familiar"
-            | "too difficult"
-            | "try something similar"
-            | "other";
-          text: string;
-        },
+        parentId,
+        feedback: change,
       });
+      setRevisionBase({id: parentId, result});
       setActive(id);
       localStorage.setItem("caretable-active-plan", id);
-      setFeedback(null);
+      return id;
     } catch (e) {
       setError(explain(e));
+      return null;
     } finally {
       setPending(false);
     }
@@ -275,6 +275,9 @@ export function PlanStudio({
               try {
                 setLocal(previewPlan(request()));
                 setActive(null);
+                setRevisionBase(null);
+                setConversationKey(k => k + 1);
+                setFeedback(null);
                 setSelectedDay(1);
                 setError("");
               } catch (e) {
@@ -343,6 +346,7 @@ export function PlanStudio({
           )}
         </section>
       )}
+      <div className="studio-workspace"><div className="studio-main">
       {result && (
         <>
           <div className="plan-title">
@@ -384,7 +388,7 @@ export function PlanStudio({
                       key={`${meal.slot}-${i}`}
                       meal={meal}
                       request={result.request}
-                      canRevise={result.mode === "live" && !working}
+                      canRevise={!working}
                       onRevise={() =>
                         setFeedback({
                           day: meal.day,
@@ -456,67 +460,6 @@ export function PlanStudio({
               </small>
             </aside>
           </div>
-          {feedback && (
-            <section className="panel feedback-panel">
-              <h3>Help us find a better fit.</h3>
-              {feedback.reason === "too difficult" && (
-                <p>
-                  We will look for a shorter estimated cooking time. Actual
-                  preparation difficulty is not independently verified.
-                </p>
-              )}
-              <p>
-                Day {feedback.day}, {feedback.slot}. The revision preserves the
-                saved plan's household restrictions.
-              </p>
-              <label>
-                What should change?
-                <select
-                  value={feedback.reason}
-                  onChange={(e) =>
-                    setFeedback((f) =>
-                      f ? { ...f, reason: e.target.value } : null,
-                    )
-                  }
-                >
-                  <option value="not familiar">Not familiar</option>
-                  <option value="too difficult">Too difficult</option>
-                  <option value="try something similar">
-                    Try something similar
-                  </option>
-                  <option value="other">Something else</option>
-                </select>
-              </label>
-              <label>
-                More detail (optional)
-                <textarea
-                  maxLength={400}
-                  value={feedback.text}
-                  onChange={(e) =>
-                    setFeedback((f) =>
-                      f ? { ...f, text: e.target.value } : null,
-                    )
-                  }
-                  placeholder="Tell us what would make this meal a better fit."
-                />
-              </label>
-              <div className="actions">
-                <button
-                  className="button"
-                  disabled={working}
-                  onClick={() => void revise()}
-                >
-                  Revise and recheck
-                </button>
-                <button
-                  className="text-button"
-                  onClick={() => setFeedback(null)}
-                >
-                  Cancel
-                </button>
-              </div>
-            </section>
-          )}
           {!!result.feedback?.length && (
             <details className="panel">
               <summary>Plan feedback history</summary>
@@ -546,6 +489,9 @@ export function PlanStudio({
                       onClick={() => {
                         setActive(p.id);
                         setLocal(null);
+                        setRevisionBase(null);
+                        setConversationKey(k => k + 1);
+                        setFeedback(null);
                         localStorage.setItem("caretable-active-plan", p.id);
                         setSelectedDay(1);
                       }}
@@ -560,6 +506,7 @@ export function PlanStudio({
                             await remove({ id: p.id });
                             if (active === p.id) {
                               setActive(null);
+                              setRevisionBase(null);
                               localStorage.removeItem("caretable-active-plan");
                             }
                           } catch (e) {
@@ -579,6 +526,7 @@ export function PlanStudio({
           )}
         </section>
       )}
+      </div><PlanCompanion key={conversationKey} result={result} target={feedback} working={working} job={row && active ? {id:active,status:row.status,error:errors[row.errorCode || "PLANNING_ERROR"]} : undefined} onApply={revise} /></div>
     </section>
   );
 }
