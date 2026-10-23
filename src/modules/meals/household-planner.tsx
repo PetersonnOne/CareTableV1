@@ -215,7 +215,7 @@ export function HouseholdPlanner() {
           <div className="mode-bubble" id="planning-mode-description" role="status" aria-live="polite" aria-atomic="true">
             <svg className="mode-bubble-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{interactive?<><path d="M5 9a5 5 0 0 1 0 6M10 6a10 10 0 0 1 0 12M15 3a15 15 0 0 1 0 18" /></>:<><path d="m4 16 11-11 4 4L8 20l-5 1zM13 7l4 4" /></>}</svg>
             <div><h3>{interactive?"Interactive Mode is on":"You’re in User Mode"}</h3>
-            <p>{interactive?"Talk through your setup, then review it before generation. Switching to User Mode stops voice and keeps your conversation draft.":"Use the profile fields, planning controls and text assistant. You can switch to voice at any time."}</p></div>
+            <p>{interactive?"Talk through your setup, then review it before generation. Switching to User Mode stops voice and keeps your conversation draft.":"Use the profile fields, planning controls and text assistant. At any time, you can switch to voice by selecting Interactive Mode."}</p></div>
           </div>
           <p className="mode-reassurance"><span aria-hidden="true">{interactive?"◌":"♡"}</span>{interactive?"Your microphone stays off until you start.":"Your progress stays with you when you switch."}</p>
         </div>
