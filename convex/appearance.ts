@@ -13,7 +13,7 @@ export const site = query({
       .query("siteSettings")
       .withIndex("by_key", (q) => q.eq("key", "appearance"))
       .unique();
-    return { theme: row?.theme || "garden", version: row?.version || 0 };
+    return { theme: row?.theme || "midnight", version: row?.version || 0 };
   },
 });
 export const mine = query({

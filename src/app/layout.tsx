@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <ConvexAuthNextjsServerProvider>
-      <html lang="en" data-theme="garden" suppressHydrationWarning>
+      <html lang="en" data-theme="midnight" suppressHydrationWarning>
         <body>
           <Providers>
             <a className="skip-link" href="#main">

@@ -22,7 +22,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (stored === "site" || (stored && isTheme(stored))) setGuest(stored);
   }, []);
   const choice = isAuthenticated ? personal || "site" : guest;
-  const effective = choice === "site" ? site?.theme || "garden" : choice;
+  const effective = choice === "site" ? site?.theme || "midnight" : choice;
   useEffect(() => {
     document.documentElement.dataset.theme = effective;
   }, [effective]);
