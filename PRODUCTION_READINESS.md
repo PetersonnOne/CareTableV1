@@ -61,7 +61,7 @@ Automated logic, live provider calls, browser tests and historical production ev
 
 1. Resolve the WebRTC startup failure; then repeat real input/output, captions, mute/unmute, stop, mode switching, idle/expiry and both complete spoken handoffs. Do not label note-based recovery as a voice conversation.
 2. Restore GitHub/Vercel connectivity, publish the reviewed release through the existing GitHub workflow, and repeat all required hosted acceptance checks against that exact deployment.
-3. Select and verify the intended production owner; provision through the operator-only bootstrap and confirm production staff access.
+3. The user has selected the production owner email. No matching account was found in the production account check; complete signup and email verification, then provision through the operator-only bootstrap and confirm production staff access. The selected address is retained privately.
 4. Complete the remaining signup/reset browser acceptance with the user's credential-entry handoff, and document email expiry/recovery evidence. Preserve the earlier valid API/email evidence separately.
 5. Keep the repository private until the user separately decides hackathon publication/submission. This is distinct from application hosting.
 
@@ -73,5 +73,5 @@ Current local review URL: http://localhost:4318/planner. Current audio integrati
 - Final configured-secret scan passes for public source candidates and built client assets; Git-ignore checks confirm the retrospective catalog, private session tokens and screenshots are excluded.
 - The optimized production build was served locally against **development Convex**, separate from the public deployment. Its browser smoke test passes live generation, hard-refresh plan recovery, retained feedback-mode draft, and sample reset with **zero page errors** after the nullable-subscription fix.
 - That same optimized build passes existing verified login, authorized staff pages, saved theme refresh, audit visibility and logout protection in Chromium.
-- Development site appearance was restored to **Midnight**. Production owner selection remains pending; no disposable user was made production owner.
+- Development site appearance was restored to **Midnight**. Production owner email is now selected; its production signup/verification is pending. No disposable user was made production owner.
 - Changes are retained on **codex/production-readiness**. They have not been promoted through GitHub/Vercel. Live audio, the remaining credential-entry browser acceptance, hosted acceptance and production ownership remain the explicit release gates above.
