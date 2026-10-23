@@ -75,3 +75,10 @@ Current local review URL: http://localhost:4318/planner. Current audio integrati
 - That same optimized build passes existing verified login, authorized staff pages, saved theme refresh, audit visibility and logout protection in Chromium.
 - Development site appearance was restored to **Midnight**. Production owner email is now selected; its production signup/verification is pending. No disposable user was made production owner.
 - Changes are retained on **codex/production-readiness**. They have not been promoted through GitHub/Vercel. Live audio, the remaining credential-entry browser acceptance, hosted acceptance and production ownership remain the explicit release gates above.
+
+## Blocker status recheck — 23 October 2026
+
+- Connectivity is restored for the tested endpoints: GitHub API and public Vercel homepage return HTTP 200; authenticated git ls-remote reads origin main. The unauthenticated private-repository webpage returns 404 as expected for a private repository. Earlier timeout statements above are historical. Publishing and exact-deployment hosted acceptance remain outstanding.
+- Read-only production lookup inspected two users and found no matching non-anonymous account for the selected owner. Owner email selection is complete; account signup, verification, owner provisioning and staff acceptance remain pending.
+- Voice transport and full signup/reset browser acceptance have not been reverified since the earlier audit. They remain unresolved acceptance gates; current mode/UI checks do not establish spoken-audio success.
+
