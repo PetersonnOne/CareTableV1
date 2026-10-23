@@ -8,6 +8,10 @@ import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
 import { PlanStudio } from "./plan-studio";
 import { OnboardingAssistant } from "./onboarding-assistant";
+import { VoiceSession } from "./voice-session";
+import { requestSchema } from "./domain/schema.mjs";
+import type { PlanRequest } from "./domain/planning";
+import { preserveVoiceMembers } from "./domain/voice-contracts";
 const draftSchema = z.object({
   label: z.string().max(80),
   mode: z.enum(["individual", "partner", "family"]),
@@ -58,6 +62,9 @@ export function HouseholdPlanner() {
   const save = useMutation(api.households.save);
   const remove = useMutation(api.households.remove);
   const resetDemo = useMutation(api.demo.reset);
+  const startPlan = useMutation(api.plans.start);
+  const [interactive, setInteractive] = useState(false);
+  const [voicePlan, setVoicePlan] = useState<{id:Id<"mealPlans">;request:PlanRequest}|null>(null);
   const [household, setHousehold] = useState<Household>(fresh);
   const [id, setId] = useState<Id<"households"> | undefined>();
   const [ready, setReady] = useState(false);
@@ -88,6 +95,7 @@ export function HouseholdPlanner() {
     try {
       if (!isAuthenticated) await signIn("anonymous");
       setId(undefined);
+      setVoicePlan(null);
       setHousehold({
         label: "Fictional sample table",
         mode: "individual",
@@ -167,6 +175,8 @@ export function HouseholdPlanner() {
       localStorage.removeItem("caretable-household-draft");
       localStorage.removeItem("caretable-active-plan");
       setHousehold(fresh());
+      setVoicePlan(null);
+      setInteractive(false);
       setId(undefined);
       setResetKey((k) => k + 1);
       setMessage(
@@ -180,6 +190,19 @@ export function HouseholdPlanner() {
   }
   return (
     <>
+      <section className="panel voice-entry">
+        <div><span className="eyebrow">LET'S TALK IT THROUGH</span><h2>A conversation can set your table.</h2><p>Use GPT Live 1 to discuss the household and meal settings, then confirm the reviewed plan request.</p></div>
+        <button className="button" disabled={!isAuthenticated} onClick={()=>setInteractive(v=>!v)}>{interactive?"Return to user mode":"Interactive Mode"}</button>
+        {!isAuthenticated&&<p className="fine">Sign in or load the fictional sample to use voice. Opening this mode never starts your microphone.</p>}
+      </section>
+      {interactive&&isAuthenticated&&<VoiceSession key={JSON.stringify(fields)} mode="interactive" context={JSON.stringify({...fields,voiceMode:"interactive",members:fields.members.map((m,i)=>({...m,name:`Person ${i+1}`})),label:undefined})} onClose={()=>setInteractive(false)} onReviewed={async draft=>{
+        const members=preserveVoiceMembers(fields.members,draft.members,()=>crypto.randomUUID());
+        const input=requestSchema.parse({...draft,members,confirmed:true});
+        const planId=await startPlan({request:input,requestId:crypto.randomUUID()});
+        setHousehold({label:household.label,mode:input.mode,members:members.map(m=>({...m,favorites:m.favorites.join(", "),dislikes:m.dislikes.join(", "),exclusions:m.exclusions.join(", ")})),region:input.region,currency:input.currency,units:input.units});
+        setId(undefined);setVoicePlan({id:planId,request:input});localStorage.setItem("caretable-active-plan",planId);setResetKey(k=>k+1);setInteractive(false);setMessage("Reviewed voice setup applied. Qloo + Luna are building and checking your plan.");
+      }}/>}
+
       <div className="page-heading">
         <span className="eyebrow">LET'S SET YOUR TABLE</span>
         <h1>Who are we cooking for?</h1>
@@ -515,7 +538,7 @@ export function HouseholdPlanner() {
           }))
         }
       />
-      <PlanStudio key={resetKey} household={fields} householdId={id} />
+      <PlanStudio key={resetKey} household={fields} householdId={id} initialPlan={voicePlan || undefined} />
     </>
   );
 }

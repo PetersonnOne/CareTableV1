@@ -26,6 +26,11 @@ export const purge = internalMutation({
       .query("households")
       .withIndex("by_ownerId", (q) => q.eq("ownerId", user._id))
       .take(20);
+    const voice = await ctx.db.query("voiceConnections").withIndex("by_ownerId",q=>q.eq("ownerId",user._id)).take(100);
+    for(const connection of voice){
+      await ctx.db.patch(connection._id,{context:""});
+      if(connection.status!=="closed")await ctx.scheduler.runAfter(0,internal.voiceActions.hangup,{id:connection._id,attempt:0});
+    }
     for (const p of plans) await ctx.db.delete(p._id);
     for (const h of profiles) await ctx.db.delete(h._id);
     if (plans.length === 100)

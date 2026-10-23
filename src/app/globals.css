@@ -812,6 +812,15 @@ td code {
 .companion-chat textarea { min-height:76px; width:100%; }
 .chat-request { border-top:1px solid var(--line); padding-top:16px; margin-top:16px; display:grid; gap:10px; }
 .chat-request .button { width:100%; }
+.voice-entry { margin-top:24px; }
+.voice-heading { display:flex; justify-content:space-between; gap:12px; align-items:start; }
+.voice-session { margin:18px 0; }
+.voice-session audio { width:100%; margin:12px 0; }
+.voice-session .actions { gap:8px; flex-wrap:wrap; }
+.voice-session .button { font-size:.85rem; padding:10px 12px; }
+.voice-captions { border:1px solid var(--line); border-radius:8px; padding:12px; max-height:240px; overflow:auto; font-size:.88rem; }
+.voice-review { border-top:1px solid var(--line); margin-top:18px; padding-top:12px; }
+.voice-session textarea { width:100%; }
 .companion-chat details { margin-top:18px; font-size:.85rem; }
 @media(max-width:1050px) { .studio-workspace { grid-template-columns:minmax(0,1fr); } .plan-companion { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; } }
 @media(max-width:650px) { .plan-companion { grid-template-columns:minmax(0,1fr); } .plan-companion .panel { padding:18px; } }

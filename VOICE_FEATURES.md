@@ -1,0 +1,33 @@
+# CareTable live voice
+
+## Purpose and model
+
+Caregivers can talk through meal requirements instead of entering every field, or discuss improvements to one saved meal. Both paths use **`gpt-live-1`**, the exact model used by the user's Convex Life Maxim project. CareTable's existing OpenAI key remains server-side in Convex. Text planning and reviewed handoff preparation retain `gpt-6-luna`; Qloo continues to supply taste evidence and deterministic checks remain authoritative.
+
+## Reused foundation
+
+Adapted from `D:\Agent Studio\Codex App\Hackathons\Convex Life Maxim\components\interactive-mode.tsx`, `convex/liveActions.ts`, and `convex/interactive.ts`: WebRTC offer/answer flow, `oai-events` channel, GPT-Live transcript events, caption grouping, canceled-start generation counter, mute/unmute, explicit stop, tab-hidden/idle termination, bounded session duration, account isolation, server hangup and uncertain-outcome locking. Life Maxim was inspected read-only; its credentials, database, research, billing and unrelated features were not copied or changed.
+
+Current provider references: [GPT-Live guide](https://developers.openai.com/api/docs/guides/live), [session management](https://developers.openai.com/api/docs/guides/live-conversations). Source integration uses `POST /v1/live/sessions` with client delegation and server-side credentials, rather than a browser API key.
+
+## Interactive Mode
+
+The button appears near the beginning of the planner. Opening it does not activate the microphone. After signing in or loading the fictional sample, the user starts voice explicitly, discusses each member and the meal settings, then stops voice and prepares a review. Luna turns selected local captions and notes into a bounded proposed setup. Missing details are presented as questions. The user confirms the displayed setup before the existing Qloo/Luna generation pipeline starts. Existing member IDs and exclusions are preserved; removing existing people or changing restrictions requires the household controls. Returned plans appear in the normal planner/dashboard and saved history.
+
+## Discuss with AI
+
+The button lives on the meal feedback companion. It is available for a loaded, saved live plan. Context is fetched from the owned saved plan on the server for the selected day/slot; browser-supplied text cannot replace that context. Voice discusses that meal, then a reviewed, editable feedback request invokes the existing versioned revision pipeline. It cannot alter saved hard restrictions or silently revise unrelated slots. Guided typed chat remains available.
+
+## Controls, privacy and limits
+
+- Start voice, mute/unmute, stop, close, playback controls, live captions, remaining time, errors and server state.
+- Microphone starts only on the user's button press/browser permission. Microphone is allowed for the same origin; camera and geolocation remain disabled.
+- Maximum five minutes, one unclosed connection/account, one-minute cooldown, six starts/account/day and twelve starts/deployment/day (UTC counters). Reconnection consumes another allowance; muting still uses voice time. No automatic paid reconnect.
+- Client stops when hidden or after 90 seconds without user transcript activity. Server schedules hangup at expiry and bounded hangup retries. Uncertain cleanup keeps the account locked rather than claiming billing has stopped.
+- No raw audio or live captions are saved by CareTable. Captions/notes remain in component memory until review/close. Up to 600 fragments / 12,000 characters are used for a handoff, so review for omissions.
+- A bounded context snapshot is stored for the server handoff and cleared after 24 hours following expiry. Connection metadata and confirmed plan/feedback persist. Sample reset clears snapshot context and requests hangup. OpenAI's processing policies still apply; `store:false` is requested.
+- No clinical safety, actual texture, nutrition, local price or billed-usage claims. No voice tools execute arbitrary application actions; delegation asks for an on-screen reviewed handoff.
+
+## Verification boundary
+
+The existing CareTable API key returned HTTP 200 for `/v1/models/gpt-live-1`. New Convex functions deployed to development successfully. Automated checks cover ownership, duplicate/concurrent connections, uncertain cleanup lock, daily limits, missing discussion plan, snapshot expiration, and preserving distinct members/exclusions. Real browser microphone permission, speaker quality, live captions and full spoken handoff still require a human audio run; model-list access alone does not establish those outcomes. See `VERIFICATION.md` for current build/test results.

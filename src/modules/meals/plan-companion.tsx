@@ -1,6 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import type { PlanResult } from "./domain/planning";
+import { VoiceSession } from "./voice-session";
+import type { Id } from "../../../convex/_generated/dataModel";
 
 export type MealFeedback = {
   day: number;
@@ -9,7 +11,8 @@ export type MealFeedback = {
   text: string;
 };
 type Message = { role: "you" | "caretable"; text: string };
-export function PlanCompanion({ result, target, working, job, onApply }: {
+export function PlanCompanion({ result, target, working, job, onApply, planId }: {
+  planId?:Id<"mealPlans">;
   result: PlanResult | null;
   target: { day: number; slot: string } | null;
   working: boolean;
@@ -17,6 +20,7 @@ export function PlanCompanion({ result, target, working, job, onApply }: {
   onApply: (feedback: MealFeedback) => Promise<string | null>;
 }) {
   const [choice, setChoice] = useState("");
+  const [voiceOpen,setVoiceOpen]=useState(false);
   const [draft, setDraft] = useState("");
   const [notes, setNotes] = useState("");
   const [reason, setReason] = useState<MealFeedback["reason"]>("other");
@@ -90,6 +94,10 @@ export function PlanCompanion({ result, target, working, job, onApply }: {
     <section className="panel companion-chat" aria-labelledby="meal-chat-title">
       <span className="eyebrow">A LITTLE BETTER, TOGETHER</span><h3 id="meal-chat-title">Meal improvement chat</h3>
       <p className="fine">Guided conversation to shape a change. Luna selects a revised meal only when you apply it.</p>
+      <button className="button outline" disabled={!planId||!selected||working||waiting||result?.mode!=="live"} onClick={()=>setVoiceOpen(v=>!v)}>Discuss with AI</button>
+      {voiceOpen&&planId&&selected&&<VoiceSession key={`${planId}:${selected.day}:${selected.slot}`} mode="discussion" context="Selected saved meal" planId={planId} day={selected.day} slot={selected.slot} onClose={()=>setVoiceOpen(false)} onReviewed={async draft=>{
+        pendingTarget.current={day:selected.day,slot:selected.slot};const id=await onApply({day:selected.day,slot:selected.slot as MealFeedback["slot"],reason:draft.reason,text:draft.feedback});if(!id)throw Error("Revision not saved");waitingJob.current=id;setWaiting(true);setMessages(m=>[...m,{role:"you",text:draft.feedback}]);setVoiceOpen(false);
+      }}/>}
       {selected ? <>
         <label>Meal to discuss<select value={`${selected.day}:${selected.slot}`} disabled={working || waiting || submitting} onChange={e=>{setChoice(e.target.value);setNotes("");setMessages([]);setReason("other");}}>
           {meals.filter((m,i,a)=>a.findIndex(x=>x.day===m.day&&x.slot===m.slot)===i).map(m=><option key={`${m.day}:${m.slot}`} value={`${m.day}:${m.slot}`}>Day {m.day} · {m.slot}</option>)}

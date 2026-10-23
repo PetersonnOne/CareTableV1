@@ -32,6 +32,10 @@ No measured claim about improved human preference, clinical outcomes, coverage i
 
 ## Automated checks
 
+### GPT Live voice — 23 October
+
+Reused the user's Life Maxim `gpt-live-1` WebRTC/session-control pattern for Interactive Mode and Discuss with AI. New backend functions and voice connection indexes deployed to development. The CareTable key's read-only model access probe returned HTTP 200. Automated suite now has **31 passing tests**, including voice ownership, duplicate/concurrent session locks, daily limits, context expiration, missing saved-plan rejection, and preserving existing identities/exclusions. This does not verify real microphone capture, audible quality, captions, or a full spoken handoff; those require browser/audio acceptance. Detailed behavior and retention are documented in `VOICE_FEATURES.md`.
+
 ### Meal companion — 23 October
 
 The planner now has a right-hand dashboard and guided meal conversation, stacking below results on mobile. Statistics are derived from the loaded plan: filled slots, average base-recipe cooking estimates, passed/unverified/failed check counts, and saved revision count. Colors have text labels and separate dark-theme palettes. These are not nutrition, price, or medical-safety metrics.
@@ -93,3 +97,5 @@ The conversation is deliberately guided: local replies collect bounded preferenc
 4. GitHub, Vercel, and production Convex are connected; hosted generation, quicker-meal feedback, and refresh passed. Public repository visibility awaits user choice. Finish DNS migration after registrar authentication and DNSSEC review.
 
 The ignored `retrospective-catalog/` contains more detailed local recovery notes and encountered issues. Provider payloads, credentials, and browser artifacts remain outside public source.
+
+Voice UI verification (23 October 2026): local production build, fictional anonymous sample, Interactive Mode opens with Voice is off, Start voice enabled, Mute/Stop/review disabled before a session. No microphone permission or paid live session started. Screenshot: output/playwright/interactive-voice-panel.png. Final development Convex deployment completed at 11:51:19.

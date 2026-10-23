@@ -43,26 +43,28 @@ const errors: Record<string, string> = {
 export function PlanStudio({
   household,
   householdId,
+  initialPlan,
 }: {
   household: Input;
   householdId?: Id<"households">;
+  initialPlan?: {id:Id<"mealPlans">;request:PlanRequest};
 }) {
   const { isAuthenticated } = useConvexAuth();
   const start = useMutation(api.plans.start);
   const remove = useMutation(api.plans.remove);
   const history = useQuery(api.plans.list, isAuthenticated ? {} : "skip");
-  const [active, setActive] = useState<Id<"mealPlans"> | null>(null);
+  const [active, setActive] = useState<Id<"mealPlans"> | null>(initialPlan?.id || null);
   const row = useQuery(
     api.plans.get,
     isAuthenticated && active ? { id: active } : "skip",
   );
   const [local, setLocal] = useState<PlanResult | null>(null);
   const [revisionBase, setRevisionBase] = useState<{ id: Id<"mealPlans">; result: PlanResult } | null>(null);
-  const [days, setDays] = useState<3 | 7 | 14>(3);
-  const [slots, setSlots] = useState<string[]>(["dinner"]);
-  const [minutes, setMinutes] = useState(45);
-  const [budget, setBudget] = useState("");
-  const [equipment, setEquipment] = useState<string[]>(["hob"]);
+  const [days, setDays] = useState<3 | 7 | 14>(initialPlan?.request.days || 3);
+  const [slots, setSlots] = useState<string[]>(initialPlan?.request.slots || ["dinner"]);
+  const [minutes, setMinutes] = useState(initialPlan?.request.maxMinutes || 45);
+  const [budget, setBudget] = useState(initialPlan?.request.budget ? String(initialPlan.request.budget) : "");
+  const [equipment, setEquipment] = useState<string[]>(initialPlan?.request.equipment || ["hob"]);
   const [confirmed, setConfirmed] = useState(false);
   const [pending, setPending] = useState(false);
   const [conversationKey, setConversationKey] = useState(0);
@@ -526,7 +528,7 @@ export function PlanStudio({
           )}
         </section>
       )}
-      </div><PlanCompanion key={conversationKey} result={result} target={feedback} working={working} job={row && active ? {id:active,status:row.status,error:errors[row.errorCode || "PLANNING_ERROR"]} : undefined} onApply={revise} /></div>
+      </div><PlanCompanion key={conversationKey} planId={row?.result ? active || undefined : revisionBase?.id} result={result} target={feedback} working={working} job={row && active ? {id:active,status:row.status,error:errors[row.errorCode || "PLANNING_ERROR"]} : undefined} onApply={revise} /></div>
     </section>
   );
 }

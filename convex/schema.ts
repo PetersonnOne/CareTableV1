@@ -85,4 +85,11 @@ export default defineSchema({
     "by_key",
     ["key"],
   ),
+  voiceConnections: defineTable({
+    ownerId: v.id("users"), requestId: v.string(),
+    mode: v.union(v.literal("interactive"), v.literal("discussion")),
+    context: v.string(),
+    status: v.union(v.literal("starting"), v.literal("active"), v.literal("closing"), v.literal("uncertain"), v.literal("closed")),
+    providerId: v.optional(v.string()), expiresAt: v.number(),
+  }).index("by_ownerId", ["ownerId"]).index("by_ownerId_and_requestId", ["ownerId", "requestId"]),
 });

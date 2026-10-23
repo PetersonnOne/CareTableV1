@@ -26,6 +26,8 @@ import type * as services_email from "../services/email.js";
 import type * as services_planner from "../services/planner.js";
 import type * as services_taste from "../services/taste.js";
 import type * as validators from "../validators.js";
+import type * as voice from "../voice.js";
+import type * as voiceActions from "../voiceActions.js";
 
 import type {
   ApiFromModules,
@@ -52,6 +54,8 @@ declare const fullApi: ApiFromModules<{
   "services/planner": typeof services_planner;
   "services/taste": typeof services_taste;
   validators: typeof validators;
+  voice: typeof voice;
+  voiceActions: typeof voiceActions;
 }>;
 
 /**
