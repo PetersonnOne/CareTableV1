@@ -65,6 +65,7 @@ export function HouseholdPlanner() {
   const resetDemo = useMutation(api.demo.reset);
   const startPlan = useMutation(api.plans.start);
   const [interactive, setInteractive] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(true);
   const [planSnapshot, setPlanSnapshot] = useState<PlanResult | null>(null);
   const [voicePlan, setVoicePlan] = useState<{id:Id<"mealPlans">;request:PlanRequest}|null>(null);
   const [household, setHousehold] = useState<Household>(fresh);
@@ -191,10 +192,21 @@ export function HouseholdPlanner() {
     }
   }
   return (
-    <div aria-busy={!ready} inert={!ready}>
+    <div className="care-planner" aria-busy={!ready} inert={!ready}>
+      <div className="planner-welcome">
+        <span className="care-seal" aria-hidden="true">♡</span>
+        <div><span className="eyebrow">A LITTLE CARE, ONE STEP AT A TIME</span>
+        <h1>Good meals begin with your people.</h1>
+        <p>Bring their favourites, their routines, and the little things that matter. We’ll help you find a place for them all.</p></div>
+      </div>
+      <nav className="planner-steps" aria-label="Meal planning steps">
+        {[["Your table", "People & preferences"], ["Plan your meals", "Time, budget & rhythm"], ["Review your plan", "Meals & checks"], ["Reflect & improve", "A little better together"]].map(([title, note], index) => (
+          <a key={title} href={["#your-table", "#plan-settings", "#review-plan", "#meal-improvements"][index]} onClick={() => { if(index === 0){setInteractive(false);setProfileOpen(true);} }}><span>{index + 1}</span><div><strong>{title}</strong><small>{note}</small></div></a>
+        ))}
+      </nav>
       <div className="planner-overview">
       <section className="panel voice-entry">
-        <div><span className="eyebrow">LET'S TALK IT THROUGH</span><h2>A conversation can set your table.</h2><p>Use GPT Live 1 to discuss the household and meal settings, then confirm the reviewed plan request.</p></div>
+        <div><span className="eyebrow">LET'S TALK IT THROUGH</span><h2>A conversation can set your table.</h2><p>Choose what feels comfortable: fill in the steps yourself, or talk through them with your AI companion. You’ll review the details before a plan is made.</p></div>
         <div className="mode-switch" role="group" aria-label="Planning mode">
           <button className="button outline" aria-pressed={!interactive} onClick={()=>setInteractive(false)}>User Mode</button>
           <button className="button outline" aria-pressed={interactive} disabled={!isAuthenticated} onClick={()=>setInteractive(true)}>Interactive Mode</button>
@@ -212,9 +224,9 @@ export function HouseholdPlanner() {
         setId(undefined);setVoicePlan({id:planId,request:input});localStorage.setItem("caretable-active-plan",planId);setResetKey(k=>k+1);setInteractive(false);setMessage("Reviewed voice setup applied. Qloo + Luna are building and checking your plan.");
       }}/></div>}
 
-      <div className="page-heading">
-        <span className="eyebrow">LET'S SET YOUR TABLE</span>
-        <h1>Who are we cooking for?</h1>
+      <div className="page-heading" hidden={interactive}>
+        <span className="eyebrow">1 · YOUR TABLE</span>
+        <h2>Who are we cooking for?</h2>
         <p>A separate place for every person's preferences and needs.</p>
         <div className="actions">
           <button
@@ -243,7 +255,10 @@ export function HouseholdPlanner() {
           {error}
         </p>
       )}
-      <div hidden={interactive}><div className="split">
+      <div hidden={interactive}>
+      <details id="your-table" className="care-disclosure" open={profileOpen} onToggle={e=>setProfileOpen(e.currentTarget.open)}>
+      <summary><span><strong>Your people, thoughtfully considered</strong><small>{household.members.length} {household.members.length === 1 ? "person" : "people"} · {household.label} · preferences & ingredients to avoid</small></span><span className="disclosure-hint">Review / edit</span></summary>
+      <div className="split">
         <section className="panel">
           <form
             onSubmit={async (e) => {
@@ -547,6 +562,8 @@ export function HouseholdPlanner() {
           }))
         }
       />
+      <div className="step-next"><p><span aria-hidden="true">♡</span> Every preference helps us make this table more yours.</p><button className="button" type="button" onClick={()=>{setProfileOpen(false);document.getElementById("plan-settings")?.scrollIntoView({block:"start"});document.getElementById("plan-settings")?.focus({preventScroll:true});}}>Next: plan your meals <span aria-hidden="true">→</span></button></div>
+      </details>
       </div>
       <PlanStudio key={resetKey} household={fields} householdId={id} initialPlan={voicePlan || undefined} interactive={interactive} onResultChange={setPlanSnapshot} />
     </div>

@@ -174,8 +174,8 @@ export function PlanStudio({
   }
   return (
     <section className="plan-studio">
-      <div className="page-heading">
-        <span className="eyebrow">FROM YOUR PROFILE TO YOUR PLATE</span>
+      <div className="page-heading" id="plan-settings" tabIndex={-1}>
+        <span className="eyebrow">2 · PLAN YOUR MEALS</span>
         <h2>Let's plan something to look forward to.</h2>
         <p>
           Choose your pace, review the needs above, then let CareTable build and
@@ -364,6 +364,7 @@ export function PlanStudio({
           )}
         </section>
       )}
+      <div className="journey-heading" id="review-plan" tabIndex={-1}><span className="step-medallion" aria-hidden="true">3</span><div><h2>A plan to make your days a little easier.</h2><p>{result ? "Take your time with the meals and checks. There’s room to make changes." : "Your meals, shopping list and checks will appear here after you create a plan."}</p></div></div>
       <div className="studio-workspace"><div className="studio-main">
       {result && (
         <>

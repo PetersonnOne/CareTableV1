@@ -158,6 +158,58 @@ main {
   height: auto;
   border-radius: 12px;
 }
+.planner-welcome {
+  display:flex;align-items:center;gap:24px;padding:34px;
+  border:1px solid var(--line);border-radius:28px;
+  background:radial-gradient(ellipse at top right, color-mix(in srgb, var(--warm) 13%, transparent), transparent 65%),var(--surface);
+  margin:24px 0;
+}
+.planner-welcome h1 {font-size:clamp(28px,3.3vw,44px);line-height:1.15;letter-spacing:-1.5px;margin:12px 0;max-width:700px;}
+.planner-welcome p {color:var(--muted);max-width:650px;line-height:1.75;margin-bottom:0;}
+.care-seal {flex-shrink:0;display:grid;place-items:center;width:76px;height:76px;font-size:44px;color:var(--warm);background:var(--surface-soft);border:1px solid var(--line);border-radius:50% 50% 44% 44%;}
+.planner-steps {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:24px 0 32px;}
+.planner-steps a {display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:16px;padding:18px 14px;background:var(--surface);}
+.planner-steps a:hover {border-color:var(--warm);background:var(--surface-soft);}
+.planner-steps a>span,.step-medallion {display:grid;place-items:center;flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--surface-soft);color:var(--warm);font-weight:600;border:1px solid var(--line);}
+.planner-steps strong {display:block;font-size:13px;line-height:1.5;}
+.planner-steps small {display:block;color:var(--muted);font-size:11px;line-height:1.6;margin-top:3px;}
+.care-planner .panel {border-radius:22px;box-shadow:0 8px 28px var(--shadow);}
+.care-planner .member-card {border-radius:16px;padding:22px;background:color-mix(in srgb,var(--surface-soft) 45%,var(--surface));border:1px solid var(--line);}
+.care-planner .member-card h3 {color:var(--warm);}
+.care-disclosure {border:1px solid var(--line);border-radius:24px;padding:0 22px 22px;background:var(--surface-soft);scroll-margin-top:24px;}
+.care-disclosure:not([open]) {padding-bottom:0;}
+.care-disclosure>summary {display:flex;align-items:center;justify-content:space-between;gap:18px;padding:24px 2px;cursor:pointer;list-style:none;}
+.care-disclosure>summary::-webkit-details-marker {display:none;}
+.care-disclosure>summary strong {display:block;font-size:18px;}
+.care-disclosure>summary small {display:block;color:var(--muted);margin-top:8px;line-height:1.6;}
+.disclosure-hint {flex-shrink:0;border:1px solid var(--line);padding:9px 14px;border-radius:24px;font-size:12px;color:var(--text);}
+.care-disclosure[open] .disclosure-hint::after {content:" −";}
+.care-disclosure:not([open]) .disclosure-hint::after {content:" +";}
+.step-next {display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:24px;}
+.step-next p {color:var(--muted);font-size:14px;line-height:1.7;}
+.step-next p span {color:var(--warm);font-size:22px;margin-right:8px;}
+.journey-heading {display:flex;gap:16px;align-items:flex-start;margin:42px 0 24px;}
+.journey-heading h2 {font-size:26px;margin:0 0 10px;letter-spacing:-.7px;}
+.journey-heading p {color:var(--muted);line-height:1.7;margin:0;}
+#plan-settings,#review-plan,#meal-improvements {scroll-margin-top:24px;}
+.care-planner .companion-chat {border-top:3px solid var(--warm);}
+.care-planner .companion-dashboard {background:linear-gradient(140deg,color-mix(in srgb,var(--warm) 6%,var(--surface)),var(--surface));}
+@media(max-width:1050px){.planner-steps{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:650px){
+ .planner-welcome{padding:24px;gap:16px;align-items:flex-start;}
+ .care-seal{width:44px;height:44px;font-size:28px;}
+ .planner-welcome h1{font-size:28px;letter-spacing:-1px;}
+ .planner-welcome .eyebrow{font-size:9px;line-height:1.8;}
+ .planner-steps a{padding:12px 10px;gap:8px;}
+ .planner-steps small{font-size:10px;}
+ .planner-steps strong{font-size:12px;}
+ .care-disclosure{padding:0 12px 16px;}
+ .care-disclosure>summary{align-items:flex-start;gap:8px;}
+ .care-disclosure>summary strong{font-size:16px;}
+ .disclosure-hint{font-size:10px;padding:8px;}
+ .step-next{flex-direction:column;align-items:stretch;}
+ .care-planner .member-card{padding:16px;}
+}
 footer > .brand-logo { margin: 0 auto; }
 @media (max-width: 700px) {
   .header .brand-logo { width: 150px; }
