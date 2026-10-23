@@ -1,5 +1,5 @@
 import { v } from "convex/values";
-export const theme = v.union(v.literal("garden"), v.literal("midnight"));
+export const theme = v.union(v.literal("garden"), v.literal("midnight"), v.literal("dark"), v.literal("white"));
 export const permission = v.union(
   v.literal("members.manage"),
   v.literal("audit.read"),

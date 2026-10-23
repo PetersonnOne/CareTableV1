@@ -28,6 +28,36 @@ html[data-theme="midnight"] {
   --error-bg: #462e2e;
   color-scheme: dark;
 }
+html[data-theme="dark"] {
+  --bg: #000;
+  --surface: #080808;
+  --surface-soft: #16181c;
+  --text: #e7e9ea;
+  --muted: #a0a5aa;
+  --line: #363a3e;
+  --accent: #f2f2f2;
+  --accent-text: #080808;
+  --warm: #d7b783;
+  --shadow: #0006;
+  --error: #ffb4ab;
+  --error-bg: #371c20;
+  color-scheme: dark;
+}
+html[data-theme="white"] {
+  --bg: #fff;
+  --surface: #fff;
+  --surface-soft: #f3f4f5;
+  --text: #0f1419;
+  --muted: #536471;
+  --line: #d6d9dc;
+  --accent: #0f1419;
+  --accent-text: #fff;
+  --warm: #805b27;
+  --shadow: #0f14190a;
+  --error: #a12622;
+  --error-bg: #fff0ef;
+  color-scheme: light;
+}
 * {
   box-sizing: border-box;
 }
@@ -1317,3 +1347,16 @@ footer small {
     animation: none !important;
   }
 }
+
+/* Theme previews and readable dashboard colors for the black palette. */
+.palette.dark i:first-child { background: #000; }
+.palette.dark i:nth-child(2) { background: #16181c; }
+.palette.dark i:last-child { background: #e7e9ea; }
+.palette.white i:first-child { background: #fff; border: 1px solid #d6d9dc; }
+.palette.white i:nth-child(2) { background: #d6d9dc; }
+.palette.white i:last-child { background: #0f1419; }
+[data-theme="dark"] .stat-blue { color:#c2e1ff; background:#1d3348; }
+[data-theme="dark"] .stat-violet { color:#e5d0ff; background:#352842; }
+[data-theme="dark"] .stat-green { color:#c3ebd0; background:#203b2d; }
+[data-theme="dark"] .stat-amber { color:#ffe0a0; background:#45351d; }
+[data-theme="dark"] .stat-red { color:#ffd0d1; background:#46282c; }
