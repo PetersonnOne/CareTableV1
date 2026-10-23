@@ -1365,3 +1365,13 @@ footer small {
 [hidden] { display: none !important; }
 .mode-switch { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 12px; }
 .mode-switch .button[aria-pressed="true"] { color: var(--accent-text); background: var(--accent); border-color: var(--accent); }
+
+/* Homepage editorial image and planner overview. */
+.hero-meal { position: relative; min-width: 0; }
+.hero-meal-image { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 32px; border: 1px solid var(--line); box-shadow: 0 20px 60px var(--shadow); }
+.planner-overview { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px; margin: 24px 0; align-items: stretch; }
+.planner-overview > .voice-entry, .planner-overview > .companion-dashboard { margin: 0; min-width: 0; }
+.planner-overview .companion-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.plan-companion { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 900px) { .planner-overview { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 650px) { .hero-meal { margin: 40px 12px 0; } .hero-meal-image { border-radius: 24px; } .planner-overview .companion-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

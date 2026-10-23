@@ -90,3 +90,9 @@ The full journey catalog, corrections and current release gates are maintained i
 - Development staff UI, theme persistence, site appearance and audit pages pass. The intended production owner is still reserved for the user.
 - Current hosted pages and GitHub requests time out from this machine. Do not claim the latest release has been published or hosted acceptance repeated.
 - The local retrospective catalog, private QA outputs, tokens and browser artifacts remain Git-ignored. Repository publication/submission remains deferred.
+
+## Homepage and planner overview update — 23 October 2026
+
+Replaced the CSS food illustration with a generated editorial meal image served through Next.js Image. Moved the single At a Glance statistics panel beside the conversation/mode panel at the top. The preview/live plan result still supplies its metrics. Chromium checks pass desktop alignment, a single snapshot, updated 3/3 preview metrics, mobile stacking, both pages without horizontal overflow, and zero page errors. Forty existing tests and root TypeScript pass. Image prompt and provenance are in IMAGE_ASSETS.md.
+
+Restart recovery check: the optimized production build completed successfully, including TypeScript and all routes. All 40 tests pass with a single worker. An initial concurrent run timed out in one test; the serial rerun passed without code changes. Local development server restored on port 4318.

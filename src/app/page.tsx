@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 export default function Home() {
   return (
     <div className="home">
@@ -24,14 +25,8 @@ export default function Home() {
           </div>
           <p className="fine">For individuals, partners, and families.</p>
         </div>
-        <div className="table-illustration" aria-hidden="true">
-          <div className="table-ring" />
-          <div className="table-plate">
-            <div className="greens" />
-            <div className="grains" />
-            <div className="carrots" />
-            <span className="leaf">❧</span>
-          </div>
+        <div className="hero-meal">
+          <Image className="hero-meal-image" src="/images/caretable-hero-meal.png" width={1024} height={1024} sizes="(max-width: 650px) 88vw, 45vw" preload alt="A warmly presented meal with roasted vegetables, grains and fresh herbs." />
           <div className="little-note">
             <span>♡</span>
             <div>

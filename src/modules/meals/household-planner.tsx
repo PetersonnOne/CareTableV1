@@ -10,7 +10,8 @@ import { PlanStudio } from "./plan-studio";
 import { OnboardingAssistant } from "./onboarding-assistant";
 import { VoiceSession } from "./voice-session";
 import { requestSchema } from "./domain/schema.mjs";
-import type { PlanRequest } from "./domain/planning";
+import type { PlanRequest, PlanResult } from "./domain/planning";
+import { PlanSnapshot } from "./plan-snapshot";
 import { preserveVoiceMembers } from "./domain/voice-contracts";
 const draftSchema = z.object({
   label: z.string().max(80),
@@ -64,6 +65,7 @@ export function HouseholdPlanner() {
   const resetDemo = useMutation(api.demo.reset);
   const startPlan = useMutation(api.plans.start);
   const [interactive, setInteractive] = useState(false);
+  const [planSnapshot, setPlanSnapshot] = useState<PlanResult | null>(null);
   const [voicePlan, setVoicePlan] = useState<{id:Id<"mealPlans">;request:PlanRequest}|null>(null);
   const [household, setHousehold] = useState<Household>(fresh);
   const [id, setId] = useState<Id<"households"> | undefined>();
@@ -190,6 +192,7 @@ export function HouseholdPlanner() {
   }
   return (
     <div aria-busy={!ready} inert={!ready}>
+      <div className="planner-overview">
       <section className="panel voice-entry">
         <div><span className="eyebrow">LET'S TALK IT THROUGH</span><h2>A conversation can set your table.</h2><p>Use GPT Live 1 to discuss the household and meal settings, then confirm the reviewed plan request.</p></div>
         <div className="mode-switch" role="group" aria-label="Planning mode">
@@ -199,6 +202,8 @@ export function HouseholdPlanner() {
         <p className="fine">{interactive?"Talk through your setup, then review it before generation. Switching to User Mode stops voice and keeps your conversation draft.":"Use the profile fields, planning controls and text assistant. You can switch to voice at any time."}</p>
         {!isAuthenticated&&<p className="fine">Sign in or load the fictional sample to use voice. Opening this mode never starts your microphone.</p>}
       </section>
+      <PlanSnapshot result={planSnapshot} />
+      </div>
       {isAuthenticated&&<div hidden={!interactive}><VoiceSession active={interactive} key={JSON.stringify(fields)} mode="interactive" context={JSON.stringify({...fields,voiceMode:"interactive",members:fields.members.map((m,i)=>({...m,name:`Person ${i+1}`})),label:undefined})} onClose={()=>setInteractive(false)} onReviewed={async draft=>{
         const members=preserveVoiceMembers(fields.members,draft.members,()=>crypto.randomUUID());
         const input=requestSchema.parse({...draft,members,confirmed:true});
@@ -543,7 +548,7 @@ export function HouseholdPlanner() {
         }
       />
       </div>
-      <PlanStudio key={resetKey} household={fields} householdId={id} initialPlan={voicePlan || undefined} interactive={interactive} />
+      <PlanStudio key={resetKey} household={fields} householdId={id} initialPlan={voicePlan || undefined} interactive={interactive} onResultChange={setPlanSnapshot} />
     </div>
   );
 }

@@ -45,11 +45,13 @@ export function PlanStudio({
   householdId,
   initialPlan,
   interactive = false,
+  onResultChange,
 }: {
   household: Input;
   householdId?: Id<"households">;
   initialPlan?: {id:Id<"mealPlans">;request:PlanRequest};
   interactive?: boolean;
+  onResultChange?: (result: PlanResult | null) => void;
 }) {
   const { isAuthenticated } = useConvexAuth();
   const start = useMutation(api.plans.start);
@@ -104,6 +106,7 @@ export function PlanStudio({
     }
   }, [history, active, local]);
   const result = (local || (row?.result as PlanResult | undefined) || (row?.parentSnapshot as PlanResult | undefined) || revisionBase?.result) ?? null;
+  useEffect(() => { onResultChange?.(result); }, [result, onResultChange]);
   const working =
     pending || row?.status === "running" || row?.status === "queued";
   function request() {

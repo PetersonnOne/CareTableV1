@@ -59,7 +59,6 @@ export function PlanCompanion({ result, target, working, job, onApply, planId }:
   const pass = checks.filter(c=>c.status === "pass").length;
   const fail = checks.filter(c=>c.status === "fail").length;
   const unknown = checks.filter(c=>c.status === "unknown").length;
-  const average = meals.length ? Math.round(meals.reduce((sum,m)=>sum+(m.recipe?.minutes||0),0)/meals.length) : null;
   function send(text: string) {
     const value = text.trim();
     if (!value || !selected || working || waiting) return;
@@ -78,19 +77,8 @@ export function PlanCompanion({ result, target, working, job, onApply, planId }:
         ? "I'll favour your saved familiar tastes. Which part felt unfamiliar? Add a detail, or apply the change below."
         : "I've added that to this meal's change request. Anything else to keep or change? When ready, apply the request below. Saved restrictions always stay in place.");
   }
-  return <aside className="plan-companion" aria-label="Plan dashboard and meal chat">
-    <section className="panel companion-dashboard" aria-labelledby="plan-snapshot-title">
-      <span className="eyebrow">AT A GLANCE</span><h3 id="plan-snapshot-title">Your table, in numbers.</h3>
-      <dl className="companion-stats">
-        <div className="stat-blue"><dt>Meal slots filled</dt><dd>{filled}<small> / {expected}</small></dd></div>
-        <div className="stat-violet"><dt>Average cook time</dt><dd>{average ?? "—"}<small> min · estimate</small></dd></div>
-        <div className="stat-green"><dt>Passed checks</dt><dd>{pass}</dd></div>
-        <div className="stat-amber"><dt>Unverified checks</dt><dd>{unknown}</dd></div>
-        {fail > 0 && <div className="stat-red"><dt>Failed checks</dt><dd>{fail}</dd></div>}
-        <div className="stat-blue"><dt>Saved revisions</dt><dd>{result?.feedback?.length || 0}</dd></div>
-      </dl>
-      <p className="fine">Counts cover all plan days and recipients. Passed checks are catalog checks, not a safety certification. Prices and nutrition are not verified.</p>
-    </section>
+  return <aside className="plan-companion" aria-label="Meal feedback">
+
     <section className="panel companion-chat" aria-labelledby="meal-chat-title">
       <span className="eyebrow">A LITTLE BETTER, TOGETHER</span><h3 id="meal-chat-title">Meal improvement chat</h3>
       <p className="fine">Guided conversation to shape a change. Luna selects a revised meal only when you apply it.</p>
