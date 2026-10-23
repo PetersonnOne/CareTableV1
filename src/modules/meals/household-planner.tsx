@@ -64,7 +64,7 @@ export function HouseholdPlanner() {
   const remove = useMutation(api.households.remove);
   const resetDemo = useMutation(api.demo.reset);
   const startPlan = useMutation(api.plans.start);
-  const [interactive, setInteractive] = useState(false);
+  const [interactive, setInteractive] = useState(true);
   const [profileOpen, setProfileOpen] = useState(true);
   const [planSnapshot, setPlanSnapshot] = useState<PlanResult | null>(null);
   const [voicePlan, setVoicePlan] = useState<{id:Id<"mealPlans">;request:PlanRequest}|null>(null);
@@ -179,7 +179,7 @@ export function HouseholdPlanner() {
       localStorage.removeItem("caretable-active-plan");
       setHousehold(fresh());
       setVoicePlan(null);
-      setInteractive(false);
+      setInteractive(true);
       setId(undefined);
       setResetKey((k) => k + 1);
       setMessage(
@@ -207,12 +207,19 @@ export function HouseholdPlanner() {
       <div className="planner-overview">
       <section className="panel voice-entry">
         <div><span className="eyebrow">LET'S TALK IT THROUGH</span><h2>A conversation can set your table.</h2><p>Choose what feels comfortable: fill in the steps yourself, or talk through them with your AI companion. You’ll review the details before a plan is made.</p></div>
-        <div className="mode-switch" role="group" aria-label="Planning mode">
-          <button className="button outline" aria-pressed={!interactive} onClick={()=>setInteractive(false)}>User Mode</button>
-          <button className="button outline" aria-pressed={interactive} disabled={!isAuthenticated} onClick={()=>setInteractive(true)}>Interactive Mode</button>
+        <div className={`mode-guidance ${interactive?"is-interactive":"is-manual"}`}>
+          <div className="mode-switch" role="group" aria-label="Planning mode">
+            <button className="button outline" aria-pressed={!interactive} aria-describedby={!interactive?"planning-mode-description":undefined} onClick={()=>setInteractive(false)}>User Mode</button>
+            <button className="button outline" aria-pressed={interactive} aria-describedby={interactive?"planning-mode-description":undefined} onClick={()=>setInteractive(true)}>Interactive Mode</button>
+          </div>
+          <div className="mode-bubble" id="planning-mode-description" role="status" aria-live="polite" aria-atomic="true">
+            <svg className="mode-bubble-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{interactive?<><path d="M5 9a5 5 0 0 1 0 6M10 6a10 10 0 0 1 0 12M15 3a15 15 0 0 1 0 18" /></>:<><path d="m4 16 11-11 4 4L8 20l-5 1zM13 7l4 4" /></>}</svg>
+            <div><h3>{interactive?"Interactive Mode is on":"You’re in User Mode"}</h3>
+            <p>{interactive?"Talk through your setup, then review it before generation. Switching to User Mode stops voice and keeps your conversation draft.":"Use the profile fields, planning controls and text assistant. You can switch to voice at any time."}</p></div>
+          </div>
+          <p className="mode-reassurance"><span aria-hidden="true">{interactive?"◌":"♡"}</span>{interactive?"Your microphone stays off until you start.":"Your progress stays with you when you switch."}</p>
         </div>
-        <p className="fine">{interactive?"Talk through your setup, then review it before generation. Switching to User Mode stops voice and keeps your conversation draft.":"Use the profile fields, planning controls and text assistant. You can switch to voice at any time."}</p>
-        {!isAuthenticated&&<p className="fine">Sign in or load the fictional sample to use voice. Opening this mode never starts your microphone.</p>}
+        {!isAuthenticated&&interactive&&<p className="fine">Sign in or load the fictional sample below to start voice. You can also choose User Mode to explore the fields.</p>}
       </section>
       <PlanSnapshot result={planSnapshot} />
       </div>
@@ -224,10 +231,10 @@ export function HouseholdPlanner() {
         setId(undefined);setVoicePlan({id:planId,request:input});localStorage.setItem("caretable-active-plan",planId);setResetKey(k=>k+1);setInteractive(false);setMessage("Reviewed voice setup applied. Qloo + Luna are building and checking your plan.");
       }}/></div>}
 
-      <div className="page-heading" hidden={interactive}>
-        <span className="eyebrow">1 · YOUR TABLE</span>
-        <h2>Who are we cooking for?</h2>
-        <p>A separate place for every person's preferences and needs.</p>
+      <div className="page-heading">
+        <span className="eyebrow">{interactive?"A COMFORTABLE START":"1 · YOUR TABLE"}</span>
+        <h2>{interactive?"Ready when you are.":"Who are we cooking for?"}</h2>
+        <p>{interactive?"Try a fictional table, or sign in to plan around your own people.":"A separate place for every person's preferences and needs."}</p>
         <div className="actions">
           <button
             className="button outline"
