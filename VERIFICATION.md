@@ -70,6 +70,15 @@ No measured claim about improved human preference, clinical outcomes, coverage i
 
 ## Remaining release gates
 
+### 23 October continuation (supersedes earlier email/DNS status)
+
+- Resend reports `notify.geneaone.com` and all four authentication records **verified**. Cloudflare remains authoritative; no nameserver migration is planned. The verified `CareTable <accounts@notify.geneaone.com>` sender was configured on development and production Convex.
+- A new disposable production member account used a unique Gmail plus alias. Fresh verification and recovery OTPs were read privately from the user's explicitly authorized Gmail session. Production API checks passed: verification required, wrong OTP rejected, valid OTP signs in, OTP reuse rejected, reset signs in, old password rejected, replacement password works. Credentials and OTPs are Git-ignored. This is production backend/email evidence, not a completed hosted-form browser run.
+- Hosted page and health requests currently fail from this machine (connection timeout/fetch failure). Vercel environment update to remove the testing notice also failed with a network fetch error; do not claim the public notice was removed.
+- Development test-owner bootstrap was attempted for the existing verified disposable QA account, but the Convex operator CLI failed with a network error. Role change has not been confirmed. Production owner remains unprovisioned, reserved for the real owner.
+- Hosted-form, authenticated staff UI, and final accessibility checks remain open. A local dev server started slowly and reported a slow filesystem; this is not evidence that those browser checks passed.
+- User deferred hackathon packaging/repository publication decisions. Do not publish the repository or prepare submission materials without their next instructions.
+
 1. General-recipient email requires GeneaOne DNS verification. Temporary-sender delivery, verification, recovery, wrong-code/reuse, and password-change checks passed in development. A full 15-minute expiry waiting test and hosted human signup remain unverified.
 2. Select/register the intended owner account and provision its role; complete staff UI checks using real authenticated staff.
 3. Production build, root typecheck, 24 tests, and client-secret scan have passed; repeat relevant checks after material changes.
