@@ -2,6 +2,23 @@
 
 A little more care at every meal. CareTable helps caregivers and households find appealing meal suggestions without losing each person's explicit needs. Qloo supplies aggregate dining affinities; GPT-6 Luna selects from an original recipe catalog; application code checks ingredients, equipment, time, and completeness before saving the result.
 
+## Why CareTable stands out
+
+**A meal can fit the checklist and still miss the person.** CareTable brings familiar tastes, explicit needs and practical cooking limits into one explainable workflow. Its focus is the everyday act of care: helping someone understand, review and improve what goes on the table.
+
+| Existing advantage | What the product does | What judges can inspect |
+| --- | --- | --- |
+| **Cultural grounding with provenance** | Real Qloo dining affinities influence eligible-recipe ranking; returned taste evidence is separate from CareTable's recipe mappings. | Resolved seeds, returned identifiers and affinity links. A controlled ranking test demonstrates a change; broader live comparative evaluation remains planned. |
+| **A place for each person's needs** | Individual, partner and family profiles retain member-specific exclusions and recipients. If no shared meal fits, independently checked portions can be returned. | Household controls, named recipient portions and ingredient checks. Cultural preferences are currently pooled; balanced per-person taste representation is not claimed. |
+| **Recommendations bounded by checks** | Luna selects from eligible catalog IDs; application code validates exclusions, equipment, time and completeness. Unsupported information remains unknown. | Meal details and pass/fail/cannot-verify explanations. These are catalog checks, not clinical or allergy-safety certification. |
+| **Focused changes with continuity** | Feedback can revise one meal while preserving the saved restrictions, other slots and previous versions. No quicker eligible option produces an explicit shortage rather than relaxed requirements. | Original/revised plan history and restriction-preservation tests. Cooking minutes are estimates. |
+| **People stay in control** | Reviewed settings and proposed changes need confirmation; sample access avoids mandatory email signup. Numbered guidance and mode-specific explanations make the journey easier to follow. | Fictional sample → review → generate → inspect → improve. Microphone activation is explicit; spoken-voice acceptance remains unresolved. |
+| **Inspectability over unsupported confidence** | Original recipe attribution, source boundaries, durable jobs and recovery make the workflow reviewable. | Source code, dated tests and [verification](VERIFICATION.md). No verified nutrition, local pricing or real-world care outcome is implied. |
+
+**Current evidence status:** these advantages combine implemented features with dated local/development checks. The latest local UI is not yet deployed or fully accepted in production. The last full regression run passed 40 tests; subsequent targeted UI checks are recorded separately. Caregiver validation, live Qloo-versus-baseline evaluation and remaining release checks are **planned/pending**, not completed results.
+
+See the [judging evidence register](JUDGING_EVIDENCE.md) for the mapping to Qloo's criteria, claim limits, and the next evidence needed. The [caregiver review kit](research/qloo-competitive-review-2026-10-24/CAREGIVER_REVIEW_KIT.md) is ready for a future formative review; no reviewer endorsement or participant result is claimed.
+
 [Open the hosted app](https://caretable-v1.vercel.app) · [GitHub source](https://github.com/PetersonnOne/CareTableV1). Pushes to `main` automatically build and publish through Vercel, including production Convex deployment.
 
 Built with Next.js App Router, React, TypeScript, Convex, Convex Auth, OpenAI Responses, and Resend. Deploy the web app to Vercel and its database/functions to Convex. No Express service is required.
@@ -33,7 +50,7 @@ Stop the development server before building; both use `.next`. See [deployment i
 ## Try the product
 
 1. Choose **Try a fictional sample**. This opens an anonymous Convex session without personal data or email signup.
-2. Inspect each person's preferences and exclusions. Currency and region remain editable. Optional conversational onboarding proposes fields for review.
+2. Interactive Mode is the initial selection. For the verified manual journey, choose **User Mode**, then inspect each person's preferences and exclusions. Currency and region remain editable. Optional conversational onboarding proposes fields for review.
 3. Choose 3, 7, or 14 days, meal slots, equipment, time, and an optional whole-plan budget. Confirm the inputs.
 4. Create a live Qloo + Luna plan. Inspect recipients, ingredients, preparation, checks, alternatives, and the source identifiers behind cultural affinities.
 5. Use **Find a better fit** to revise a slot while retaining the saved plan's restrictions. Earlier versions remain available in history.
@@ -68,6 +85,8 @@ The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Disc
 - [Foundation decisions](FOUNDATION_DECISIONS.md)
 - [Recipe/data attribution](DATA_ATTRIBUTION.md)
 - [Verification and release gates](VERIFICATION.md)
+- [Judging evidence and future validation](JUDGING_EVIDENCE.md)
+- [Competitive assessment](research/qloo-competitive-review-2026-10-24/ASSESSMENT.md)
 - [Deployment](DEPLOYMENT.md)
 
 The local retrospective catalog, private credentials, provider PDFs, browser artifacts, and archived Vite/Express prototype are Git-ignored. `Post Hackathon App Idea.txt` belongs to a separate app and is excluded.
