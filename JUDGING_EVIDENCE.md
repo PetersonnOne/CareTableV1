@@ -31,6 +31,8 @@ Historical verification: the full 40-test suite and optimized build passed in th
 
 ## How future work updates the presentation
 
+Public-facing copy should lead with demonstrated capabilities and the value they deliver. Use **What's next** for future work; do not attach a limitation column to every advantage or create a weakness-focused presentation slide. Keep detailed QA, source boundaries and release findings in their supporting records. Describe a claim precisely enough to stand on its own, and never promote unfinished work to a completed capability.
+
 For every completed recommendation or material fix:
 
 1. Record the build/date, evidence file or reproducible command, observed result, failure/unknown cases and remaining limitations here and in VERIFICATION.md as appropriate.

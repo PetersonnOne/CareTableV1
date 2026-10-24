@@ -6,18 +6,18 @@ A little more care at every meal. CareTable helps caregivers and households find
 
 **A meal can fit the checklist and still miss the person.** CareTable brings familiar tastes, explicit needs and practical cooking limits into one explainable workflow. Its focus is the everyday act of care: helping someone understand, review and improve what goes on the table.
 
-| Existing advantage | What the product does | What judges can inspect |
+| CareTable's edge | What we have built | See it in the product |
 | --- | --- | --- |
-| **Cultural grounding with provenance** | Real Qloo dining affinities influence eligible-recipe ranking; returned taste evidence is separate from CareTable's recipe mappings. | Resolved seeds, returned identifiers and affinity links. A controlled ranking test demonstrates a change; broader live comparative evaluation remains planned. |
-| **A place for each person's needs** | Individual, partner and family profiles retain member-specific exclusions and recipients. If no shared meal fits, independently checked portions can be returned. | Household controls, named recipient portions and ingredient checks. Cultural preferences are currently pooled; balanced per-person taste representation is not claimed. |
-| **Recommendations bounded by checks** | Luna selects from eligible catalog IDs; application code validates exclusions, equipment, time and completeness. Unsupported information remains unknown. | Meal details and pass/fail/cannot-verify explanations. These are catalog checks, not clinical or allergy-safety certification. |
-| **Focused changes with continuity** | Feedback can revise one meal while preserving the saved restrictions, other slots and previous versions. No quicker eligible option produces an explicit shortage rather than relaxed requirements. | Original/revised plan history and restriction-preservation tests. Cooking minutes are estimates. |
-| **People stay in control** | Reviewed settings and proposed changes need confirmation; sample access avoids mandatory email signup. Numbered guidance and mode-specific explanations make the journey easier to follow. | Fictional sample → review → generate → inspect → improve. Microphone activation is explicit; spoken-voice acceptance remains unresolved. |
-| **Inspectability over unsupported confidence** | Original recipe attribution, source boundaries, durable jobs and recovery make the workflow reviewable. | Source code, dated tests and [verification](VERIFICATION.md). No verified nutrition, local pricing or real-world care outcome is implied. |
+| **Culturally grounded choices** | Real Qloo dining affinities influence eligible-recipe ranking, with traceable connections to CareTable's original recipes. | Resolved preferences, returned taste connections and the recipe mapping behind a suggestion. |
+| **A place for each person's needs** | Individual, partner and family profiles retain member-specific exclusions and recipients. Independently checked portions provide another path when no shared recipe fits. | Household controls, recipient portions and ingredient checks. |
+| **Intelligence backed by checks** | Luna selects from eligible catalog IDs; application code checks ingredients, equipment, time and plan completeness. | Meal details and clear results for each applied catalog check. |
+| **Improve one meal, keep your plan** | Targeted feedback revises a selected meal while preserving saved restrictions, other slots and previous versions. | The selected meal before and after revision, with saved history. |
+| **People stay in control** | Reviewed settings and proposed changes need confirmation. Sample access, numbered guidance and contextual mode descriptions make the workflow approachable. | Fictional sample → review → generate → inspect → improve. |
+| **A workflow you can follow** | Taste evidence, original recipe attribution, durable jobs and saved-version recovery keep the process inspectable. | Source-backed explanations, job progress and previous plan versions. |
 
-**Current evidence status:** these advantages combine implemented features with dated local/development checks. The latest local UI is not yet deployed or fully accepted in production. The last full regression run passed 40 tests; subsequent targeted UI checks are recorded separately. Caregiver validation, live Qloo-versus-baseline evaluation and remaining release checks are **planned/pending**, not completed results.
+**Demonstrated in development:** live Qloo-backed planning, targeted meal revision, saved-plan recovery and a controlled test showing cultural evidence changes candidate ranking. The last full regression run passed 40 tests; dated results and subsequent UI checks are recorded in [verification](VERIFICATION.md).
 
-See the [judging evidence register](JUDGING_EVIDENCE.md) for the mapping to Qloo's criteria, claim limits, and the next evidence needed. The [caregiver review kit](research/qloo-competitive-review-2026-10-24/CAREGIVER_REVIEW_KIT.md) is ready for a future formative review; no reviewer endorsement or participant result is claimed.
+See the [judging evidence register](JUDGING_EVIDENCE.md) for the supporting implementation and verification behind these advantages.
 
 [Open the hosted app](https://caretable-v1.vercel.app) · [GitHub source](https://github.com/PetersonnOne/CareTableV1). Pushes to `main` automatically build and publish through Vercel, including production Convex deployment.
 
@@ -58,14 +58,14 @@ Stop the development server before building; both use `.next`. See [deployment i
 
 **Local preview** makes no OpenAI or Qloo requests and is labeled separately. Draft household fields persist in this browser until reset. Signed-in households, preferences, and plans persist in Convex under their owner. A sample session depends on its browser credentials; it is not a permanent email account.
 
-## Evidence and limits
+## How CareTable works
 
-- The 20 recipes are original prototype suggestions, licensed under MIT with this source. They are not copied from a recipe provider, returned by Qloo, or independently tested preparations. Longer plans may repeat recipes.
+- CareTable includes 20 original prototype recipes, licensed under MIT with this source. Each recipe carries its attribution.
 - Qloo uses exact restaurant/cuisine tags from up to three distinct favorite inputs, then dining affinities from Insights. The recipe mappings are CareTable's interpretation, visible separately from returned identifiers. Unmatched inputs stay unresolved. A warm-worker cuisine cache expires after 10 minutes and may be lost on a cold start.
-- Explicit ingredient matches fail a candidate for any intended eater. Unsupported restrictions and incomplete composition remain **cannot verify**. No clinical, swallowing-safety, product-label, cross-contact, nutrition, local-availability, or verified-price claims are made.
+- Explicit ingredient matches fail a candidate for any intended eater. Each check displays its result; unsupported restrictions and incomplete composition are marked **cannot verify**.
 - Budgets identify their currency and whole-plan scope; without verified regional prices the budget result remains unknown.
 - Luna is fixed to `gpt-6-luna`; no automatic model upgrade exists. One constrained selection call and one deterministic repair pass are bounded. Requests use provider timeouts and a persisted expiry. Failure preserves profiles and earlier plan versions.
-- “Too difficult” revisions require a shorter estimated cooking time; if no quicker eligible meal exists, the previous plan is preserved. Actual preparation difficulty is not independently verified.
+- “Too difficult” revisions require a shorter estimated cooking time; if no quicker eligible meal exists, the previous plan is preserved.
 - Email verification and recovery use the verified `CareTable <accounts@notify.geneaone.com>` Resend sender. Cloudflare remains authoritative for GeneaOne DNS. Sample access needs no email.
 - Limits: 8 household members, 20 saved households, 6 plan requests per hour per identity, one active job per identity, and a shared 200-plan daily demonstration cap. Conversational onboarding has a separate 12/hour per identity and 200/day cap. Anonymous sessions can be replaced, so these controls are not a complete bot-prevention system.
 - Names are omitted from Luna planning input; only cuisine/food preferences go to Qloo. Onboarding sends the text entered by the user to OpenAI. Avoid personal or medical details. OpenAI requests set `store: false`; this is not a claim of zero provider retention.
@@ -77,6 +77,13 @@ Signups receive member access. A trusted operator must deliberately bootstrap th
 Garden, Midnight (the default), Dark, and White themes support a site default and a private per-user override. Staff, theme, household, planning, and assistant outcomes write bounded audit metadata. Audit records exclude credentials and ingredient lists; they are not tamper-proof compliance logs.
 
 The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Discuss with AI**. Both voice features use `gpt-live-1`; entering a mode does not start the microphone. See [voice behavior](VOICE_FEATURES.md) and the [production readiness audit](PRODUCTION_READINESS.md) for tested paths and remaining release blockers.
+
+## What's next
+
+- Caregiver walkthroughs to gather practical feedback and refine the experience, using the prepared [review kit](research/qloo-competitive-review-2026-10-24/CAREGIVER_REVIEW_KIT.md).
+- Broader Qloo-on/off comparisons to measure the effect of cultural grounding across representative fictional households.
+- More culturally coherent recipe choices and richer meal-level explanations.
+- Complete release verification and the spoken-interaction acceptance journey.
 
 ## Project records
 

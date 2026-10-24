@@ -11,3 +11,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Keep judging evidence and presentation claims synchronized
 
 When completing a material feature, validation or competitive recommendation, update `JUDGING_EVIDENCE.md`, relevant `VERIFICATION.md` evidence and README highlights. If the local Git-ignored `Submission Video Workspace` is present, also update its presentation message map, claim-to-shot matrix and relevant script/storyboard resources. Distinguish implemented, locally tested, hosted-verified, planned and blocked states. Never promote a proposed caregiver review to a result or testimonial. Documentation updates do not authorize resuming paused production work, recording, paid generation or publication.
+
+For public README, presentation and walkthrough copy, foreground truthful achievements and benefits. Present future work as **What's next**, without a limitations section or repeated caveats beside every strength. Keep detailed technical and release findings in supporting records; preserve accurate evidence and avoid claims of completed work that has not passed acceptance.
