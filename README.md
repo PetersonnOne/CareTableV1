@@ -103,3 +103,6 @@ Video submission materials are kept locally in [Submission Video Workspace](<Sub
 
 
 26 October hosted verification: the updated [CareTable website](https://caretable-v1.vercel.app) was delivered automatically from GitHub main. Chromium checks passed live plan generation, saved evidence receipts, refresh recovery and mobile layout.
+
+
+Account navigation now reuses the confirmed initial session token, avoiding an unnecessary refresh during sign-in and sign-up redirects. Local Chromium signup, verification, recovery and sign-in navigation passed without Leave site dialogs.

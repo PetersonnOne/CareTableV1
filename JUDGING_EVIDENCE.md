@@ -48,3 +48,6 @@ For every completed recommendation or material fix:
 
 
 26 October delivery update: production commit a8a80a6 passed hosted core acceptance after the normal GitHub main integration rebuilt Vercel. See VERIFICATION.md for exact observed checks. Family review is removed from the release scope.
+
+
+26 October account UX validation: the authentication refresh/navigation race is fixed locally; Chromium records zero Leave site dialogs across filled-form exits, signup/verification, existing-account sign-in and recovery. Production owner setup is complete for the verified intended account. See VERIFICATION.md for method and deployment status.

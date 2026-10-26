@@ -8,7 +8,7 @@ type Stage =
   "signIn" | "signUp" | "reset" | "email-verification" | "reset-verification";
 export function SignInForm() {
   const { signIn, signOut } = useAuthActions();
-  const { isAuthenticated } = useConvexAuth();
+  const { isAuthenticated, isLoading } = useConvexAuth();
   const viewer = useQuery(api.identity.current, isAuthenticated ? {} : "skip");
   const router = useRouter();
   const [ready, setReady] = useState(false);
@@ -23,8 +23,8 @@ export function SignInForm() {
     [error, setError] = useState(""),
     [notice, setNotice] = useState("");
   useEffect(() => {
-    if (ready && viewer && !viewer.isAnonymous && stage !== "reset" && stage !== "reset-verification") router.replace("/account");
-  }, [viewer, router, ready, stage]);
+    if (ready && !pending && !isLoading && viewer && !viewer.isAnonymous && stage !== "reset" && stage !== "reset-verification") router.replace("/account");
+  }, [viewer, router, ready, stage, pending, isLoading]);
   const codeStage =
     stage === "email-verification" || stage === "reset-verification";
   const title =
