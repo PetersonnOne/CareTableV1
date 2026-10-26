@@ -1,6 +1,6 @@
 # CareTable formative caregiver review kit
 
-**Status: prepared, not conducted.** The user has identified a potential reviewer working in the care field. Their precise role, willingness, availability and session details remain to be confirmed. No endorsement, credentials or patient experience are inferred. Do not contact or schedule anyone without the user's direction.
+**Status: deferred by the user on 26 October 2026; prepared, not conducted.** The potential reviewer is busy; no review is required to continue current technical validation. The user has identified a potential reviewer working in the care field. Their precise role, willingness, availability and session details remain to be confirmed. No endorsement, credentials or patient experience are inferred. Do not contact or schedule anyone without the user's direction.
 
 ## Purpose
 

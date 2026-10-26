@@ -115,3 +115,32 @@ Mode guidance update: Interactive Mode is now the initial and reset default, inc
 - Configured-secret scan includes research outputs and built client assets and passes for four loaded private settings. Local Markdown links and presentation CSV structures pass; retrospective, screenshots and Submission Video Workspace remain Git-ignored.
 - Hosted delivery is blocked again on this machine: Git remote access cannot connect to github.com:443; Node fetches to GitHub API and the Vercel app fail; Vercel whoami also returns fetch failed. These checks supersede the restored-connectivity note of 23 October. No latest-code hosted acceptance or push/deploy is claimed.
 - Caregiver review awaits an actual consented participant session. Spoken-voice transport acceptance and remaining production account checks are not established by these changes. Video rehearsal remains paused; only script/presentation resources were updated.
+
+
+## Voice configuration comparison — 26 October 2026
+
+Compared CareTable `convex/voiceActions.ts` and `src/modules/meals/voice-session.tsx` with Life Maxim `convex/liveActions.ts` and `components/interactive-mode.tsx`. Both call OpenAI `/v1/live/sessions` from Convex, use server-side `OPENAI_API_KEY`, model `gpt-live-1`, and exchange SDP for browser WebRTC. Both gather ICE before submitting the offer and use the `oai-events` data channel. Life Maxim uses the generated `env` accessor; CareTable's Node action uses `process.env`. This syntax difference does not imply a different credential location.
+
+Current local selection is development `outstanding-crocodile-717`; `NEXT_PUBLIC_CONVEX_URL` points to that same deployment. A live Convex CLI lookup confirmed its OpenAI key is present without displaying its value. No wrong local deployment or absent development credential was found. This check does not verify the hosted deployment's current environment or establish successful audio. Earlier successful provider session creation followed by WebRTC connection timeout remains the last transport evidence; root cause remains unconfirmed. No API key relocation or speculative transport change was made.
+
+Caregiver review is deferred by the user because the potential reviewer is unavailable; it remains unperformed and must not be presented as validation.
+
+
+## GPT Live troubleshooting continuation — 26 October 2026
+
+**Observed recovery, not a speculative configuration fix.** Separate Playwright-controlled Chromium sessions now connect to GPT Live 1 through CareTable's existing Convex development action. ICE and peer connection reach connected, the data channel opens, `session.started` arrives, input and output transcript deltas arrive, and RTP statistics show outgoing microphone and incoming audio bytes. Both Interactive Mode and Discuss with AI display two-sided live captions. Mute disables the sender track; Unmute restores it. Explicit Stop was exercised. No API key relocation, model substitution or transport-code change was necessary. The exact cause of the older ICE failures remains unconfirmed; current recovery does not prove a particular network cause.
+
+The synthetic audio fixture must be passed to Chromium with `%noloop`. An earlier looping fixture continuously supplied speech and obscured AI response turn-taking; a finite fixture produced AI replies. This is test-harness behavior, not an application fix. Interactive spoken preferences were reviewed; a missing-region question correctly disabled confirmation. A typed fictional United States clarification enabled review and generated a saved three-day Qloo/Luna plan. Actual room-microphone/speaker listening and hosted voice transport have not been established by these local synthetic-device tests.
+
+Current supporting reports are ignored: `.private/voice-full-acceptance-report.json`, `.private/voice-diagnostic-current.json`, and `output/playwright/voice-diagnostic-current.png`. Scripts are diagnostic tools, not public demo recordings.
+
+Hosted browser signup, wrong-code rejection, successful email verification, password reset and logout passed against the existing production deployment (`.private/hosted-browser-auth-current.json`). One earlier reset attempt timed out; the repeated sequence passed. Hosted health returned HTTP 200; Vercel inspection reports the existing 22 October production deployment Ready. This does not establish delivery of the latest local source.
+
+The production owner lookup still finds no non-anonymous account for the user's chosen email. Owner provisioning requires that user's verified signup; no test account was promoted. An additional local staff-login attempt using older stored QA credentials failed; current staff-browser acceptance is not claimed from that attempt. Earlier staff results remain historical.
+
+GitHub read connectivity recovered intermittently, but a noninteractive push of the reviewed branch timed out after 60 seconds. No successful push or deployment of the latest changes is claimed. The repository remains private. Caregiver review stays deferred; video rehearsal remains paused.
+
+Regression: initial parallel run 46/47 with one five-second cleanup-test timeout; isolated rerun 9/9, then full single-worker rerun 47/47. TypeScript passed. No timeout setting or application behavior was changed to obtain this result; the rerun used an explicit 15-second test execution limit.
+
+
+Final 26 October voice run: the Interactive spoken-review journey generated a saved plan, then Discuss with AI connected with two-sided captions, mute/unmute passed, and a reviewed request saved a new meal revision. The discussion revision request included an explicit typed clarification; this is a mixed voice-plus-notes handoff, not a speech-only feedback acceptance claim. Browser page errors: zero. See `.private/voice-full-acceptance-report.json`.

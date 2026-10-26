@@ -78,7 +78,7 @@ Signups receive member access. A trusted operator must deliberately bootstrap th
 
 Garden, Midnight (the default), Dark, and White themes support a site default and a private per-user override. Staff, theme, household, planning, and assistant outcomes write bounded audit metadata. Audit records exclude credentials and ingredient lists; they are not tamper-proof compliance logs.
 
-The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Discuss with AI**. Both voice features use `gpt-live-1`; entering a mode does not start the microphone. See [voice behavior](VOICE_FEATURES.md) and the [production readiness audit](PRODUCTION_READINESS.md) for tested paths and remaining release blockers.
+The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Discuss with AI**. Both voice features use `gpt-live-1`; entering a mode does not start the microphone. Local Chromium checks now demonstrate live user/AI captions and audio transport in both modes, mute/unmute, and reviewed spoken setup leading to a saved plan. See [voice behavior](VOICE_FEATURES.md) and the [production readiness audit](PRODUCTION_READINESS.md) for tested paths and remaining release blockers.
 
 ## What's next
 

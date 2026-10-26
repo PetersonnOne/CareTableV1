@@ -33,3 +33,8 @@ The button lives on the meal feedback companion. It is available for a loaded, s
 The CareTable key can access gpt-live-1, and actual browser session creation succeeds. Separate Chromium instances with synthetic audio input reproduce an ICE checking/connecting failure: the data channel does not open, no transcript arrives, and startup times out. Server cleanup is confirmed closed. This is a release blocker; the exact cause is not yet established.
 
 Both review paths passed from typed clarification notes: Interactive Mode generated a saved plan, and Discuss with AI saved a meal revision. These are recovery/handoff tests, not successful spoken conversations. Mode switching preserves drafts while stopping voice; changing the profile/selected meal resets its voice context. Automated ownership, limits, canceled attachment, snapshot/expiry and exclusion tests pass. See [the full audit](PRODUCTION_READINESS.md).
+
+
+## Current acceptance update — 26 October 2026
+
+The earlier ICE blocker is no longer reproducible in the latest local Chromium sessions: both modes connect, show user and AI captions, and exchange audio packets. Discussion mute/unmute and explicit stop pass. Spoken setup plus a typed missing-region clarification generates a saved plan after review. These are synthetic-microphone local checks against development Convex; hosted voice and human device listening remain separate acceptance. See the dated continuation in [VERIFICATION.md](VERIFICATION.md). No credential-location or transport-code change was required.
