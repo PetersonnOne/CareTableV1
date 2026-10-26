@@ -100,3 +100,6 @@ The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Disc
 The local retrospective catalog, private credentials, provider PDFs, browser artifacts, and archived Vite/Express prototype are Git-ignored. `Post Hackathon App Idea.txt` belongs to a separate app and is excluded.
 
 Video submission materials are kept locally in [Submission Video Workspace](<Submission Video Workspace/README.md>). The entire folder is Git-ignored, including scripts, drafts, references, recordings and exports.
+
+
+26 October hosted verification: the updated [CareTable website](https://caretable-v1.vercel.app) was delivered automatically from GitHub main. Chromium checks passed live plan generation, saved evidence receipts, refresh recovery and mobile layout.

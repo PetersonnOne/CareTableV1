@@ -38,10 +38,10 @@ Have the intended owner create and verify their email/password account. A truste
 
 The verified Resend sender is CareTable <accounts@notify.geneaone.com>, configured on both Convex deployments. GeneaOne is used for email only. Cloudflare remains authoritative at elisabeth.ns.cloudflare.com and yevgen.ns.cloudflare.com; no nameserver migration is needed. The four additive Resend email records are verified; pre-existing records were preserved. The inactive Vercel DNS zone is not authoritative.
 
-The obsolete restricted-testing banner has been removed in source. This does not claim the latest frontend was deployed: current GitHub/Vercel requests from this machine time out. Restore connectivity and use the existing GitHub main deployment path after release gates pass. See [the production audit](PRODUCTION_READINESS.md).
+The latest app changes reached GitHub main and automatically produced a Ready Vercel production deployment on 26 October 2026 (source commit a8a80a6). The previous live deployment still referenced cf95550 because newer changes had remained on the local working branch. A successful HTTP/1.1 push restored the normal GitHub-to-Vercel delivery path. See [verification](VERIFICATION.md) for hosted browser acceptance.
 
 ## Release acceptance
 
-Do not promote this candidate as fully verified while live voice cannot establish its media/data connection. Both voice review paths work from typed clarification notes, but audio/captions/mute and full spoken workflows require successful transport verification. Production owner provisioning and the remaining hosted signup/reset browser tests also remain open.
+Local Chromium now connects both GPT Live modes with audio transport and captions; review-to-plan and discussion-plus-notes revision pass. Hosted signup/reset browser checks passed on 26 October. Hosted voice and human device listening remain separate acceptance checks. Production owner provisioning requires the intended owner to create and verify their account. No family or caregiver review is a release requirement.
 
 Keep credentials out of screenshots, support files, command output, commits and public browser bundles. Run node --env-file=.env.local scripts/check-public-secrets.mjs after building. Never rotate existing signing keys just to retry deployment.

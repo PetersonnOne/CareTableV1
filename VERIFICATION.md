@@ -147,3 +147,12 @@ Final 26 October voice run: the Interactive spoken-review journey generated a sa
 
 
 26 October scope correction: at the user's explicit request the niece/caregiver review is removed from the project scope, active backlog, release acceptance and presentation requirements. It must not block production. Historical references describe earlier proposals only; no review result or testimonial is claimed. The unused review kit and active claim/shot entry have been removed.
+
+
+## GitHub-to-Vercel delivery repaired — 26 October 2026
+
+Diagnosis: local working branch contained newer commits, but remote main and the Vercel production alias still pointed at cf9555089ead071f59cecbbc5870e6ffa91bcaf5. Vercel's existing GitHub link was correct: PetersonnOne/CareTableV1, production branch main. A read-only ancestry check established a safe fast-forward. Fetch and push succeeded using git HTTP/1.1; no force push or standalone local deployment was used. GitHub main advanced to a8a80a6607f1cff842c7c597f41085a175f38ede, automatically triggering Vercel production deployment dpl_8uciDDpm6JLUCtDwpcS1UnECK2Bd, which reached READY. The GitHub repository remained private.
+
+Actual public-alias Playwright/Chromium acceptance: new branding and five real food images loaded, Midnight default observed, Interactive Mode default pressed, fictional sample entry, confirmed live production Qloo/Luna three-day generation, saved meal evidence receipt, refresh recovery, 390px mobile without horizontal overflow, and sample reset all passed; zero page errors. Screenshot inspected: output/playwright/hosted-latest-home.png. Private report: .private/hosted-latest-smoke.json. The report's obsolete carousel-button selector returned zero matches; visual inspection confirms the five-slide carousel controls and all five loaded images. This selector result is not a product failure.
+
+The family caregiver review requirement and unused review kit are removed. It is not a release blocker and no testimonial is claimed. Owner creation/verification remains the user's account-entry step; hosted voice/human audio acceptance remain separate from this delivery check.

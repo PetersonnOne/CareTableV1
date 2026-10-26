@@ -24,7 +24,7 @@ Current verification: 47/47 regression tests and TypeScript pass on 26 October. 
 | --- | --- | --- | --- |
 | CT-P01 | Representative Qloo-on/off comparison | Controlled live-evidence evaluation completed | Nine fixed scenarios, catalog/mapping hashes, retained first and revised runs, negative cases, ranking/plan outcomes and method linked above. Deterministic plan control deliberately avoids LLM randomness; repeated actual-LLM and human comparison studies are further work. |
 | CT-P02 | Concise meal-level evidence receipt | Implemented; development browser journey passes | New saved meals preserve seed/connection provenance and before/after candidate ranks. Collapsible receipt explains app mapping and checks. No-match and unchanged rankings remain explicit. Historical plans without snapshots remain readable. |
-| CT-P03 | Dependable hosted judge journey | Development journey and existing hosted signup/reset pass; latest-source delivery remains blocked 26 October | Latest live browser generation, revision, receipt and refresh pass with zero page errors. GitHub TCP and Vercel fetch/CLI fail from this machine, preventing push/deploy and exact hosted acceptance. Remaining voice/account gates remain separate. |
+| CT-P03 | Dependable hosted judge journey | Hosted updated app delivered and core journey verified 26 October | GitHub main push automatically deployed the updated app to Vercel. Public-alias Chromium generation, receipt, refresh, mobile and reset pass with zero page errors. Earlier local revision evidence remains separate; hosted voice and owner provisioning retain their own gates. |
 | CT-P05 | Targeted cultural variety and mapping coverage | Six recipes and reviewed mapping coverage completed | Catalog expands from 20 to 26; Italian/Chinese/Indian/Thai/Mexican/West African-inspired additions, exact reviewed provider-tag mappings, soy-exclusion test and round-robin household signals. Longer plans can still repeat; physical preparation and human familiarity remain to be reviewed. |
 | CT-P06 | Memorable evidence-backed improvement story | Story draft only; rehearsal paused | Actual before/after recording linked to saved plan versions, preserved restrictions/slots, accurate source labels and approved narration. R0 local preview does not satisfy live evidence. |
 
@@ -45,3 +45,6 @@ For every completed recommendation or material fix:
 
 
 26 October scope decision: the proposed family caregiver review has been removed from the active project requirements, release gates and presentation plan. It is not a production blocker. No review or testimonial is claimed.
+
+
+26 October delivery update: production commit a8a80a6 passed hosted core acceptance after the normal GitHub main integration rebuilt Vercel. See VERIFICATION.md for exact observed checks. Family review is removed from the release scope.
