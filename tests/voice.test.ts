@@ -2,12 +2,22 @@ import { describe,it,expect,vi,afterEach } from "vitest";
 import { convexTest } from "convex-test";
 import schema from "../convex/schema";
 import { api,internal } from "../convex/_generated/api";
-import { LIVE_MODEL,LIVE_SECONDS,preserveVoiceMembers } from "../src/modules/meals/domain/voice-contracts";
+import { LIVE_MODEL,LIVE_SECONDS,preserveVoiceMembers,voiceDraftSchema,voiceReviewIssues } from "../src/modules/meals/domain/voice-contracts";
 const modules=import.meta.glob("../convex/**/*.ts");
 async function setup(){const t=convexTest(schema,modules);const [a,b]=await t.run(async ctx=>[await ctx.db.insert("users",{name:"A"}),await ctx.db.insert("users",{name:"B"})]);return {t,a:t.withIdentity({subject:a}),b:t.withIdentity({subject:b})};}
 const request={requestId:"voice-request-12345",mode:"interactive" as const,context:'{"favorites":["rice"]}'};
 afterEach(()=>vi.unstubAllGlobals());
 describe("voice lifecycle and authorization",()=>{
+  it("lets a missing-currency review proceed after an explicit currency and question review, without requiring a budget",()=>{
+    const draft=voiceDraftSchema.parse({summary:"Review",questions:["Which currency?","Budget or no limit?"],mode:"individual",members:[{favorites:["vegetables"],dislikes:[],exclusions:["peanuts"],texture:"any"}],currency:"",region:"Nigeria",units:"metric",days:3,slots:["dinner"],maxMinutes:45,equipment:["hob"],budget:null,feedback:"",reason:"other"});
+    expect(voiceReviewIssues(draft,false)).toHaveLength(2);
+    expect(voiceReviewIssues({...draft,currency:"NGN"},false)).toHaveLength(1);
+    expect(voiceReviewIssues({...draft,currency:"NGN"},true)).toEqual([]);
+    expect(voiceReviewIssues({...draft,currency:"NGN",budget:-5},true).length).toBeGreaterThan(0);
+    expect(voiceReviewIssues({...draft,currency:"NGN",maxMinutes:0},true).length).toBeGreaterThan(0);
+    expect(draft.currency).toBe(""); // A country never silently supplies a currency.
+    expect(draft.members[0].exclusions).toEqual(["peanuts"]);
+  });
   it("preserves household identities and exclusions and refuses dropped members",()=>{
     const base=[{id:"a",name:"Person A",exclusions:["peanuts"]},{id:"b",name:"Person B",exclusions:["wheat"]}];
     const proposed=[{favorites:["rice"],dislikes:[],exclusions:[],texture:"any" as const}];

@@ -34,7 +34,7 @@ const errors: Record<string, string> = {
   QLOO_HTTP_429: "Qloo rate limit reached. Please try later.",
   OPENAI_AUTH: "OpenAI rejected the configured key.",
   OPENAI_QUOTA: "OpenAI quota or rate limit reached.",
-  OPENAI_MODEL: "Luna is unavailable to this API account.",
+  OPENAI_MODEL: "CareTable Meal Guide is unavailable to this API account.",
   TIMEOUT: "Planning took too long. Your previous plan is preserved.",
   REVISION_NO_MATCH:
     "No eligible replacement was found. Return to your previous plan or edit your requirements.",
@@ -281,7 +281,7 @@ export function PlanStudio({
             disabled={!isAuthenticated || !confirmed || working}
             onClick={() => void generate()}
           >
-            {working ? "Planning…" : "Create a Qloo + Luna plan"}
+            {working ? "Planning…" : "Create a Qloo-powered plan"}
             <span>↗</span>
           </button>
           <button

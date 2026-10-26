@@ -115,3 +115,6 @@ The concept's hosted demo, public source repository, open-source license, and pr
 ## Current continuation point
 
 Documentation is complete for this discussion. Next implementation prerequisites are to verify credentials and model access, probe Qloo's food-related coverage, choose a structured recipe source, and implement one bounded end-to-end profile-to-plan-to-revision flow. Framework, database, hosting, and recipe-provider selections remain open.
+
+
+26 October naming decision: CareTable Meal Guide is the approved conversational/product label for the planning layer; it does not change the configured OpenAI model or Qloo integration. Technical provider/model documentation remains explicit. Qloo provides taste affinities, the planning layer proposes meals from the application catalog, and CareTable enforces saved requirements.

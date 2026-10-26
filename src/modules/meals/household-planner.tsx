@@ -228,7 +228,7 @@ export function HouseholdPlanner() {
         const input=requestSchema.parse({...draft,members,confirmed:true});
         const planId=await startPlan({request:input,requestId:crypto.randomUUID()});
         setHousehold({label:household.label,mode:input.mode,members:members.map(m=>({...m,favorites:m.favorites.join(", "),dislikes:m.dislikes.join(", "),exclusions:m.exclusions.join(", ")})),region:input.region,currency:input.currency,units:input.units});
-        setId(undefined);setVoicePlan({id:planId,request:input});localStorage.setItem("caretable-active-plan",planId);setResetKey(k=>k+1);setInteractive(false);setMessage("Reviewed voice setup applied. Qloo + Luna are building and checking your plan.");
+        setId(undefined);setVoicePlan({id:planId,request:input});localStorage.setItem("caretable-active-plan",planId);setResetKey(k=>k+1);setInteractive(false);setMessage("Reviewed voice setup applied. Qloo is finding related tastes, CareTable Meal Guide is proposing meals, and CareTable is checking your saved requirements.");
       }}/></div>}
 
       <div className="page-heading">

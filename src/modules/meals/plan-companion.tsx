@@ -81,7 +81,7 @@ export function PlanCompanion({ result, target, working, job, onApply, planId }:
 
     <section id="meal-improvements" tabIndex={-1} className="panel companion-chat" aria-labelledby="meal-chat-title">
       <span className="eyebrow">4 · REFLECT & IMPROVE</span><h3 id="meal-chat-title">A little better, together.</h3>
-      <p className="fine">Guided conversation to shape a change. Luna selects a revised meal only when you apply it.</p>
+      <p className="fine">Guided conversation to shape a change. After you apply it, Qloo provides related taste signals, CareTable Meal Guide proposes a revised meal, and CareTable checks your saved requirements.</p>
       <div className="mode-switch" role="group" aria-label="Feedback mode">
         <button className="button outline" aria-pressed={!voiceOpen} onClick={()=>setVoiceOpen(false)}>Chat</button>
         <button className="button outline" aria-pressed={voiceOpen} disabled={!planId||!selected||working||waiting||result?.mode!=="live"} onClick={()=>setVoiceOpen(true)}>Discuss with AI</button>

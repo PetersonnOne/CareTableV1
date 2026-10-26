@@ -38,3 +38,14 @@ Both review paths passed from typed clarification notes: Interactive Mode genera
 ## Current acceptance update — 26 October 2026
 
 The earlier ICE blocker is no longer reproducible in the latest local Chromium sessions: both modes connect, show user and AI captions, and exchange audio packets. Discussion mute/unmute and explicit stop pass. Spoken setup plus a typed missing-region clarification generates a saved plan after review. These are synthetic-microphone local checks against development Convex; hosted voice and human device listening remain separate acceptance. See the dated continuation in [VERIFICATION.md](VERIFICATION.md). No credential-location or transport-code change was required.
+
+
+## Meal Guide welcome and editable review — 26 October 2026
+
+CareTable Meal Guide is the approved user-facing name for the planning layer. Technical model IDs remain unchanged. Spoken explanations name Qloo's related dining/taste signals alongside the Meal Guide's proposed meals and CareTable's saved-requirement checks. Qloo does not supply recipes, and no plan work is claimed before confirmation.
+
+Each explicit Start voice sends one general Live commentary welcome cue after session.started. It requests a warm AI introduction, a short explanation of the reviewed workflow and one opening question. The cue is scoped to the active session and is not a user transcript or a backend tool call.
+
+Review now includes currency, optional region/budget and preparation-time inputs. Missing currency, invalid values and unreviewed questions have visible explanations beside confirmation. A blank budget explicitly means no budget limit. Questions are displayed for human review and can be acknowledged after editing the proposal; they are not an opaque permanent block. Re-preparing resets that acknowledgement. Existing exclusions are still preserved by the normal handoff, and the authoritative request schema still validates confirmation. An unspecified optional budget or region alone no longer generates a mandatory clarification question.
+
+Validation status: automated review-boundary regression, TypeScript, optimized build and development deployment pass. Both local welcome-first tests and the edited-review-to-saved-plan browser journey pass. Latest hosted acceptance follows deployment; see VERIFICATION.md for exact evidence.
