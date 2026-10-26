@@ -60,3 +60,5 @@ Validation status: automated review-boundary regression, TypeScript, optimized b
 - Idle, time limit and hidden-tab stops receive their own explanations. An offline notice explains why review/reconnect is temporarily unavailable. Nothing automatically retries paid work.
 
 Captured text is temporary in the current page/person/meal context. Only confirmed preferences/changes are durably saved by the normal workflow. Review uses the existing bounded text window; check for any omitted or cut-off words. The recovery Chromium evidence uses mocked transport and failures, as recorded in VERIFICATION.md.
+
+Hosted recovery acceptance also passes: a real voice session with controlled client interruption and one injected review rejection retained the text, retried without reconnecting, and generated a saved plan after confirmation. This complements the mocked-transport tests for both modes; see VERIFICATION.md.

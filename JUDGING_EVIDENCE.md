@@ -63,3 +63,6 @@ Hosted follow-up: both Meal Guide welcomes speak first and name Qloo with a sile
 
 
 Voice recovery update: 51/51 regressions, TypeScript and optimized build pass. Both voice UIs pass simulated Chromium interruption/retry/reconnect scenarios with captured text retained and no automatic paid retry. Mocked-transport QA is explicitly separate from live-provider evidence and the user's reported successful hosted fish revision. No guarantee of uninterrupted networking is claimed.
+
+
+Hosted recovery follow-up: one real voice session plus controlled client interruption/review rejection passed captured-text recovery, explicit retry without another voice start, confirmation and saved plan generation; server cleanup confirmed and zero page errors. Both modes separately passed mocked-transport recovery scenarios. Fault injection is labelled and is not evidence of a naturally occurring provider outage.

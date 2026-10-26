@@ -113,3 +113,5 @@ Account navigation now reuses the confirmed initial session token, avoiding an u
 Hosted Chromium verification confirms both welcome-first voice modes and the editable voice-review-to-saved-plan path, with zero browser page errors.
 
 Voice recovery keeps captured text available after an interruption, offers an explicit review retry, and preserves captions and notes across a user-requested reconnect. Saved changes still require confirmation.
+
+A hosted controlled-recovery check also passed captured-text review retry through to a saved plan, without restarting voice.
