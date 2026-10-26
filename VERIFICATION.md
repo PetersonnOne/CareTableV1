@@ -144,3 +144,6 @@ Regression: initial parallel run 46/47 with one five-second cleanup-test timeout
 
 
 Final 26 October voice run: the Interactive spoken-review journey generated a saved plan, then Discuss with AI connected with two-sided captions, mute/unmute passed, and a reviewed request saved a new meal revision. The discussion revision request included an explicit typed clarification; this is a mixed voice-plus-notes handoff, not a speech-only feedback acceptance claim. Browser page errors: zero. See `.private/voice-full-acceptance-report.json`.
+
+
+26 October scope correction: at the user's explicit request the niece/caregiver review is removed from the project scope, active backlog, release acceptance and presentation requirements. It must not block production. Historical references describe earlier proposals only; no review result or testimonial is claimed. The unused review kit and active claim/shot entry have been removed.

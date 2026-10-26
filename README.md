@@ -82,7 +82,6 @@ The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Disc
 
 ## What's next
 
-- Caregiver walkthroughs to gather practical feedback and refine the experience, using the prepared [review kit](research/qloo-competitive-review-2026-10-24/CAREGIVER_REVIEW_KIT.md).
 - Human review of the usefulness of culturally grounded choices, building on the completed controlled Qloo-on/off evaluation.
 - More culturally coherent recipe choices and richer meal-level explanations.
 - Complete release verification and the spoken-interaction acceptance journey.
