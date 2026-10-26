@@ -109,3 +109,5 @@ Account navigation now reuses the confirmed initial session token, avoiding an u
 
 
 **CareTable Meal Guide** is the conversational name for our planning layer. Qloo connects preferences with related tastes; the Meal Guide proposes meals; CareTable checks saved requirements. Voice sessions open with an AI welcome, and the review offers editable currency, optional budget/region and preparation time before explicit confirmation. Technical provider/model details remain in the architecture documentation.
+
+Hosted Chromium verification confirms both welcome-first voice modes and the editable voice-review-to-saved-plan path, with zero browser page errors.

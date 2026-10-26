@@ -57,3 +57,6 @@ Hosted follow-up: production signup/verification and fresh-session existing-acco
 
 
 Meal Guide update: local silent-microphone Chromium sessions in both modes speak first, explain Qloo's contribution and use the approved product name. Missing-currency review is recoverable through inline edits and explicit question review, followed by a saved plan; negative budget/time validation remains enforced. 48/48 regressions pass. Hosted acceptance follows deployment; no new recording was produced.
+
+
+Hosted follow-up: both Meal Guide welcomes speak first and name Qloo with a silent microphone; editable missing-currency review leads to a saved plan on production. Negative budget/time are blocked; zero browser page errors. See VERIFICATION.md for the exact synthetic-input test boundary.
