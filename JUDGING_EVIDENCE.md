@@ -24,7 +24,7 @@ Current verification: 47/47 regression tests and TypeScript pass on 26 October. 
 | --- | --- | --- | --- |
 | CT-P01 | Representative Qloo-on/off comparison | Controlled live-evidence evaluation completed | Nine fixed scenarios, catalog/mapping hashes, retained first and revised runs, negative cases, ranking/plan outcomes and method linked above. Deterministic plan control deliberately avoids LLM randomness; repeated actual-LLM and human comparison studies are further work. |
 | CT-P02 | Concise meal-level evidence receipt | Implemented; development browser journey passes | New saved meals preserve seed/connection provenance and before/after candidate ranks. Collapsible receipt explains app mapping and checks. No-match and unchanged rankings remain explicit. Historical plans without snapshots remain readable. |
-| CT-P03 | Dependable hosted judge journey | Hosted updated app delivered and core journey verified 26 October | GitHub main push automatically deployed the updated app to Vercel. Public-alias Chromium generation, receipt, refresh, mobile and reset pass with zero page errors. Earlier local revision evidence remains separate; hosted voice and owner provisioning retain their own gates. |
+| CT-P03 | Dependable hosted judge journey | Hosted updated app delivered and core journey verified 26 October | GitHub main push automatically deployed the updated app to Vercel. Public-alias Chromium generation, receipt, refresh, mobile and reset pass with zero page errors. Earlier local revision evidence remains separate; hosted voice retains its own gate; the verified production owner has been provisioned. |
 | CT-P05 | Targeted cultural variety and mapping coverage | Six recipes and reviewed mapping coverage completed | Catalog expands from 20 to 26; Italian/Chinese/Indian/Thai/Mexican/West African-inspired additions, exact reviewed provider-tag mappings, soy-exclusion test and round-robin household signals. Longer plans can still repeat; physical preparation and human familiarity remain to be reviewed. |
 | CT-P06 | Memorable evidence-backed improvement story | Story draft only; rehearsal paused | Actual before/after recording linked to saved plan versions, preserved restrictions/slots, accurate source labels and approved narration. R0 local preview does not satisfy live evidence. |
 
@@ -51,3 +51,6 @@ For every completed recommendation or material fix:
 
 
 26 October account UX validation: the authentication refresh/navigation race is fixed locally; Chromium records zero Leave site dialogs across filled-form exits, signup/verification, existing-account sign-in and recovery. Production owner setup is complete for the verified intended account. See VERIFICATION.md for method and deployment status.
+
+
+Hosted follow-up: production signup/verification and fresh-session existing-account navigation both passed with zero browser Leave site dialogs on the deployed fix. A combined test sign-out/re-login race is retained in VERIFICATION.md rather than omitted. Intended production owner provisioning is complete.

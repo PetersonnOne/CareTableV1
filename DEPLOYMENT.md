@@ -42,6 +42,6 @@ The latest app changes reached GitHub main and automatically produced a Ready Ve
 
 ## Release acceptance
 
-Local Chromium now connects both GPT Live modes with audio transport and captions; review-to-plan and discussion-plus-notes revision pass. Hosted signup/reset browser checks passed on 26 October. Hosted voice and human device listening remain separate acceptance checks. Production owner provisioning requires the intended owner to create and verify their account. No family or caregiver review is a release requirement.
+Local Chromium now connects both GPT Live modes with audio transport and captions; review-to-plan and discussion-plus-notes revision pass. Hosted signup/reset browser checks passed on 26 October. Hosted voice and human device listening remain separate acceptance checks. The intended production owner has now registered, verified their email and received the superadmin grant; the one-time bootstrap is complete. No family or caregiver review is a release requirement.
 
 Keep credentials out of screenshots, support files, command output, commits and public browser bundles. Run node --env-file=.env.local scripts/check-public-secrets.mjs after building. Never rotate existing signing keys just to retry deployment.
