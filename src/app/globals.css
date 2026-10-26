@@ -968,6 +968,9 @@ td code {
 .voice-session .button { font-size:.85rem; padding:10px 12px; }
 .voice-captions { border:1px solid var(--line); border-radius:8px; padding:12px; max-height:240px; overflow:auto; font-size:.88rem; }
 .voice-review { border-top:1px solid var(--line); margin-top:18px; padding-top:12px; }
+.voice-recovery {margin:16px 0;padding:18px;border:1px solid var(--warm);border-radius:16px;background:color-mix(in srgb,var(--warm) 7%,var(--surface));}
+.voice-recovery h4 {margin:0 0 10px;color:var(--text);}
+.voice-recovery p {margin:8px 0;font-size:13px;line-height:1.8;}
 .voice-session textarea { width:100%; }
 .companion-chat details { margin-top:18px; font-size:.85rem; }
 @media(max-width:1050px) { .studio-workspace { grid-template-columns:minmax(0,1fr); } .plan-companion { grid-template-columns:repeat(2,minmax(0,1fr)); align-items:start; } }

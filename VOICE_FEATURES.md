@@ -49,3 +49,14 @@ Each explicit Start voice sends one general Live commentary welcome cue after se
 Review now includes currency, optional region/budget and preparation-time inputs. Missing currency, invalid values and unreviewed questions have visible explanations beside confirmation. A blank budget explicitly means no budget limit. Questions are displayed for human review and can be acknowledged after editing the proposal; they are not an opaque permanent block. Re-preparing resets that acknowledgement. Existing exclusions are still preserved by the normal handoff, and the authoritative request schema still validates confirmation. An unspecified optional budget or region alone no longer generates a mandatory clarification question.
 
 Validation status: automated review-boundary regression, TypeScript, optimized build and development deployment pass. Both local welcome-first tests and the edited-review-to-saved-plan browser journey pass. The same welcome-first and edited-review checks also pass on the hosted production app; see VERIFICATION.md for exact evidence.
+
+
+## Recovery options
+
+- Interrupted voice: check the captured text, add anything missing, then choose **Prepare review from captured conversation**. Reconnecting is optional.
+- Review request fails: **Retry preparing review** reuses the same captured text and notes; the user does not need to repeat the conversation. Expired context instead requires a new session; rate limits ask the user to try later.
+- Reconnect: available after confirmed cleanup and the one-minute cooldown. It is a new voice session with another allowance, not a resumed audio recording. Previous captions/notes remain in this component and are used in the next reviewed proposal. The AI is told not to pretend to remember previous audio.
+- Manual entry: **Open User Mode** or **Open Chat** lets the user enter details themselves; it does not apply an unreviewed voice proposal.
+- Idle, time limit and hidden-tab stops receive their own explanations. An offline notice explains why review/reconnect is temporarily unavailable. Nothing automatically retries paid work.
+
+Captured text is temporary in the current page/person/meal context. Only confirmed preferences/changes are durably saved by the normal workflow. Review uses the existing bounded text window; check for any omitted or cut-off words. The recovery Chromium evidence uses mocked transport and failures, as recorded in VERIFICATION.md.

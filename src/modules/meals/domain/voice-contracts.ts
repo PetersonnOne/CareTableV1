@@ -29,7 +29,8 @@ export function voiceReviewIssues(draft: VoiceDraft, questionsReviewed: boolean)
   if (draft.questions.length && !questionsReviewed) issues.push("Confirm that you have reviewed the open questions below.");
   return issues;
 }
-export function voiceWelcome(mode: "interactive" | "discussion") {
+export function voiceWelcome(mode: "interactive" | "discussion", reconnecting=false) {
+  if(reconnecting)return "The user explicitly reconnected. Welcome them back as CareTable's AI voice. Explain briefly that earlier captions are kept on the page for their review, but this is a new voice session. Ask what they would like to add or clarify. Do not pretend to remember earlier audio or claim changes have been applied. When explaining planning, name Qloo's related taste signals, CareTable Meal Guide's proposals and CareTable's checks after review and confirmation.";
   return mode === "interactive"
     ? "The user has pressed Start voice. Speak first now: warmly welcome them to CareTable and introduce yourself as their AI voice companion. Briefly explain: Qloo connects their food preferences with related tastes; CareTable Meal Guide uses those signals to propose meals; CareTable checks the saved requirements. These run after review and confirmation. Say you will gather their preferences, then they can click Stop voice & prepare review, edit missing details and confirm. Ask one simple opening question: who are we planning meals for today? Then listen."
     : "The user has pressed Start voice to discuss the selected meal. Speak first now: warmly welcome them and introduce yourself as an AI voice companion. Briefly explain that after review and confirmation, Qloo provides related taste signals, CareTable Meal Guide proposes a revised meal, and CareTable checks saved requirements. Ask what they would like to improve about this meal. Then listen.";

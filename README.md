@@ -17,7 +17,7 @@ A little more care at every meal. CareTable helps caregivers and households find
 
 **Measured Qloo contribution:** a [nine-scenario development evaluation](research/qloo-competitive-review-2026-10-24/evidence/README.md) changed the top-three ordering in six scenarios and 12 slots in deterministic control plans, while preserving eligible sets and recording no failed hard checks in selected recipes. Both variants recognize the same known cuisine mappings. The study measures Qloo's effect on our selection logic, not human meal preferences or superiority over a generic LLM.
 
-**Demonstrated in development:** live Qloo-backed planning, targeted meal revision, saved receipts and refresh recovery. The current regression suite passes 48 tests; dated results and browser checks are recorded in [verification](VERIFICATION.md).
+**Demonstrated in development:** live Qloo-backed planning, targeted meal revision, saved receipts and refresh recovery. The current regression suite passes 51 tests; dated results and browser checks are recorded in [verification](VERIFICATION.md).
 
 See the [judging evidence register](JUDGING_EVIDENCE.md) for the supporting implementation and verification behind these advantages.
 
@@ -111,3 +111,5 @@ Account navigation now reuses the confirmed initial session token, avoiding an u
 **CareTable Meal Guide** is the conversational name for our planning layer. Qloo connects preferences with related tastes; the Meal Guide proposes meals; CareTable checks saved requirements. Voice sessions open with an AI welcome, and the review offers editable currency, optional budget/region and preparation time before explicit confirmation. Technical provider/model details remain in the architecture documentation.
 
 Hosted Chromium verification confirms both welcome-first voice modes and the editable voice-review-to-saved-plan path, with zero browser page errors.
+
+Voice recovery keeps captured text available after an interruption, offers an explicit review retry, and preserves captions and notes across a user-requested reconnect. Saved changes still require confirmation.
