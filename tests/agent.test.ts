@@ -75,7 +75,7 @@ describe("agent boundary", () => {
   });
   it("preserves the original when no quicker eligible alternative exists, without another model call", async () => {
     mocks.create.mockResolvedValueOnce(
-      response([{ day: 1, slot: "dinner", recipeId: "tomato-pasta" }]),
+      response([{ day: 1, slot: "dinner", recipeId: "basil-white-beans" }]),
     );
     const parent = await buildPlan(request, { onPhase: async () => {} });
     await expect(

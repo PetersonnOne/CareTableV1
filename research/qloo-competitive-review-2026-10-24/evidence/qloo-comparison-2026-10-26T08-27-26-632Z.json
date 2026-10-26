@@ -1,0 +1,2242 @@
+{
+  "catalogCount": 26,
+  "catalogSha256": "1b49d8dde0914a8d144ebdc54656aa398e7dc7596a8b132b190f6812717a55b9",
+  "evaluatedAt": "2026-10-26T08:27:28.874Z",
+  "mappingSha256": "9a873b2c46da21518acdee9a2f6c89f8761abb1fc23314fbefab7b27836cdc05",
+  "method": "Live Qloo evidence versus no Qloo evidence; fixed eligible catalog and constraints; deterministic ranking and least-used-first plan control. No LLM calls, no generic-LLM benchmark, no user preference or clinical outcome measurement.",
+  "rankingPolicy": "direct tag matches + 2 times strongest mapped affinity - 3 times dislike matches; least-used-first deterministic plan control",
+  "results": [
+    {
+      "comparison": {
+        "baselineTop3": [
+          "tomato-pasta",
+          "basil-white-beans",
+          "coconut-ginger-tofu"
+        ],
+        "changedMealSlots": 0,
+        "checksNeedingReview": 1,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "tomato-pasta",
+          "basil-white-beans",
+          "coconut-ginger-tofu"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 2,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.9490562677383423,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [
+              {
+                "affinity": 0.9490562677383423,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": false,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Italian"
+      ],
+      "id": "italian",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9490562677383423,
+            "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+            "name": "Mediterranean Italian"
+          },
+          {
+            "affinity": 0.9364557862281799,
+            "id": "urn:tag:genre:place:restaurant:italian_american",
+            "name": "Italian American"
+          },
+          {
+            "affinity": 0.9345488548278809,
+            "id": "urn:tag:genre:place:restaurant:french_italian",
+            "name": "French-Italian"
+          },
+          {
+            "affinity": 0.9320274591445923,
+            "id": "urn:tag:genre:place:restaurant:japanese_italian",
+            "name": "Japanese-Italian"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:10.448Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:italian",
+            "name": "Italian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "changedMealSlots": 3,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "carrot-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 19,
+        "groundedTop3": [
+          "ginger-pea-rice",
+          "carrot-rice",
+          "basil-white-beans"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 2,
+        "rankMovements": [
+          {
+            "baselineRank": 3,
+            "connections": [
+              {
+                "affinity": 0.9463050961494446,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [
+              {
+                "affinity": 0.9463050961494446,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "wheat"
+      ],
+      "favorites": [
+        "Chinese"
+      ],
+      "id": "chinese",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9475963711738586,
+            "id": "urn:tag:genre:place:restaurant:chinese_cuisine",
+            "name": "Chinese Cuisine"
+          },
+          {
+            "affinity": 0.9463050961494446,
+            "id": "urn:tag:genre:place:restaurant:asian",
+            "name": "Asian"
+          },
+          {
+            "affinity": 0.9438512325286865,
+            "id": "urn:tag:genre:place:restaurant:cantonese",
+            "name": "Cantonese"
+          },
+          {
+            "affinity": 0.9422692656517029,
+            "id": "urn:tag:genre:place:restaurant:korean_chinese",
+            "name": "Korean Chinese"
+          },
+          {
+            "affinity": 0.9334765672683716,
+            "id": "urn:tag:genre:place:restaurant:chinese_food",
+            "name": "Chinese food"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:10.728Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:chinese",
+            "name": "Chinese"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "changedMealSlots": 3,
+        "checksNeedingReview": 1,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-lentil-dal",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "tomato-lentil-dal",
+          "basil-white-beans",
+          "coconut-ginger-tofu"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 1,
+        "rankMovements": [
+          {
+            "baselineRank": 4,
+            "connections": [
+              {
+                "affinity": 0.9211916923522949,
+                "id": "urn:tag:genre:place:restaurant:north_indian",
+                "name": "North Indian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 2,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "dairy"
+      ],
+      "favorites": [
+        "Indian"
+      ],
+      "id": "indian",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9211916923522949,
+            "id": "urn:tag:genre:place:restaurant:north_indian",
+            "name": "North Indian"
+          },
+          {
+            "affinity": 0.9131869077682495,
+            "id": "urn:tag:genre:place:restaurant:indian_and_nepali",
+            "name": "Indian and Nepali"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:22.296Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:indian",
+            "name": "Indian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "ginger-pea-rice",
+          "tomato-lentil-dal"
+        ],
+        "changedMealSlots": 3,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "chickpea-spinach",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "coconut-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 19,
+        "groundedTop3": [
+          "coconut-rice",
+          "basil-white-beans",
+          "ginger-pea-rice"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 1,
+        "rankMovements": [
+          {
+            "baselineRank": 13,
+            "connections": [
+              {
+                "affinity": 0.9182326197624207,
+                "id": "urn:tag:cuisine:qloo:thai_local",
+                "name": "Thai Local"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 2,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "soy"
+      ],
+      "favorites": [
+        "Thai"
+      ],
+      "id": "thai-soy-excluded",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9182326197624207,
+            "id": "urn:tag:cuisine:qloo:thai_local",
+            "name": "Thai Local"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:28.100Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:thai",
+            "name": "Thai"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "changedMealSlots": 3,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "cumin-bean-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 19,
+        "groundedTop3": [
+          "cumin-bean-rice",
+          "bean-tomato",
+          "basil-white-beans"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 2,
+        "rankMovements": [
+          {
+            "baselineRank": 8,
+            "connections": [
+              {
+                "affinity": 0.9409247636795044,
+                "id": "urn:tag:genre:place:restaurant:tex_mex",
+                "name": "Tex-Mex"
+              },
+              {
+                "affinity": 0.9362173080444336,
+                "id": "urn:tag:genre:place:restaurant:modern_mexican",
+                "name": "Modern Mexican"
+              },
+              {
+                "affinity": 0.9319954514503479,
+                "id": "urn:tag:cuisine:qloo:local_mexican",
+                "name": "Local Mexican"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [
+              {
+                "affinity": 0.9319954514503479,
+                "id": "urn:tag:cuisine:qloo:local_mexican",
+                "name": "Local Mexican"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "eggs"
+      ],
+      "favorites": [
+        "Mexican"
+      ],
+      "id": "mexican",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9409247636795044,
+            "id": "urn:tag:genre:place:restaurant:tex_mex",
+            "name": "Tex-Mex"
+          },
+          {
+            "affinity": 0.9362173080444336,
+            "id": "urn:tag:genre:place:restaurant:modern_mexican",
+            "name": "Modern Mexican"
+          },
+          {
+            "affinity": 0.9319954514503479,
+            "id": "urn:tag:cuisine:qloo:local_mexican",
+            "name": "Local Mexican"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:28.231Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:mexican",
+            "name": "Mexican"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "changedMealSlots": 3,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "tomato-sweet-potato",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "tomato-sweet-potato",
+          "tomato-rice",
+          "basil-white-beans"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 2,
+        "rankMovements": [
+          {
+            "baselineRank": 10,
+            "connections": [
+              {
+                "affinity": 0.9943854808807373,
+                "id": "urn:tag:cuisine:qloo:nigerian_cuisine",
+                "name": "Nigerian Cuisine"
+              },
+              {
+                "affinity": 0.9792797565460205,
+                "id": "urn:tag:cuisine:qloo:traditional_nigerian",
+                "name": "Traditional Nigerian"
+              },
+              {
+                "affinity": 0.9701830148696899,
+                "id": "urn:tag:cuisine:qloo:nigerian_inspired",
+                "name": "Nigerian-Inspired"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [
+              {
+                "affinity": 0.9943854808807373,
+                "id": "urn:tag:cuisine:qloo:nigerian_cuisine",
+                "name": "Nigerian Cuisine"
+              },
+              {
+                "affinity": 0.9792797565460205,
+                "id": "urn:tag:cuisine:qloo:traditional_nigerian",
+                "name": "Traditional Nigerian"
+              },
+              {
+                "affinity": 0.9701830148696899,
+                "id": "urn:tag:cuisine:qloo:nigerian_inspired",
+                "name": "Nigerian-Inspired"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Nigerian"
+      ],
+      "id": "nigerian",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9943854808807373,
+            "id": "urn:tag:cuisine:qloo:nigerian_cuisine",
+            "name": "Nigerian Cuisine"
+          },
+          {
+            "affinity": 0.984190046787262,
+            "id": "urn:tag:cuisine:qloo:nigerian_foods",
+            "name": "Nigerian Foods"
+          },
+          {
+            "affinity": 0.9833119511604309,
+            "id": "urn:tag:cuisine:qloo:naija",
+            "name": "Naija"
+          },
+          {
+            "affinity": 0.9792797565460205,
+            "id": "urn:tag:cuisine:qloo:traditional_nigerian",
+            "name": "Traditional Nigerian"
+          },
+          {
+            "affinity": 0.9786268472671509,
+            "id": "urn:tag:cuisine:qloo:local_nigerian",
+            "name": "Local Nigerian"
+          },
+          {
+            "affinity": 0.9781922101974487,
+            "id": "urn:tag:cuisine:qloo:nigerian_delicacies",
+            "name": "Nigerian Delicacies"
+          },
+          {
+            "affinity": 0.9754123091697693,
+            "id": "urn:tag:cuisine:qloo:native_nigerian_cuisine",
+            "name": "Native Nigerian Cuisine"
+          },
+          {
+            "affinity": 0.9745311141014099,
+            "id": "urn:tag:cuisine:qloo:nigerian_local_cuisine",
+            "name": "Nigerian Local Cuisine"
+          },
+          {
+            "affinity": 0.9727560877799988,
+            "id": "urn:tag:cuisine:qloo:local_nigerian_cuisine",
+            "name": "Local Nigerian Cuisine"
+          },
+          {
+            "affinity": 0.9712953567504883,
+            "id": "urn:tag:cuisine:qloo:native_nigerian",
+            "name": "Native Nigerian"
+          },
+          {
+            "affinity": 0.9701830148696899,
+            "id": "urn:tag:cuisine:qloo:nigerian_inspired",
+            "name": "Nigerian-Inspired"
+          },
+          {
+            "affinity": 0.9694216847419739,
+            "id": "urn:tag:cuisine:qloo:nigerian_local_food",
+            "name": "Nigerian Local Food"
+          },
+          {
+            "affinity": 0.969394326210022,
+            "id": "urn:tag:cuisine:qloo:nigerian_local_dishes",
+            "name": "Nigerian Local Dishes"
+          },
+          {
+            "affinity": 0.9674614667892456,
+            "id": "urn:tag:cuisine:qloo:local_nigerian_dishes",
+            "name": "Local Nigerian Dishes"
+          },
+          {
+            "affinity": 0.954791247844696,
+            "id": "urn:tag:cuisine:qloo:nigerian_local_delicacies",
+            "name": "Nigerian Local Delicacies"
+          },
+          {
+            "affinity": 0.9542272686958313,
+            "id": "urn:tag:cuisine:qloo:local_nigerian_delicacies",
+            "name": "Local Nigerian Delicacies"
+          },
+          {
+            "affinity": 0.9540718197822571,
+            "id": "urn:tag:cuisine:qloo:eastern_nigerian",
+            "name": "Eastern Nigerian"
+          },
+          {
+            "affinity": 0.9538624286651611,
+            "id": "urn:tag:cuisine:qloo:nigerian_cafeteria_food",
+            "name": "Nigerian Cafeteria Food"
+          },
+          {
+            "affinity": 0.9537944793701172,
+            "id": "urn:tag:cuisine:qloo:nigerian_american",
+            "name": "Nigerian-American"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:28.392Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:cuisine:qloo:nigerian",
+            "name": "Nigerian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "tomato-pasta",
+          "basil-white-beans",
+          "coconut-ginger-tofu"
+        ],
+        "changedMealSlots": 2,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "carrot-rice",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "tomato-pasta",
+          "ginger-pea-rice",
+          "carrot-rice"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 4,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.9039416313171387,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [
+              {
+                "affinity": 0.9332287311553955,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [
+              {
+                "affinity": 0.9332287311553955,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 3,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [
+              {
+                "affinity": 0.9039416313171387,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              }
+            ],
+            "groundedRank": 4,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Italian",
+        "Chinese"
+      ],
+      "id": "mixed-partner",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9332287311553955,
+            "id": "urn:tag:genre:place:restaurant:asian",
+            "name": "Asian"
+          },
+          {
+            "affinity": 0.9258146286010742,
+            "id": "urn:tag:genre:place:restaurant:japanese_italian",
+            "name": "Japanese-Italian"
+          },
+          {
+            "affinity": 0.9169016480445862,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.9152014255523682,
+            "id": "urn:tag:genre:place:restaurant:cantonese",
+            "name": "Cantonese"
+          },
+          {
+            "affinity": 0.9141553044319153,
+            "id": "urn:tag:genre:place:restaurant:italian_american",
+            "name": "Italian American"
+          },
+          {
+            "affinity": 0.9132363200187683,
+            "id": "urn:tag:genre:place:restaurant:taiwanese",
+            "name": "Taiwanese"
+          },
+          {
+            "affinity": 0.906276285648346,
+            "id": "urn:tag:genre:place:restaurant:chinese_cuisine",
+            "name": "Chinese Cuisine"
+          },
+          {
+            "affinity": 0.9052582383155823,
+            "id": "urn:tag:genre:place:restaurant:filipino",
+            "name": "Filipino"
+          },
+          {
+            "affinity": 0.9050495624542236,
+            "id": "urn:tag:genre:place:restaurant:french_italian",
+            "name": "French-Italian"
+          },
+          {
+            "affinity": 0.9039416313171387,
+            "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+            "name": "Mediterranean Italian"
+          },
+          {
+            "affinity": 0.901989758014679,
+            "id": "urn:tag:genre:place:restaurant:french_chinese",
+            "name": "French Chinese"
+          },
+          {
+            "affinity": 0.9017542600631714,
+            "id": "urn:tag:genre:place:restaurant:korean_chinese",
+            "name": "Korean Chinese"
+          },
+          {
+            "affinity": 0.9008030891418457,
+            "id": "urn:tag:genre:place:restaurant:california_italian",
+            "name": "California Italian"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:28.715Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:chinese",
+            "name": "Chinese"
+          },
+          {
+            "id": "urn:tag:genre:place:restaurant:italian",
+            "name": "Italian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "changedMealSlots": 0,
+        "checksNeedingReview": 1,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 0,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 1,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 2,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": false,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "caretable-unsupported-cuisine-zz42"
+      ],
+      "id": "unresolved-input",
+      "status": "completed",
+      "taste": {
+        "connections": [],
+        "fetchedAt": "2026-10-26T08:27:28.831Z",
+        "message": "No exact dining/cuisine tag matched these inputs. Add a cuisine you enjoy; unsupported food names are not attributed to Qloo.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [],
+        "unresolved": [
+          "caretable unsupported cuisine zz42"
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [],
+        "changedMealSlots": 0,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": null,
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": null,
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 0,
+        "groundedTop3": [],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 0,
+        "rankMovements": [],
+        "sameEligibleSet": true,
+        "top3OrderChanged": false,
+        "unfilledSlots": 3,
+        "uniqueGroundedRecipes": 0
+      },
+      "equipment": [],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Italian"
+      ],
+      "id": "no-equipment",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9490562677383423,
+            "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+            "name": "Mediterranean Italian"
+          },
+          {
+            "affinity": 0.9364557862281799,
+            "id": "urn:tag:genre:place:restaurant:italian_american",
+            "name": "Italian American"
+          },
+          {
+            "affinity": 0.9345488548278809,
+            "id": "urn:tag:genre:place:restaurant:french_italian",
+            "name": "French-Italian"
+          },
+          {
+            "affinity": 0.9320274591445923,
+            "id": "urn:tag:genre:place:restaurant:japanese_italian",
+            "name": "Japanese-Italian"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:27:10.448Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:italian",
+            "name": "Italian"
+          }
+        ],
+        "unresolved": []
+      }
+    }
+  ],
+  "summary": {
+    "scenarios": 9,
+    "completed": 9,
+    "unavailable": 0,
+    "top3Changed": 6,
+    "changedMealSlots": 17,
+    "eligibleSetPreserved": true,
+    "hardCheckFailures": 0
+  }
+}

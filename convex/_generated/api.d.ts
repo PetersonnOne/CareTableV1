@@ -13,6 +13,7 @@ import type * as aiUsage from "../aiUsage.js";
 import type * as appearance from "../appearance.js";
 import type * as auth from "../auth.js";
 import type * as demo from "../demo.js";
+import type * as evaluation from "../evaluation.js";
 import type * as households from "../households.js";
 import type * as http from "../http.js";
 import type * as identity from "../identity.js";
@@ -41,6 +42,7 @@ declare const fullApi: ApiFromModules<{
   appearance: typeof appearance;
   auth: typeof auth;
   demo: typeof demo;
+  evaluation: typeof evaluation;
   households: typeof households;
   http: typeof http;
   identity: typeof identity;

@@ -1,0 +1,12 @@
+import {spawnSync} from "node:child_process";
+import {mkdir,writeFile} from "node:fs/promises";
+if(!process.env.CONVEX_DEPLOYMENT?.startsWith('dev:'))throw Error('Evaluation requires a selected development deployment');
+const run=spawnSync(process.execPath,['--use-system-ca','node_modules/convex/bin/main.js','run','evaluation:compare','{}'],{encoding:'utf8',timeout:300000,maxBuffer:4*1024*1024});
+if(run.status!==0)throw Error('Evaluation operator call failed; private CLI output suppressed');
+const result=JSON.parse(run.stdout);
+const completed=result.results.filter(row=>row.status==='completed');
+result.summary={scenarios:result.results.length,completed:completed.length,unavailable:result.results.length-completed.length,top3Changed:completed.filter(row=>row.comparison.top3OrderChanged).length,changedMealSlots:completed.reduce((n,row)=>n+row.comparison.changedMealSlots,0),eligibleSetPreserved:completed.every(row=>row.comparison.sameEligibleSet),hardCheckFailures:completed.reduce((n,row)=>n+row.comparison.hardCheckFailures,0)};
+const folder='research/qloo-competitive-review-2026-10-24/evidence';await mkdir(folder,{recursive:true});
+const file=`${folder}/qloo-comparison-${new Date().toISOString().replace(/[:.]/g,'-')}.json`;
+await writeFile(file,JSON.stringify(result,null,2));console.log(JSON.stringify({file,...result.summary}));
+if(!completed.length)process.exitCode=1;

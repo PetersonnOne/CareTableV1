@@ -12,7 +12,7 @@ const names = [
 const secrets = names
   .map((n) => process.env[n])
   .filter((v) => v && v.length > 12);
-const roots = ["src", "convex", "scripts", "tests", ".next/static"];
+const roots = ["src", "convex", "scripts", "tests", "research", ".next/static"];
 const bad = [];
 async function walk(dir) {
   let entries;

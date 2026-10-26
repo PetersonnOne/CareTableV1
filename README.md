@@ -8,14 +8,16 @@ A little more care at every meal. CareTable helps caregivers and households find
 
 | CareTable's edge | What we have built | See it in the product |
 | --- | --- | --- |
-| **Culturally grounded choices** | Real Qloo dining affinities influence eligible-recipe ranking, with traceable connections to CareTable's original recipes. | Resolved preferences, returned taste connections and the recipe mapping behind a suggestion. |
+| **Culturally grounded choices** | Real Qloo dining affinities influence eligible-recipe ranking, with traceable connections to CareTable's original recipes. | Open **Why this meal fits your table**: resolved signals → returned connections → our mapping → checks, plus saved before/after candidate ranks. |
 | **A place for each person's needs** | Individual, partner and family profiles retain member-specific exclusions and recipients. Independently checked portions provide another path when no shared recipe fits. | Household controls, recipient portions and ingredient checks. |
 | **Intelligence backed by checks** | Luna selects from eligible catalog IDs; application code checks ingredients, equipment, time and plan completeness. | Meal details and clear results for each applied catalog check. |
 | **Improve one meal, keep your plan** | Targeted feedback revises a selected meal while preserving saved restrictions, other slots and previous versions. | The selected meal before and after revision, with saved history. |
 | **People stay in control** | Reviewed settings and proposed changes need confirmation. Sample access, numbered guidance and contextual mode descriptions make the workflow approachable. | Fictional sample → review → generate → inspect → improve. |
 | **A workflow you can follow** | Taste evidence, original recipe attribution, durable jobs and saved-version recovery keep the process inspectable. | Source-backed explanations, job progress and previous plan versions. |
 
-**Demonstrated in development:** live Qloo-backed planning, targeted meal revision, saved-plan recovery and a controlled test showing cultural evidence changes candidate ranking. The last full regression run passed 40 tests; dated results and subsequent UI checks are recorded in [verification](VERIFICATION.md).
+**Measured Qloo contribution:** a [nine-scenario development evaluation](research/qloo-competitive-review-2026-10-24/evidence/README.md) changed the top-three ordering in six scenarios and 12 slots in deterministic control plans, while preserving eligible sets and recording no failed hard checks in selected recipes. Both variants recognize the same known cuisine mappings. The study measures Qloo's effect on our selection logic, not human meal preferences or superiority over a generic LLM.
+
+**Demonstrated in development:** live Qloo-backed planning, targeted meal revision, saved receipts and refresh recovery. The current regression suite passes 47 tests; dated results and browser checks are recorded in [verification](VERIFICATION.md).
 
 See the [judging evidence register](JUDGING_EVIDENCE.md) for the supporting implementation and verification behind these advantages.
 
@@ -60,8 +62,8 @@ Stop the development server before building; both use `.next`. See [deployment i
 
 ## How CareTable works
 
-- CareTable includes 20 original prototype recipes, licensed under MIT with this source. Each recipe carries its attribution.
-- Qloo uses exact restaurant/cuisine tags from up to three distinct favorite inputs, then dining affinities from Insights. The recipe mappings are CareTable's interpretation, visible separately from returned identifiers. Unmatched inputs stay unresolved. A warm-worker cuisine cache expires after 10 minutes and may be lost on a cold start.
+- CareTable includes 26 original prototype recipes, with six new cuisine-inspired choices covering reviewed Italian, Chinese, Indian, Thai, Mexican and West African mappings. Each recipe carries its attribution.
+- Qloo uses exact restaurant/cuisine tags from up to three distinct favorite inputs, selected round-robin across household members, then dining affinities from Insights. Recipe mappings are CareTable's interpretation. The strongest mapped affinity contributes to ranking so synonymous tags do not stack extra votes. Unmatched inputs stay unresolved. A warm-worker cuisine cache expires after 10 minutes and may be lost on a cold start.
 - Explicit ingredient matches fail a candidate for any intended eater. Each check displays its result; unsupported restrictions and incomplete composition are marked **cannot verify**.
 - Budgets identify their currency and whole-plan scope; without verified regional prices the budget result remains unknown.
 - Luna is fixed to `gpt-6-luna`; no automatic model upgrade exists. One constrained selection call and one deterministic repair pass are bounded. Requests use provider timeouts and a persisted expiry. Failure preserves profiles and earlier plan versions.
@@ -81,7 +83,7 @@ The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Disc
 ## What's next
 
 - Caregiver walkthroughs to gather practical feedback and refine the experience, using the prepared [review kit](research/qloo-competitive-review-2026-10-24/CAREGIVER_REVIEW_KIT.md).
-- Broader Qloo-on/off comparisons to measure the effect of cultural grounding across representative fictional households.
+- Human review of the usefulness of culturally grounded choices, building on the completed controlled Qloo-on/off evaluation.
 - More culturally coherent recipe choices and richer meal-level explanations.
 - Complete release verification and the spoken-interaction acceptance journey.
 

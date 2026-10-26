@@ -33,6 +33,16 @@ export type Meal = {
   recipientIds: string[];
   checks: { status: string; results: Check[] };
   tasteLinks: TasteConnection[];
+  selectionEvidence?: {
+    baselineRank: number;
+    groundedRank: number;
+    candidateCount: number;
+    qlooContribution: number;
+    mappings: string[];
+    fetchedAt: string;
+    seedNames: string[];
+    seedSignals?: {id:string;name:string}[];
+  };
   alternatives: {
     recipe: Recipe;
     checks: { status: string; results: Check[] };
@@ -51,17 +61,27 @@ export type PlanResult = {
   createdAt: string;
   feedback?: { day: number; slot: string; reason: string }[];
 };
-const mappings: Record<string, string[]> = {
+export const mappings: Record<string, string[]> = {
   "tomato-pasta": ["italian", "mediterranean italian", "mediterranean"],
   "chickpea-spinach": ["mediterranean", "middle eastern", "vegetarian"],
   "ginger-congee": ["chinese", "asian", "east asian"],
   "carrot-rice": ["chinese", "asian"],
   "lentil-coconut": ["indian", "south indian", "sri lankan"],
-  "tomato-rice": ["nigerian", "west african", "rice"],
-  "bean-tomato": ["mexican", "mediterranean", "vegetarian"],
+  "tomato-rice": ["nigerian", "west african", "rice", "nigerian cuisine", "traditional nigerian", "nigerian inspired"],
+  "bean-tomato": ["mexican", "mediterranean", "vegetarian", "local mexican"],
   "lentil-pot": ["vegetarian", "mediterranean"],
-  "coconut-rice": ["thai", "southeast asian"],
+  "coconut-rice": ["thai", "southeast asian", "thai local"],
+  "basil-white-beans": ["italian", "mediterranean italian", "mediterranean"],
+  "ginger-pea-rice": ["chinese", "asian", "east asian"],
+  "tomato-lentil-dal": ["indian", "north indian"],
+  "coconut-ginger-tofu": ["thai", "southeast asian", "thai local"],
+  "cumin-bean-rice": ["mexican", "tex mex", "modern mexican", "local mexican"],
+  "tomato-sweet-potato": ["nigerian", "west african", "nigerian cuisine", "traditional nigerian", "nigerian inspired"],
 };
+// One strongest observed affinity per recipe: synonymous tags do not get extra votes.
+export function tasteContribution(links: TasteConnection[]) {
+  return 2 * Math.max(0, ...links.map(link => link.affinity ?? 0));
+}
 export function linksFor(recipe: Recipe, connections: TasteConnection[]) {
   return connections.filter((c) =>
     [...recipe.tags, ...(mappings[recipe.id] || [])].some(
@@ -83,7 +103,8 @@ export function candidates(
       const favorites = request.members
         .flatMap((m) => m.favorites)
         .map(normalize);
-      const direct = recipe.tags.filter((t) =>
+      // The no-Qloo control gets the same known cuisine mappings, not a weaker catalog.
+      const direct = [...new Set([...recipe.tags, ...(mappings[recipe.id] || [])].map(normalize))].filter((t) =>
         favorites.includes(normalize(t)),
       ).length;
       return {
@@ -92,7 +113,7 @@ export function candidates(
         tasteLinks,
         score:
           direct +
-          2 * tasteLinks.reduce((n, l) => n + (l.affinity ?? 0), 0) -
+          tasteContribution(tasteLinks) -
           request.members
             .flatMap((m) => m.dislikes || [])
             .filter(
@@ -105,6 +126,23 @@ export function candidates(
     })
     .filter((c) => c.checks.status !== "fail")
     .sort((a, b) => b.score - a.score || a.recipe.minutes - b.recipe.minutes);
+}
+function selectionEvidence(request: PlanRequest, slot: string, recipeId: string, taste: TasteEvidence | null, excluded: string[]) {
+  if (!taste) return undefined;
+  const baseline = candidates(request, slot, [], excluded);
+  const grounded = candidates(request, slot, taste.connections, excluded);
+  const selected = grounded.find(c => c.recipe.id === recipeId);
+  if (!selected) return undefined;
+  return {
+    baselineRank: baseline.findIndex(c => c.recipe.id === recipeId) + 1,
+    groundedRank: grounded.findIndex(c => c.recipe.id === recipeId) + 1,
+    candidateCount: grounded.length,
+    qlooContribution: tasteContribution(selected.tasteLinks),
+    mappings: selected.tasteLinks.map(link => link.name),
+    fetchedAt: taste.fetchedAt,
+    seedNames: taste.seeds.map(seed => seed.name),
+    seedSignals: taste.seeds.map(seed => ({id:seed.id,name:seed.name})),
+  };
 }
 export function assemble(
   request: PlanRequest,
@@ -145,6 +183,7 @@ export function assemble(
           recipientIds: [member.id],
           checks: selected?.checks || { status: "unknown", results: [] },
           tasteLinks: selected?.tasteLinks || [],
+          ...(selected && taste ? { selectionEvidence: selectionEvidence(individual, spec.slot, selected.recipe.id, taste, exclude) } : {}),
           alternatives: choices
             .slice(1, 3)
             .map((c) => ({ recipe: c.recipe, checks: c.checks })),
@@ -177,6 +216,7 @@ export function assemble(
         recipientIds: request.members.map((m) => m.id),
         checks: selected.checks,
         tasteLinks: selected.tasteLinks,
+        ...(taste ? { selectionEvidence: selectionEvidence(request, spec.slot, selected.recipe.id, taste, exclude) } : {}),
         alternatives: options
           .filter((o) => o.recipe.id !== selected.recipe.id)
           .slice(0, 2)

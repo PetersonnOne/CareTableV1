@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import { z } from "zod";
 import { discoverTaste } from "./taste";
+import { householdTasteInputs } from "../../src/modules/meals/domain/taste-inputs.mjs";
 import {
   assemble,
   candidates,
@@ -23,7 +24,7 @@ export async function buildPlan(
 ): Promise<PlanResult> {
   if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_NOT_CONFIGURED");
   const taste = await discoverTaste(
-    request.members.flatMap((m) => m.favorites),
+    householdTasteInputs(request.members),
   );
   await onPhase("Finding eligible recipes and checking household needs");
   const exclude =

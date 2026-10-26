@@ -1,5 +1,7 @@
 # CareTable production readiness — 23 October 2026
 
+**26 October continuation:** the user resumed competitive improvements and the associated judge-journey verification. Video rehearsal stays paused. Current Qloo evaluation, meal receipts, catalog changes and verification are recorded in JUDGING_EVIDENCE.md and VERIFICATION.md. Earlier pause/status notes below are historical.
+
 **Work paused by the user on 23 October 2026.** Current priority is reference review and a CareTable demo rehearsal pipeline. Outstanding gates below are retained for resumption; no production completion percentage is inferred from the pause. No deployment or readiness claim follows from demo preparation.
 
 **Verdict: release candidate under verification; not approved as fully production-ready.** The PRD core and the added mode/theme features have implementation and test evidence. Live voice transport and hosted release verification remain blockers. A passing build or a created voice session is not end-to-end evidence.
@@ -84,3 +86,7 @@ Current local review URL: http://localhost:4318/planner. Current audio integrati
 - Read-only production lookup inspected two users and found no matching non-anonymous account for the selected owner. Owner email selection is complete; account signup, verification, owner provisioning and staff acceptance remain pending.
 - Voice transport and full signup/reset browser acceptance have not been reverified since the earlier audit. They remain unresolved acceptance gates; current mode/UI checks do not establish spoken-audio success.
 
+
+## 26 October competitive continuation result
+
+Qloo evidence evaluation, saved meal receipts and targeted catalog/mapping improvements are implemented and verified in development. The 47-test suite, TypeScript, optimized build and actual local optimized-build planning/revision/refresh journey pass. Hosted promotion/acceptance is currently blocked by renewed GitHub/Vercel connectivity failure from this machine. Remaining voice and account acceptance gates above are retained; no fully production-ready claim is made. The caregiver review and video recording have not been conducted by this continuation.

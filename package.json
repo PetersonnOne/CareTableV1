@@ -25,7 +25,8 @@
     "test": "vitest run",
     "convex:dev": "convex dev",
     "convex:deploy": "convex deploy",
-    "check:openai": "node --use-system-ca scripts/check-openai.mjs"
+    "check:openai": "node --use-system-ca scripts/check-openai.mjs",
+    "evaluate:qloo": "node --use-system-ca --env-file=.env.local scripts/evaluate-qloo.mjs"
   },
   "devDependencies": {
     "@edge-runtime/vm": "^5.0.0",

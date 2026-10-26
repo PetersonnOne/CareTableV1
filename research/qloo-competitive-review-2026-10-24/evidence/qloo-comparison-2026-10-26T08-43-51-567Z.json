@@ -1,0 +1,3539 @@
+{
+  "catalogCount": 26,
+  "catalogSha256": "1b49d8dde0914a8d144ebdc54656aa398e7dc7596a8b132b190f6812717a55b9",
+  "evaluatedAt": "2026-10-26T08:43:53.778Z",
+  "mappingSha256": "9a873b2c46da21518acdee9a2f6c89f8761abb1fc23314fbefab7b27836cdc05",
+  "method": "Live Qloo evidence versus no Qloo evidence; fixed eligible catalog and constraints; baseline includes the same known cuisine mappings; deterministic ranking and least-used-first plan control. No LLM calls, no generic-LLM benchmark, no user preference or clinical outcome measurement.",
+  "queryPolicy": "place-genre namespace; retain dining/cuisine IDs only; at most 40 returned tags",
+  "rankingPolicy": "direct recipe/tag mapping matches + 2 times strongest mapped affinity - 3 times dislike matches; least-used-first deterministic plan control",
+  "results": [
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "tomato-pasta",
+          "coconut-ginger-tofu"
+        ],
+        "changedMealSlots": 1,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "basil-white-beans",
+          "tomato-pasta",
+          "chickpea-spinach"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 5,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.9490562677383423,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              },
+              {
+                "affinity": 0.8756234645843506,
+                "id": "urn:tag:genre:place:restaurant:mediterranean",
+                "name": "Mediterranean"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [
+              {
+                "affinity": 0.9490562677383423,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              },
+              {
+                "affinity": 0.8756234645843506,
+                "id": "urn:tag:genre:place:restaurant:mediterranean",
+                "name": "Mediterranean"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [
+              {
+                "affinity": 0.8756234645843506,
+                "id": "urn:tag:genre:place:restaurant:mediterranean",
+                "name": "Mediterranean"
+              }
+            ],
+            "groundedRank": 3,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [
+              {
+                "affinity": 0.8756234645843506,
+                "id": "urn:tag:genre:place:restaurant:mediterranean",
+                "name": "Mediterranean"
+              }
+            ],
+            "groundedRank": 4,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [
+              {
+                "affinity": 0.8756234645843506,
+                "id": "urn:tag:genre:place:restaurant:mediterranean",
+                "name": "Mediterranean"
+              }
+            ],
+            "groundedRank": 5,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Italian"
+      ],
+      "id": "italian",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9490562677383423,
+            "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+            "name": "Mediterranean Italian"
+          },
+          {
+            "affinity": 0.9364557862281799,
+            "id": "urn:tag:genre:place:restaurant:italian_american",
+            "name": "Italian American"
+          },
+          {
+            "affinity": 0.9345488548278809,
+            "id": "urn:tag:genre:place:restaurant:french_italian",
+            "name": "French-Italian"
+          },
+          {
+            "affinity": 0.9320274591445923,
+            "id": "urn:tag:genre:place:restaurant:japanese_italian",
+            "name": "Japanese-Italian"
+          },
+          {
+            "affinity": 0.9210925102233887,
+            "id": "urn:tag:genre:place:restaurant:california_italian",
+            "name": "California Italian"
+          },
+          {
+            "affinity": 0.9105318784713745,
+            "id": "urn:tag:genre:place:restaurant:spooky_italian",
+            "name": "Spooky Italian"
+          },
+          {
+            "affinity": 0.9005553722381592,
+            "id": "urn:tag:genre:place:restaurant:italian_/_pizza",
+            "name": "Italian / Pizza"
+          },
+          {
+            "affinity": 0.8863694071769714,
+            "id": "urn:tag:genre:place:restaurant:spanish",
+            "name": "Spanish"
+          },
+          {
+            "affinity": 0.8860161304473877,
+            "id": "urn:tag:genre:place:restaurant:american/_southern_italian",
+            "name": "American/ Southern Italian"
+          },
+          {
+            "affinity": 0.885121762752533,
+            "id": "urn:tag:genre:place:restaurant:italian_&_pizza",
+            "name": "Italian & Pizza"
+          },
+          {
+            "affinity": 0.8851216435432434,
+            "id": "urn:tag:genre:place:restaurant:italian_pizza",
+            "name": "Italian & Pizza"
+          },
+          {
+            "affinity": 0.8785054683685303,
+            "id": "urn:tag:genre:place:restaurant:european",
+            "name": "European"
+          },
+          {
+            "affinity": 0.8782608509063721,
+            "id": "urn:tag:genre:place:restaurant:portuguese",
+            "name": "Portuguese"
+          },
+          {
+            "affinity": 0.8769108653068542,
+            "id": "urn:tag:genre:place:restaurant:argentinean",
+            "name": "Argentinean"
+          },
+          {
+            "affinity": 0.8767126798629761,
+            "id": "urn:tag:genre:place:restaurant:piedmontese",
+            "name": "Piedmontese restaurant"
+          },
+          {
+            "affinity": 0.8756234645843506,
+            "id": "urn:tag:genre:place:restaurant:mediterranean",
+            "name": "Mediterranean"
+          },
+          {
+            "affinity": 0.8731814622879028,
+            "id": "urn:tag:genre:place:restaurant:sardinian",
+            "name": "Sardinian restaurant"
+          },
+          {
+            "affinity": 0.8727630376815796,
+            "id": "urn:tag:genre:place:restaurant:southern_italian",
+            "name": "Southern Italian restaurant"
+          },
+          {
+            "affinity": 0.8717877268791199,
+            "id": "urn:tag:genre:place:restaurant:southern_european",
+            "name": "Southern European"
+          },
+          {
+            "affinity": 0.87066650390625,
+            "id": "urn:tag:genre:place:restaurant:latin_american",
+            "name": "Latin American"
+          },
+          {
+            "affinity": 0.8683595061302185,
+            "id": "urn:tag:genre:place:restaurant:neapolitan",
+            "name": "Neapolitan restaurant"
+          },
+          {
+            "affinity": 0.8679042458534241,
+            "id": "urn:tag:genre:place:restaurant:sicilian",
+            "name": "Sicilian restaurant"
+          },
+          {
+            "affinity": 0.8678281307220459,
+            "id": "urn:tag:genre:place:restaurant:ligurian",
+            "name": "Ligurian restaurant"
+          },
+          {
+            "affinity": 0.8654080033302307,
+            "id": "urn:tag:genre:place:restaurant:regional",
+            "name": "Regional"
+          },
+          {
+            "affinity": 0.8617877960205078,
+            "id": "urn:tag:genre:place:restaurant:pan_latin",
+            "name": "Pan-Latin"
+          },
+          {
+            "affinity": 0.8617508411407471,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.8609308004379272,
+            "id": "urn:tag:genre:place:restaurant:lombardian",
+            "name": "Lombardian restaurant"
+          },
+          {
+            "affinity": 0.8599271774291992,
+            "id": "urn:tag:genre:place:restaurant:german",
+            "name": "German"
+          },
+          {
+            "affinity": 0.8555381894111633,
+            "id": "urn:tag:genre:place:restaurant:brazilian",
+            "name": "Brazilian"
+          },
+          {
+            "affinity": 0.8549107909202576,
+            "id": "urn:tag:genre:place:restaurant:northern_italian",
+            "name": "Northern Italian restaurant"
+          },
+          {
+            "affinity": 0.8547452688217163,
+            "id": "urn:tag:genre:place:restaurant:",
+            "name": "*"
+          },
+          {
+            "affinity": 0.8545167446136475,
+            "id": "urn:tag:genre:place:restaurant:greek",
+            "name": "Greek"
+          },
+          {
+            "affinity": 0.8525974750518799,
+            "id": "urn:tag:genre:place:restaurant:local",
+            "name": "Local"
+          },
+          {
+            "affinity": 0.852333128452301,
+            "id": "urn:tag:genre:place:restaurant:tuscan",
+            "name": "Tuscan restaurant"
+          },
+          {
+            "affinity": 0.8511984348297119,
+            "id": "urn:tag:genre:place:restaurant:south_american",
+            "name": "South American"
+          },
+          {
+            "affinity": 0.8485977649688721,
+            "id": "urn:tag:genre:place:restaurant:pizza",
+            "name": "Pizza"
+          },
+          {
+            "affinity": 0.8481958508491516,
+            "id": "urn:tag:genre:place:restaurant:portuguese_japanese",
+            "name": "Portuguese-Japanese"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:36.134Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:italian",
+            "name": "Italian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "ginger-pea-rice",
+          "carrot-rice",
+          "basil-white-beans"
+        ],
+        "changedMealSlots": 1,
+        "checksNeedingReview": 1,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "carrot-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "carrot-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 19,
+        "groundedTop3": [
+          "ginger-pea-rice",
+          "carrot-rice",
+          "coconut-ginger-tofu"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 4,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.9463050961494446,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [
+              {
+                "affinity": 0.9463050961494446,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [
+              {
+                "affinity": 0.878661036491394,
+                "id": "urn:tag:genre:place:restaurant:southeast_asian",
+                "name": "Southeast Asian"
+              },
+              {
+                "affinity": 0.8717960715293884,
+                "id": "urn:tag:genre:place:restaurant:thai",
+                "name": "Thai"
+              }
+            ],
+            "groundedRank": 3,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [
+              {
+                "affinity": 0.878661036491394,
+                "id": "urn:tag:genre:place:restaurant:southeast_asian",
+                "name": "Southeast Asian"
+              },
+              {
+                "affinity": 0.8717960715293884,
+                "id": "urn:tag:genre:place:restaurant:thai",
+                "name": "Thai"
+              }
+            ],
+            "groundedRank": 4,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "wheat"
+      ],
+      "favorites": [
+        "Chinese"
+      ],
+      "id": "chinese",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9475963711738586,
+            "id": "urn:tag:genre:place:restaurant:chinese_cuisine",
+            "name": "Chinese Cuisine"
+          },
+          {
+            "affinity": 0.9463050961494446,
+            "id": "urn:tag:genre:place:restaurant:asian",
+            "name": "Asian"
+          },
+          {
+            "affinity": 0.9438512325286865,
+            "id": "urn:tag:genre:place:restaurant:cantonese",
+            "name": "Cantonese"
+          },
+          {
+            "affinity": 0.9422692656517029,
+            "id": "urn:tag:genre:place:restaurant:korean_chinese",
+            "name": "Korean Chinese"
+          },
+          {
+            "affinity": 0.9334765672683716,
+            "id": "urn:tag:genre:place:restaurant:chinese_food",
+            "name": "Chinese food"
+          },
+          {
+            "affinity": 0.9174988865852356,
+            "id": "urn:tag:genre:place:restaurant:french_chinese",
+            "name": "French Chinese"
+          },
+          {
+            "affinity": 0.9126097559928894,
+            "id": "urn:tag:genre:place:restaurant:taiwanese",
+            "name": "Taiwanese"
+          },
+          {
+            "affinity": 0.9046582579612732,
+            "id": "urn:tag:genre:place:restaurant:szechuan",
+            "name": "Szechuan"
+          },
+          {
+            "affinity": 0.9017462730407715,
+            "id": "urn:tag:genre:place:restaurant:mandarin",
+            "name": "Mandarin restaurant"
+          },
+          {
+            "affinity": 0.8989266157150269,
+            "id": "urn:tag:genre:place:restaurant:asian_american",
+            "name": "Asian American"
+          },
+          {
+            "affinity": 0.895679235458374,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.8941472768783569,
+            "id": "urn:tag:genre:place:restaurant:shanghainese",
+            "name": "Shanghainese restaurant"
+          },
+          {
+            "affinity": 0.8886898159980774,
+            "id": "urn:tag:genre:place:restaurant:chinese_tea_house",
+            "name": "Chinese tea house"
+          },
+          {
+            "affinity": 0.878661036491394,
+            "id": "urn:tag:genre:place:restaurant:southeast_asian",
+            "name": "Southeast Asian"
+          },
+          {
+            "affinity": 0.8767128586769104,
+            "id": "urn:tag:genre:place:restaurant:korean",
+            "name": "Korean"
+          },
+          {
+            "affinity": 0.8755835294723511,
+            "id": "urn:tag:genre:place:restaurant:korean_japanese",
+            "name": "Korean Japanese"
+          },
+          {
+            "affinity": 0.8733423948287964,
+            "id": "urn:tag:genre:place:restaurant:chinese_bakery",
+            "name": "Chinese bakery"
+          },
+          {
+            "affinity": 0.8717960715293884,
+            "id": "urn:tag:genre:place:restaurant:thai",
+            "name": "Thai"
+          },
+          {
+            "affinity": 0.8712304830551147,
+            "id": "urn:tag:genre:place:restaurant:malaysian",
+            "name": "Malaysian"
+          },
+          {
+            "affinity": 0.8683558106422424,
+            "id": "urn:tag:genre:place:restaurant:filipino",
+            "name": "Filipino"
+          },
+          {
+            "affinity": 0.8679282069206238,
+            "id": "urn:tag:genre:place:restaurant:modern_pan_asian",
+            "name": "Modern Pan-Asian"
+          },
+          {
+            "affinity": 0.8676043748855591,
+            "id": "urn:tag:genre:place:restaurant:dim_sum",
+            "name": "Dim Sum"
+          },
+          {
+            "affinity": 0.8659812808036804,
+            "id": "urn:tag:genre:place:restaurant:beijing",
+            "name": "Beijing restaurant"
+          },
+          {
+            "affinity": 0.8647409081459045,
+            "id": "urn:tag:genre:place:restaurant:chinese_noodle",
+            "name": "Chinese noodle restaurant"
+          },
+          {
+            "affinity": 0.8584170937538147,
+            "id": "urn:tag:genre:place:restaurant:zhejiang",
+            "name": "Zhejiang restaurant"
+          },
+          {
+            "affinity": 0.8582858443260193,
+            "id": "urn:tag:genre:place:restaurant:wok",
+            "name": "Wok restaurant"
+          },
+          {
+            "affinity": 0.85821533203125,
+            "id": "urn:tag:genre:place:restaurant:vietnamese",
+            "name": "Vietnamese"
+          },
+          {
+            "affinity": 0.8567928671836853,
+            "id": "urn:tag:genre:place:restaurant:asian_american_mediterranean",
+            "name": "Asian-American-Mediterranean"
+          },
+          {
+            "affinity": 0.856070339679718,
+            "id": "urn:tag:genre:place:restaurant:jiangsu",
+            "name": "Jiangsu restaurant"
+          },
+          {
+            "affinity": 0.8557471036911011,
+            "id": "urn:tag:genre:place:restaurant:chueotang",
+            "name": "Chueotang restaurant"
+          },
+          {
+            "affinity": 0.8556985855102539,
+            "id": "urn:tag:genre:place:restaurant:sichuan",
+            "name": "Sichuan restaurant"
+          },
+          {
+            "affinity": 0.8548038005828857,
+            "id": "urn:tag:genre:place:restaurant:korean_american",
+            "name": "Korean American"
+          },
+          {
+            "affinity": 0.8526319265365601,
+            "id": "urn:tag:genre:place:restaurant:japanese_american",
+            "name": "Japanese-American"
+          },
+          {
+            "affinity": 0.8519971370697021,
+            "id": "urn:tag:genre:place:restaurant:local",
+            "name": "Local"
+          },
+          {
+            "affinity": 0.8497629165649414,
+            "id": "urn:tag:genre:place:restaurant:chinese_takeaway",
+            "name": "Chinese takeaway"
+          },
+          {
+            "affinity": 0.8496474623680115,
+            "id": "urn:tag:genre:place:restaurant:portuguese_japanese",
+            "name": "Portuguese-Japanese"
+          },
+          {
+            "affinity": 0.8478645086288452,
+            "id": "urn:tag:genre:place:restaurant:fujian",
+            "name": "Fujian restaurant"
+          },
+          {
+            "affinity": 0.8471585512161255,
+            "id": "urn:tag:genre:place:restaurant:cambodian",
+            "name": "Cambodian"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:36.999Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:chinese",
+            "name": "Chinese"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "tomato-lentil-dal",
+          "lentil-coconut",
+          "basil-white-beans"
+        ],
+        "changedMealSlots": 2,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-lentil-dal",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "lentil-coconut",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-lentil-dal",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "carrot-rice",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "tomato-lentil-dal",
+          "ginger-pea-rice",
+          "carrot-rice"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 8,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.9211916923522949,
+                "id": "urn:tag:genre:place:restaurant:north_indian",
+                "name": "North Indian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [
+              {
+                "affinity": 0.8786497712135315,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              },
+              {
+                "affinity": 0.8612334728240967,
+                "id": "urn:tag:genre:place:restaurant:chinese",
+                "name": "Chinese"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [
+              {
+                "affinity": 0.8786497712135315,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              },
+              {
+                "affinity": 0.8612334728240967,
+                "id": "urn:tag:genre:place:restaurant:chinese",
+                "name": "Chinese"
+              }
+            ],
+            "groundedRank": 3,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [
+              {
+                "affinity": 0.8698028922080994,
+                "id": "urn:tag:genre:place:restaurant:nigerian",
+                "name": "Nigerian"
+              }
+            ],
+            "groundedRank": 4,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [
+              {
+                "affinity": 0.8698028922080994,
+                "id": "urn:tag:genre:place:restaurant:nigerian",
+                "name": "Nigerian"
+              }
+            ],
+            "groundedRank": 5,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [
+              {
+                "affinity": 0.8511950969696045,
+                "id": "urn:tag:genre:place:restaurant:thai",
+                "name": "Thai"
+              },
+              {
+                "affinity": 0.8511306643486023,
+                "id": "urn:tag:genre:place:restaurant:southeast_asian",
+                "name": "Southeast Asian"
+              }
+            ],
+            "groundedRank": 6,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [
+              {
+                "affinity": 0.8511950969696045,
+                "id": "urn:tag:genre:place:restaurant:thai",
+                "name": "Thai"
+              },
+              {
+                "affinity": 0.8511306643486023,
+                "id": "urn:tag:genre:place:restaurant:southeast_asian",
+                "name": "Southeast Asian"
+              }
+            ],
+            "groundedRank": 7,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [
+              {
+                "affinity": 0.8455631136894226,
+                "id": "urn:tag:genre:place:restaurant:middle_eastern",
+                "name": "Middle Eastern"
+              }
+            ],
+            "groundedRank": 8,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "dairy"
+      ],
+      "favorites": [
+        "Indian"
+      ],
+      "id": "indian",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9211916923522949,
+            "id": "urn:tag:genre:place:restaurant:north_indian",
+            "name": "North Indian"
+          },
+          {
+            "affinity": 0.9131869077682495,
+            "id": "urn:tag:genre:place:restaurant:indian_and_nepali",
+            "name": "Indian and Nepali"
+          },
+          {
+            "affinity": 0.9052802920341492,
+            "id": "urn:tag:genre:place:restaurant:pakistani",
+            "name": "Pakistani"
+          },
+          {
+            "affinity": 0.9029139280319214,
+            "id": "urn:tag:genre:place:restaurant:indo_french",
+            "name": "Indo-French"
+          },
+          {
+            "affinity": 0.8869451284408569,
+            "id": "urn:tag:genre:place:restaurant:sri_lanka",
+            "name": "Sri Lanka"
+          },
+          {
+            "affinity": 0.8843429684638977,
+            "id": "urn:tag:genre:place:restaurant:bangladeshi",
+            "name": "Bangladeshi"
+          },
+          {
+            "affinity": 0.8841183185577393,
+            "id": "urn:tag:genre:place:restaurant:indonesian",
+            "name": "Indonesian"
+          },
+          {
+            "affinity": 0.8825136423110962,
+            "id": "urn:tag:genre:place:restaurant:malaysian",
+            "name": "Malaysian"
+          },
+          {
+            "affinity": 0.8786497712135315,
+            "id": "urn:tag:genre:place:restaurant:asian",
+            "name": "Asian"
+          },
+          {
+            "affinity": 0.8701508641242981,
+            "id": "urn:tag:genre:place:restaurant:local",
+            "name": "Local"
+          },
+          {
+            "affinity": 0.8698028922080994,
+            "id": "urn:tag:genre:place:restaurant:nigerian",
+            "name": "Nigerian"
+          },
+          {
+            "affinity": 0.868600070476532,
+            "id": "urn:tag:genre:place:restaurant:",
+            "name": "*"
+          },
+          {
+            "affinity": 0.8657274842262268,
+            "id": "urn:tag:genre:place:restaurant:israeli",
+            "name": "Israeli"
+          },
+          {
+            "affinity": 0.8649412393569946,
+            "id": "urn:tag:genre:place:restaurant:jewish",
+            "name": "Jewish"
+          },
+          {
+            "affinity": 0.8638906478881836,
+            "id": "urn:tag:genre:place:restaurant:persian",
+            "name": "Persian"
+          },
+          {
+            "affinity": 0.8612334728240967,
+            "id": "urn:tag:genre:place:restaurant:chinese",
+            "name": "Chinese"
+          },
+          {
+            "affinity": 0.8583505153656006,
+            "id": "urn:tag:genre:place:restaurant:regional",
+            "name": "Regional"
+          },
+          {
+            "affinity": 0.857334554195404,
+            "id": "urn:tag:genre:place:restaurant:turkish",
+            "name": "Turkish"
+          },
+          {
+            "affinity": 0.8569132089614868,
+            "id": "urn:tag:genre:place:restaurant:taiwanese",
+            "name": "Taiwanese"
+          },
+          {
+            "affinity": 0.8568861484527588,
+            "id": "urn:tag:genre:place:restaurant:indian_inspired_bistro",
+            "name": "Indian Inspired Bistro"
+          },
+          {
+            "affinity": 0.8560196757316589,
+            "id": "urn:tag:genre:place:restaurant:indian_muslim",
+            "name": "Indian Muslim restaurant"
+          },
+          {
+            "affinity": 0.8539310693740845,
+            "id": "urn:tag:genre:place:restaurant:north_eastern_indian",
+            "name": "North Eastern Indian restaurant"
+          },
+          {
+            "affinity": 0.8530689477920532,
+            "id": "urn:tag:genre:place:restaurant:indian_sweets_shop",
+            "name": "Indian sweets shop"
+          },
+          {
+            "affinity": 0.852924108505249,
+            "id": "urn:tag:genre:place:restaurant:african",
+            "name": "African"
+          },
+          {
+            "affinity": 0.8528336882591248,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.8511950969696045,
+            "id": "urn:tag:genre:place:restaurant:thai",
+            "name": "Thai"
+          },
+          {
+            "affinity": 0.8511306643486023,
+            "id": "urn:tag:genre:place:restaurant:southeast_asian",
+            "name": "Southeast Asian"
+          },
+          {
+            "affinity": 0.8485687971115112,
+            "id": "urn:tag:genre:place:restaurant:south_asian",
+            "name": "South Asian restaurant"
+          },
+          {
+            "affinity": 0.8463854193687439,
+            "id": "urn:tag:genre:place:restaurant:south_indian",
+            "name": "South Indian restaurant"
+          },
+          {
+            "affinity": 0.8455631136894226,
+            "id": "urn:tag:genre:place:restaurant:middle_eastern",
+            "name": "Middle Eastern"
+          },
+          {
+            "affinity": 0.8454161882400513,
+            "id": "urn:tag:genre:place:restaurant:central_asian",
+            "name": "Central Asian"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:37.438Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:indian",
+            "name": "Indian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "coconut-rice",
+          "basil-white-beans",
+          "ginger-pea-rice"
+        ],
+        "changedMealSlots": 2,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "coconut-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "coconut-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "carrot-rice",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 19,
+        "groundedTop3": [
+          "coconut-rice",
+          "ginger-pea-rice",
+          "carrot-rice"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 3,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.9111800193786621,
+                "id": "urn:tag:genre:place:restaurant:southeast_asian",
+                "name": "Southeast Asian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [
+              {
+                "affinity": 0.9063788652420044,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              },
+              {
+                "affinity": 0.8717960715293884,
+                "id": "urn:tag:genre:place:restaurant:chinese",
+                "name": "Chinese"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [
+              {
+                "affinity": 0.9063788652420044,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              },
+              {
+                "affinity": 0.8717960715293884,
+                "id": "urn:tag:genre:place:restaurant:chinese",
+                "name": "Chinese"
+              }
+            ],
+            "groundedRank": 3,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "soy"
+      ],
+      "favorites": [
+        "Thai"
+      ],
+      "id": "thai-soy-excluded",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9111800193786621,
+            "id": "urn:tag:genre:place:restaurant:southeast_asian",
+            "name": "Southeast Asian"
+          },
+          {
+            "affinity": 0.9063788652420044,
+            "id": "urn:tag:genre:place:restaurant:asian",
+            "name": "Asian"
+          },
+          {
+            "affinity": 0.8924477696418762,
+            "id": "urn:tag:genre:place:restaurant:cambodian",
+            "name": "Cambodian"
+          },
+          {
+            "affinity": 0.878984272480011,
+            "id": "urn:tag:genre:place:restaurant:vietnamese",
+            "name": "Vietnamese"
+          },
+          {
+            "affinity": 0.878081202507019,
+            "id": "urn:tag:genre:place:restaurant:taiwanese",
+            "name": "Taiwanese"
+          },
+          {
+            "affinity": 0.8717960715293884,
+            "id": "urn:tag:genre:place:restaurant:chinese",
+            "name": "Chinese"
+          },
+          {
+            "affinity": 0.8687809705734253,
+            "id": "urn:tag:genre:place:restaurant:filipino",
+            "name": "Filipino"
+          },
+          {
+            "affinity": 0.8684812784194946,
+            "id": "urn:tag:genre:place:restaurant:malaysian",
+            "name": "Malaysian"
+          },
+          {
+            "affinity": 0.8679524660110474,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.8679515719413757,
+            "id": "urn:tag:genre:place:restaurant:peruvian_vietnamese",
+            "name": "Peruvian Vietnamese"
+          },
+          {
+            "affinity": 0.8611762523651123,
+            "id": "urn:tag:genre:place:restaurant:korean",
+            "name": "Korean"
+          },
+          {
+            "affinity": 0.8601087927818298,
+            "id": "urn:tag:genre:place:restaurant:asian_american",
+            "name": "Asian American"
+          },
+          {
+            "affinity": 0.8583154678344727,
+            "id": "urn:tag:genre:place:restaurant:indonesian",
+            "name": "Indonesian"
+          },
+          {
+            "affinity": 0.8523176908493042,
+            "id": "urn:tag:genre:place:restaurant:local",
+            "name": "Local"
+          },
+          {
+            "affinity": 0.8506811857223511,
+            "id": "urn:tag:genre:place:restaurant:french_chinese",
+            "name": "French Chinese"
+          },
+          {
+            "affinity": 0.847495436668396,
+            "id": "urn:tag:genre:place:restaurant:korean_japanese",
+            "name": "Korean Japanese"
+          },
+          {
+            "affinity": 0.8463727235794067,
+            "id": "urn:tag:genre:place:restaurant:french_vietnamese",
+            "name": "French Vietnamese"
+          },
+          {
+            "affinity": 0.8432842493057251,
+            "id": "urn:tag:genre:place:restaurant:cantonese",
+            "name": "Cantonese"
+          },
+          {
+            "affinity": 0.8432682156562805,
+            "id": "urn:tag:genre:place:restaurant:korean_chinese",
+            "name": "Korean Chinese"
+          },
+          {
+            "affinity": 0.8422316908836365,
+            "id": "urn:tag:genre:place:restaurant:asian_american_mediterranean",
+            "name": "Asian-American-Mediterranean"
+          },
+          {
+            "affinity": 0.8414045572280884,
+            "id": "urn:tag:genre:place:restaurant:laotian",
+            "name": "Laotian restaurant"
+          },
+          {
+            "affinity": 0.8399443030357361,
+            "id": "urn:tag:genre:place:restaurant:burmese_californian",
+            "name": "Burmese-Californian"
+          },
+          {
+            "affinity": 0.839709460735321,
+            "id": "urn:tag:genre:place:restaurant:peruvian",
+            "name": "Peruvian"
+          },
+          {
+            "affinity": 0.8370357751846313,
+            "id": "urn:tag:genre:place:restaurant:korean_american",
+            "name": "Korean American"
+          },
+          {
+            "affinity": 0.8337234854698181,
+            "id": "urn:tag:genre:place:restaurant:japanese_peruvian",
+            "name": "Japanese - Peruvian"
+          },
+          {
+            "affinity": 0.8333255052566528,
+            "id": "urn:tag:genre:place:restaurant:spanish",
+            "name": "Spanish"
+          },
+          {
+            "affinity": 0.8298370838165283,
+            "id": "urn:tag:genre:place:restaurant:portuguese_japanese",
+            "name": "Portuguese-Japanese"
+          },
+          {
+            "affinity": 0.8286432027816772,
+            "id": "urn:tag:genre:place:restaurant:nikkei",
+            "name": "Nikkei"
+          },
+          {
+            "affinity": 0.8279008865356445,
+            "id": "urn:tag:genre:place:restaurant:japanese_american",
+            "name": "Japanese-American"
+          },
+          {
+            "affinity": 0.8265622854232788,
+            "id": "urn:tag:genre:place:restaurant:omakase",
+            "name": "Omakase"
+          },
+          {
+            "affinity": 0.8262125849723816,
+            "id": "urn:tag:genre:place:restaurant:latin_american",
+            "name": "Latin American"
+          },
+          {
+            "affinity": 0.8223536014556885,
+            "id": "urn:tag:genre:place:restaurant:gourmet",
+            "name": "Gourmet"
+          },
+          {
+            "affinity": 0.820948600769043,
+            "id": "urn:tag:genre:place:restaurant:chinese_cuisine",
+            "name": "Chinese Cuisine"
+          },
+          {
+            "affinity": 0.8202393054962158,
+            "id": "urn:tag:genre:place:restaurant:japanese_italian",
+            "name": "Japanese-Italian"
+          },
+          {
+            "affinity": 0.8196741342544556,
+            "id": "urn:tag:genre:place:restaurant:japanese_delicatessen",
+            "name": "Japanese delicatessen"
+          },
+          {
+            "affinity": 0.8186359405517578,
+            "id": "urn:tag:genre:place:restaurant:venezuelan",
+            "name": "Venezuelan"
+          },
+          {
+            "affinity": 0.8176616430282593,
+            "id": "urn:tag:genre:place:restaurant:south_american",
+            "name": "South American"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:38.345Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:thai",
+            "name": "Thai"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "bean-tomato",
+          "cumin-bean-rice",
+          "basil-white-beans"
+        ],
+        "changedMealSlots": 3,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "cumin-bean-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "cumin-bean-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 19,
+        "groundedTop3": [
+          "cumin-bean-rice",
+          "basil-white-beans",
+          "tomato-pasta"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 3,
+        "rankMovements": [
+          {
+            "baselineRank": 2,
+            "connections": [
+              {
+                "affinity": 0.9409247636795044,
+                "id": "urn:tag:genre:place:restaurant:tex_mex",
+                "name": "Tex-Mex"
+              },
+              {
+                "affinity": 0.9362173080444336,
+                "id": "urn:tag:genre:place:restaurant:modern_mexican",
+                "name": "Modern Mexican"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [
+              {
+                "affinity": 0.8446784019470215,
+                "id": "urn:tag:genre:place:restaurant:italian",
+                "name": "Italian"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [
+              {
+                "affinity": 0.8446784019470215,
+                "id": "urn:tag:genre:place:restaurant:italian",
+                "name": "Italian"
+              }
+            ],
+            "groundedRank": 3,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "eggs"
+      ],
+      "favorites": [
+        "Mexican"
+      ],
+      "id": "mexican",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9409247636795044,
+            "id": "urn:tag:genre:place:restaurant:tex_mex",
+            "name": "Tex-Mex"
+          },
+          {
+            "affinity": 0.9362173080444336,
+            "id": "urn:tag:genre:place:restaurant:modern_mexican",
+            "name": "Modern Mexican"
+          },
+          {
+            "affinity": 0.9280340671539307,
+            "id": "urn:tag:genre:place:restaurant:latin_american",
+            "name": "Latin American"
+          },
+          {
+            "affinity": 0.919180691242218,
+            "id": "urn:tag:genre:place:restaurant:spanish",
+            "name": "Spanish"
+          },
+          {
+            "affinity": 0.9174474477767944,
+            "id": "urn:tag:genre:place:restaurant:mexican_torta",
+            "name": "Mexican torta restaurant"
+          },
+          {
+            "affinity": 0.9135485887527466,
+            "id": "urn:tag:genre:place:restaurant:vegan_mexican",
+            "name": "Vegan Mexican"
+          },
+          {
+            "affinity": 0.9029648303985596,
+            "id": "urn:tag:genre:place:restaurant:oaxacan",
+            "name": "Oaxacan restaurant"
+          },
+          {
+            "affinity": 0.8873197436332703,
+            "id": "urn:tag:genre:place:restaurant:spanish_latin_caribbean",
+            "name": "Spanish Latin Caribbean"
+          },
+          {
+            "affinity": 0.8850078582763672,
+            "id": "urn:tag:genre:place:restaurant:cuban",
+            "name": "Cuban"
+          },
+          {
+            "affinity": 0.8845236897468567,
+            "id": "urn:tag:genre:place:restaurant:regional",
+            "name": "Regional"
+          },
+          {
+            "affinity": 0.8828712105751038,
+            "id": "urn:tag:genre:place:restaurant:local",
+            "name": "Local"
+          },
+          {
+            "affinity": 0.8822756409645081,
+            "id": "urn:tag:genre:place:restaurant:tacos",
+            "name": "Tacos"
+          },
+          {
+            "affinity": 0.8766434788703918,
+            "id": "urn:tag:genre:place:restaurant:spanish_puerto_rican",
+            "name": "Spanish Puerto Rican"
+          },
+          {
+            "affinity": 0.8730193972587585,
+            "id": "urn:tag:genre:place:restaurant:puerto_rican",
+            "name": "Puerto Rican"
+          },
+          {
+            "affinity": 0.8696279525756836,
+            "id": "urn:tag:genre:place:restaurant:argentinean",
+            "name": "Argentinean"
+          },
+          {
+            "affinity": 0.868915319442749,
+            "id": "urn:tag:genre:place:restaurant:nuevo_latino",
+            "name": "Nuevo Latino restaurant"
+          },
+          {
+            "affinity": 0.8652793765068054,
+            "id": "urn:tag:genre:place:restaurant:pan_latin",
+            "name": "Pan-Latin"
+          },
+          {
+            "affinity": 0.8643002510070801,
+            "id": "urn:tag:genre:place:restaurant:chamorro",
+            "name": "Chamorro"
+          },
+          {
+            "affinity": 0.8638389706611633,
+            "id": "urn:tag:genre:place:restaurant:central_american",
+            "name": "Central American restaurant"
+          },
+          {
+            "affinity": 0.862302839756012,
+            "id": "urn:tag:genre:place:restaurant:peruvian",
+            "name": "Peruvian"
+          },
+          {
+            "affinity": 0.8599376678466797,
+            "id": "urn:tag:genre:place:restaurant:south_american_latin_creole",
+            "name": "South American Latin Creole"
+          },
+          {
+            "affinity": 0.8593308329582214,
+            "id": "urn:tag:genre:place:restaurant:south_american",
+            "name": "South American"
+          },
+          {
+            "affinity": 0.8565255403518677,
+            "id": "urn:tag:genre:place:restaurant:salvadoran",
+            "name": "Salvadoran restaurant"
+          },
+          {
+            "affinity": 0.8555824756622314,
+            "id": "urn:tag:genre:place:restaurant:taco",
+            "name": "Taco restaurant"
+          },
+          {
+            "affinity": 0.8554600477218628,
+            "id": "urn:tag:genre:place:restaurant:caribbean",
+            "name": "Caribbean"
+          },
+          {
+            "affinity": 0.8530983924865723,
+            "id": "urn:tag:genre:place:restaurant:",
+            "name": "*"
+          },
+          {
+            "affinity": 0.850674569606781,
+            "id": "urn:tag:genre:place:restaurant:portuguese",
+            "name": "Portuguese"
+          },
+          {
+            "affinity": 0.8500933647155762,
+            "id": "urn:tag:genre:place:restaurant:peruvian_vietnamese",
+            "name": "Peruvian Vietnamese"
+          },
+          {
+            "affinity": 0.84831303358078,
+            "id": "urn:tag:genre:place:restaurant:italian_american",
+            "name": "Italian American"
+          },
+          {
+            "affinity": 0.8476946353912354,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.8469761610031128,
+            "id": "urn:tag:genre:place:restaurant:jamaican",
+            "name": "Jamaican"
+          },
+          {
+            "affinity": 0.8457016944885254,
+            "id": "urn:tag:genre:place:restaurant:creole",
+            "name": "Creole"
+          },
+          {
+            "affinity": 0.8455722332000732,
+            "id": "urn:tag:genre:place:restaurant:venezuelan",
+            "name": "Venezuelan"
+          },
+          {
+            "affinity": 0.8446784019470215,
+            "id": "urn:tag:genre:place:restaurant:italian",
+            "name": "Italian"
+          },
+          {
+            "affinity": 0.8432666063308716,
+            "id": "urn:tag:genre:place:restaurant:californian",
+            "name": "Californian"
+          },
+          {
+            "affinity": 0.8428195714950562,
+            "id": "urn:tag:genre:place:restaurant:colombian",
+            "name": "Colombian"
+          },
+          {
+            "affinity": 0.8393518924713135,
+            "id": "urn:tag:genre:place:restaurant:yucatan",
+            "name": "Yucatan restaurant"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:38.720Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:mexican",
+            "name": "Mexican"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "tomato-sweet-potato",
+          "tomato-rice",
+          "basil-white-beans"
+        ],
+        "changedMealSlots": 0,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "tomato-sweet-potato",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "tomato-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "tomato-sweet-potato",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "tomato-sweet-potato",
+          "tomato-rice",
+          "basil-white-beans"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 2,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.890198826789856,
+                "id": "urn:tag:genre:place:restaurant:nigerian",
+                "name": "Nigerian"
+              },
+              {
+                "affinity": 0.7853255867958069,
+                "id": "urn:tag:genre:place:restaurant:west_african",
+                "name": "West African"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [
+              {
+                "affinity": 0.890198826789856,
+                "id": "urn:tag:genre:place:restaurant:nigerian",
+                "name": "Nigerian"
+              },
+              {
+                "affinity": 0.7853255867958069,
+                "id": "urn:tag:genre:place:restaurant:west_african",
+                "name": "West African"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": false,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Nigerian"
+      ],
+      "id": "nigerian",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.890198826789856,
+            "id": "urn:tag:genre:place:restaurant:nigerian",
+            "name": "Nigerian"
+          },
+          {
+            "affinity": 0.8315563201904297,
+            "id": "urn:tag:genre:place:restaurant:street_food",
+            "name": "Street Food"
+          },
+          {
+            "affinity": 0.8287568092346191,
+            "id": "urn:tag:genre:place:restaurant:soul_food",
+            "name": "Soul Food"
+          },
+          {
+            "affinity": 0.8219646215438843,
+            "id": "urn:tag:genre:place:restaurant:global_cuisine",
+            "name": "Global Cuisine"
+          },
+          {
+            "affinity": 0.8177679181098938,
+            "id": "urn:tag:genre:place:restaurant:gourmet",
+            "name": "Gourmet"
+          },
+          {
+            "affinity": 0.7953410148620605,
+            "id": "urn:tag:genre:place:restaurant:south_african",
+            "name": "South African restaurant"
+          },
+          {
+            "affinity": 0.7875124216079712,
+            "id": "urn:tag:genre:place:restaurant:swabian",
+            "name": "Swabian restaurant"
+          },
+          {
+            "affinity": 0.7864708304405212,
+            "id": "urn:tag:genre:place:restaurant:north_african",
+            "name": "North African restaurant"
+          },
+          {
+            "affinity": 0.7853255867958069,
+            "id": "urn:tag:genre:place:restaurant:west_african",
+            "name": "West African"
+          },
+          {
+            "affinity": 0.7837285399436951,
+            "id": "urn:tag:genre:place:restaurant:sri_lankan",
+            "name": "Sri Lankan restaurant"
+          },
+          {
+            "affinity": 0.7820636034011841,
+            "id": "urn:tag:genre:place:restaurant:african",
+            "name": "African"
+          },
+          {
+            "affinity": 0.7810859680175781,
+            "id": "urn:tag:genre:place:restaurant:nasi_uduk",
+            "name": "Nasi uduk restaurant"
+          },
+          {
+            "affinity": 0.7809260487556458,
+            "id": "urn:tag:genre:place:restaurant:hyderabadi",
+            "name": "Hyderabadi restaurant"
+          },
+          {
+            "affinity": 0.7731703519821167,
+            "id": "urn:tag:genre:place:restaurant:nicaraguan",
+            "name": "Nicaraguan restaurant"
+          },
+          {
+            "affinity": 0.7694177031517029,
+            "id": "urn:tag:genre:place:restaurant:paisa",
+            "name": "Paisa restaurant"
+          },
+          {
+            "affinity": 0.7623541951179504,
+            "id": "urn:tag:genre:place:restaurant:creole",
+            "name": "Creole"
+          },
+          {
+            "affinity": 0.7562124729156494,
+            "id": "urn:tag:genre:place:restaurant:padang",
+            "name": "Padang restaurant"
+          },
+          {
+            "affinity": 0.73674476146698,
+            "id": "urn:tag:genre:place:restaurant:sri_lanka",
+            "name": "Sri Lanka"
+          },
+          {
+            "affinity": 0.7293429374694824,
+            "id": "urn:tag:genre:place:restaurant:east_african",
+            "name": "East African"
+          },
+          {
+            "affinity": 0.7261602878570557,
+            "id": "urn:tag:genre:place:restaurant:afro_caribbean",
+            "name": "Afro Caribbean"
+          },
+          {
+            "affinity": 0.7246577739715576,
+            "id": "urn:tag:genre:place:restaurant:indonesian",
+            "name": "Indonesian"
+          },
+          {
+            "affinity": 0.7081189751625061,
+            "id": "urn:tag:genre:place:restaurant:international",
+            "name": "International"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:53.108Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:cuisine:qloo:nigerian",
+            "name": "Nigerian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "ginger-pea-rice",
+          "tomato-pasta"
+        ],
+        "changedMealSlots": 3,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "tomato-pasta",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "ginger-pea-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "carrot-rice",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "ginger-pea-rice",
+          "carrot-rice",
+          "basil-white-beans"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 10,
+        "rankMovements": [
+          {
+            "baselineRank": 2,
+            "connections": [
+              {
+                "affinity": 0.9332287311553955,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 1,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [
+              {
+                "affinity": 0.9332287311553955,
+                "id": "urn:tag:genre:place:restaurant:asian",
+                "name": "Asian"
+              }
+            ],
+            "groundedRank": 2,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 1,
+            "connections": [
+              {
+                "affinity": 0.9039416313171387,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              }
+            ],
+            "groundedRank": 3,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [
+              {
+                "affinity": 0.9039416313171387,
+                "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+                "name": "Mediterranean Italian"
+              }
+            ],
+            "groundedRank": 4,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [
+              {
+                "affinity": 0.8860164880752563,
+                "id": "urn:tag:genre:place:restaurant:thai",
+                "name": "Thai"
+              },
+              {
+                "affinity": 0.8855271339416504,
+                "id": "urn:tag:genre:place:restaurant:southeast_asian",
+                "name": "Southeast Asian"
+              }
+            ],
+            "groundedRank": 5,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [
+              {
+                "affinity": 0.8860164880752563,
+                "id": "urn:tag:genre:place:restaurant:thai",
+                "name": "Thai"
+              },
+              {
+                "affinity": 0.8855271339416504,
+                "id": "urn:tag:genre:place:restaurant:southeast_asian",
+                "name": "Southeast Asian"
+              }
+            ],
+            "groundedRank": 6,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [
+              {
+                "affinity": 0.8831967711448669,
+                "id": "urn:tag:genre:place:restaurant:nigerian",
+                "name": "Nigerian"
+              }
+            ],
+            "groundedRank": 7,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [
+              {
+                "affinity": 0.8831967711448669,
+                "id": "urn:tag:genre:place:restaurant:nigerian",
+                "name": "Nigerian"
+              }
+            ],
+            "groundedRank": 8,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [
+              {
+                "affinity": 0.88212651014328,
+                "id": "urn:tag:genre:place:restaurant:indian",
+                "name": "Indian"
+              }
+            ],
+            "groundedRank": 9,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [
+              {
+                "affinity": 0.88212651014328,
+                "id": "urn:tag:genre:place:restaurant:indian",
+                "name": "Indian"
+              }
+            ],
+            "groundedRank": 10,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": true,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Italian",
+        "Chinese"
+      ],
+      "id": "mixed-partner",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9332287311553955,
+            "id": "urn:tag:genre:place:restaurant:asian",
+            "name": "Asian"
+          },
+          {
+            "affinity": 0.9258146286010742,
+            "id": "urn:tag:genre:place:restaurant:japanese_italian",
+            "name": "Japanese-Italian"
+          },
+          {
+            "affinity": 0.9169016480445862,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.9152014255523682,
+            "id": "urn:tag:genre:place:restaurant:cantonese",
+            "name": "Cantonese"
+          },
+          {
+            "affinity": 0.9141553044319153,
+            "id": "urn:tag:genre:place:restaurant:italian_american",
+            "name": "Italian American"
+          },
+          {
+            "affinity": 0.9132363200187683,
+            "id": "urn:tag:genre:place:restaurant:taiwanese",
+            "name": "Taiwanese"
+          },
+          {
+            "affinity": 0.906276285648346,
+            "id": "urn:tag:genre:place:restaurant:chinese_cuisine",
+            "name": "Chinese Cuisine"
+          },
+          {
+            "affinity": 0.9052582383155823,
+            "id": "urn:tag:genre:place:restaurant:filipino",
+            "name": "Filipino"
+          },
+          {
+            "affinity": 0.9050495624542236,
+            "id": "urn:tag:genre:place:restaurant:french_italian",
+            "name": "French-Italian"
+          },
+          {
+            "affinity": 0.9039416313171387,
+            "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+            "name": "Mediterranean Italian"
+          },
+          {
+            "affinity": 0.901989758014679,
+            "id": "urn:tag:genre:place:restaurant:french_chinese",
+            "name": "French Chinese"
+          },
+          {
+            "affinity": 0.9017542600631714,
+            "id": "urn:tag:genre:place:restaurant:korean_chinese",
+            "name": "Korean Chinese"
+          },
+          {
+            "affinity": 0.9008030891418457,
+            "id": "urn:tag:genre:place:restaurant:california_italian",
+            "name": "California Italian"
+          },
+          {
+            "affinity": 0.8945802450180054,
+            "id": "urn:tag:genre:place:restaurant:regional",
+            "name": "Regional"
+          },
+          {
+            "affinity": 0.8930734395980835,
+            "id": "urn:tag:genre:place:restaurant:mandarin",
+            "name": "Mandarin restaurant"
+          },
+          {
+            "affinity": 0.8917742967605591,
+            "id": "urn:tag:genre:place:restaurant:chinese_food",
+            "name": "Chinese food"
+          },
+          {
+            "affinity": 0.8907592296600342,
+            "id": "urn:tag:genre:place:restaurant:portuguese",
+            "name": "Portuguese"
+          },
+          {
+            "affinity": 0.890202522277832,
+            "id": "urn:tag:genre:place:restaurant:spanish",
+            "name": "Spanish"
+          },
+          {
+            "affinity": 0.889448881149292,
+            "id": "urn:tag:genre:place:restaurant:",
+            "name": "*"
+          },
+          {
+            "affinity": 0.8893358707427979,
+            "id": "urn:tag:genre:place:restaurant:local",
+            "name": "Local"
+          },
+          {
+            "affinity": 0.8860164880752563,
+            "id": "urn:tag:genre:place:restaurant:thai",
+            "name": "Thai"
+          },
+          {
+            "affinity": 0.8858135342597961,
+            "id": "urn:tag:genre:place:restaurant:portuguese_japanese",
+            "name": "Portuguese-Japanese"
+          },
+          {
+            "affinity": 0.8855271339416504,
+            "id": "urn:tag:genre:place:restaurant:southeast_asian",
+            "name": "Southeast Asian"
+          },
+          {
+            "affinity": 0.8831967711448669,
+            "id": "urn:tag:genre:place:restaurant:nigerian",
+            "name": "Nigerian"
+          },
+          {
+            "affinity": 0.8825715184211731,
+            "id": "urn:tag:genre:place:restaurant:korean",
+            "name": "Korean"
+          },
+          {
+            "affinity": 0.88212651014328,
+            "id": "urn:tag:genre:place:restaurant:indian",
+            "name": "Indian"
+          },
+          {
+            "affinity": 0.8817542791366577,
+            "id": "urn:tag:genre:place:restaurant:korean_japanese",
+            "name": "Korean Japanese"
+          },
+          {
+            "affinity": 0.8794069290161133,
+            "id": "urn:tag:genre:place:restaurant:indonesian",
+            "name": "Indonesian"
+          },
+          {
+            "affinity": 0.8791711330413818,
+            "id": "urn:tag:genre:place:restaurant:latin_american",
+            "name": "Latin American"
+          },
+          {
+            "affinity": 0.879161536693573,
+            "id": "urn:tag:genre:place:restaurant:malaysian",
+            "name": "Malaysian"
+          },
+          {
+            "affinity": 0.8776620626449585,
+            "id": "urn:tag:genre:place:restaurant:spooky_italian",
+            "name": "Spooky Italian"
+          },
+          {
+            "affinity": 0.8757940530776978,
+            "id": "urn:tag:genre:place:restaurant:asian_american_mediterranean",
+            "name": "Asian-American-Mediterranean"
+          },
+          {
+            "affinity": 0.8754974603652954,
+            "id": "urn:tag:genre:place:restaurant:argentinean",
+            "name": "Argentinean"
+          },
+          {
+            "affinity": 0.8751480579376221,
+            "id": "urn:tag:genre:place:restaurant:brazilian",
+            "name": "Brazilian"
+          },
+          {
+            "affinity": 0.8735839128494263,
+            "id": "urn:tag:genre:place:restaurant:szechuan",
+            "name": "Szechuan"
+          },
+          {
+            "affinity": 0.8733357787132263,
+            "id": "urn:tag:genre:place:restaurant:asian_american",
+            "name": "Asian American"
+          },
+          {
+            "affinity": 0.873171865940094,
+            "id": "urn:tag:genre:place:restaurant:international",
+            "name": "International"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:53.428Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:chinese",
+            "name": "Chinese"
+          },
+          {
+            "id": "urn:tag:genre:place:restaurant:italian",
+            "name": "Italian"
+          }
+        ],
+        "unresolved": []
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "changedMealSlots": 0,
+        "checksNeedingReview": 1,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": "basil-white-beans",
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": "coconut-ginger-tofu",
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": "bean-tomato",
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 20,
+        "groundedTop3": [
+          "basil-white-beans",
+          "coconut-ginger-tofu",
+          "ginger-pea-rice"
+        ],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 0,
+        "rankMovements": [
+          {
+            "baselineRank": 1,
+            "connections": [],
+            "groundedRank": 1,
+            "name": "Italian-inspired basil & white bean pot",
+            "recipeId": "basil-white-beans"
+          },
+          {
+            "baselineRank": 2,
+            "connections": [],
+            "groundedRank": 2,
+            "name": "Thai-inspired coconut tofu & greens",
+            "recipeId": "coconut-ginger-tofu"
+          },
+          {
+            "baselineRank": 3,
+            "connections": [],
+            "groundedRank": 3,
+            "name": "Chinese-inspired ginger rice & peas",
+            "recipeId": "ginger-pea-rice"
+          },
+          {
+            "baselineRank": 4,
+            "connections": [],
+            "groundedRank": 4,
+            "name": "Indian-inspired tomato lentil dal",
+            "recipeId": "tomato-lentil-dal"
+          },
+          {
+            "baselineRank": 5,
+            "connections": [],
+            "groundedRank": 5,
+            "name": "Chickpeas with soft spinach",
+            "recipeId": "chickpea-spinach"
+          },
+          {
+            "baselineRank": 6,
+            "connections": [],
+            "groundedRank": 6,
+            "name": "Soft pasta with tomato & basil",
+            "recipeId": "tomato-pasta"
+          },
+          {
+            "baselineRank": 7,
+            "connections": [],
+            "groundedRank": 7,
+            "name": "Eggs in a gentle tomato sauce",
+            "recipeId": "egg-tomato"
+          },
+          {
+            "baselineRank": 8,
+            "connections": [],
+            "groundedRank": 8,
+            "name": "White bean & tomato pot",
+            "recipeId": "bean-tomato"
+          },
+          {
+            "baselineRank": 9,
+            "connections": [],
+            "groundedRank": 9,
+            "name": "Mexican-inspired bean & tomato rice",
+            "recipeId": "cumin-bean-rice"
+          },
+          {
+            "baselineRank": 10,
+            "connections": [],
+            "groundedRank": 10,
+            "name": "West African-inspired sweet potato & bean pot",
+            "recipeId": "tomato-sweet-potato"
+          },
+          {
+            "baselineRank": 11,
+            "connections": [],
+            "groundedRank": 11,
+            "name": "One-pot tomato rice",
+            "recipeId": "tomato-rice"
+          },
+          {
+            "baselineRank": 12,
+            "connections": [],
+            "groundedRank": 12,
+            "name": "Sweet potato & white bean mash",
+            "recipeId": "sweet-potato-beans"
+          },
+          {
+            "baselineRank": 13,
+            "connections": [],
+            "groundedRank": 13,
+            "name": "Potato & pea skillet mash",
+            "recipeId": "potato-peas"
+          },
+          {
+            "baselineRank": 14,
+            "connections": [],
+            "groundedRank": 14,
+            "name": "Coconut rice with tender greens",
+            "recipeId": "coconut-rice"
+          },
+          {
+            "baselineRank": 15,
+            "connections": [],
+            "groundedRank": 15,
+            "name": "Carrot & ginger rice",
+            "recipeId": "carrot-rice"
+          },
+          {
+            "baselineRank": 16,
+            "connections": [],
+            "groundedRank": 16,
+            "name": "Coconut red lentils",
+            "recipeId": "lentil-coconut"
+          },
+          {
+            "baselineRank": 17,
+            "connections": [],
+            "groundedRank": 17,
+            "name": "Gentle lentil & carrot pot",
+            "recipeId": "lentil-pot"
+          },
+          {
+            "baselineRank": 18,
+            "connections": [],
+            "groundedRank": 18,
+            "name": "Poached fish with potato",
+            "recipeId": "fish-potato"
+          },
+          {
+            "baselineRank": 19,
+            "connections": [],
+            "groundedRank": 19,
+            "name": "Pumpkin & lentil stew",
+            "recipeId": "pumpkin-lentils"
+          },
+          {
+            "baselineRank": 20,
+            "connections": [],
+            "groundedRank": 20,
+            "name": "Chicken & rice comfort bowl",
+            "recipeId": "chicken-rice"
+          }
+        ],
+        "sameEligibleSet": true,
+        "top3OrderChanged": false,
+        "unfilledSlots": 0,
+        "uniqueGroundedRecipes": 3
+      },
+      "equipment": [
+        "hob"
+      ],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "caretable-unsupported-cuisine-zz42"
+      ],
+      "id": "unresolved-input",
+      "status": "completed",
+      "taste": {
+        "connections": [],
+        "fetchedAt": "2026-10-26T08:43:53.619Z",
+        "message": "No exact dining/cuisine tag matched these inputs. Add a cuisine you enjoy; unsupported food names are not attributed to Qloo.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [],
+        "unresolved": [
+          "caretable unsupported cuisine zz42"
+        ]
+      }
+    },
+    {
+      "comparison": {
+        "baselineTop3": [],
+        "changedMealSlots": 0,
+        "checksNeedingReview": 0,
+        "deterministicBaselinePlan": [
+          {
+            "day": 1,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": null,
+            "slot": "dinner"
+          }
+        ],
+        "deterministicGroundedPlan": [
+          {
+            "day": 1,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 2,
+            "recipeId": null,
+            "slot": "dinner"
+          },
+          {
+            "day": 3,
+            "recipeId": null,
+            "slot": "dinner"
+          }
+        ],
+        "eligibleCount": 0,
+        "groundedTop3": [],
+        "hardCheckFailures": 0,
+        "mappedRecipes": 0,
+        "rankMovements": [],
+        "sameEligibleSet": true,
+        "top3OrderChanged": false,
+        "unfilledSlots": 3,
+        "uniqueGroundedRecipes": 0
+      },
+      "equipment": [],
+      "exclusions": [
+        "peanuts"
+      ],
+      "favorites": [
+        "Italian"
+      ],
+      "id": "no-equipment",
+      "status": "completed",
+      "taste": {
+        "connections": [
+          {
+            "affinity": 0.9490562677383423,
+            "id": "urn:tag:genre:place:restaurant:mediterranean_italian",
+            "name": "Mediterranean Italian"
+          },
+          {
+            "affinity": 0.9364557862281799,
+            "id": "urn:tag:genre:place:restaurant:italian_american",
+            "name": "Italian American"
+          },
+          {
+            "affinity": 0.9345488548278809,
+            "id": "urn:tag:genre:place:restaurant:french_italian",
+            "name": "French-Italian"
+          },
+          {
+            "affinity": 0.9320274591445923,
+            "id": "urn:tag:genre:place:restaurant:japanese_italian",
+            "name": "Japanese-Italian"
+          },
+          {
+            "affinity": 0.9210925102233887,
+            "id": "urn:tag:genre:place:restaurant:california_italian",
+            "name": "California Italian"
+          },
+          {
+            "affinity": 0.9105318784713745,
+            "id": "urn:tag:genre:place:restaurant:spooky_italian",
+            "name": "Spooky Italian"
+          },
+          {
+            "affinity": 0.9005553722381592,
+            "id": "urn:tag:genre:place:restaurant:italian_/_pizza",
+            "name": "Italian / Pizza"
+          },
+          {
+            "affinity": 0.8863694071769714,
+            "id": "urn:tag:genre:place:restaurant:spanish",
+            "name": "Spanish"
+          },
+          {
+            "affinity": 0.8860161304473877,
+            "id": "urn:tag:genre:place:restaurant:american/_southern_italian",
+            "name": "American/ Southern Italian"
+          },
+          {
+            "affinity": 0.885121762752533,
+            "id": "urn:tag:genre:place:restaurant:italian_&_pizza",
+            "name": "Italian & Pizza"
+          },
+          {
+            "affinity": 0.8851216435432434,
+            "id": "urn:tag:genre:place:restaurant:italian_pizza",
+            "name": "Italian & Pizza"
+          },
+          {
+            "affinity": 0.8785054683685303,
+            "id": "urn:tag:genre:place:restaurant:european",
+            "name": "European"
+          },
+          {
+            "affinity": 0.8782608509063721,
+            "id": "urn:tag:genre:place:restaurant:portuguese",
+            "name": "Portuguese"
+          },
+          {
+            "affinity": 0.8769108653068542,
+            "id": "urn:tag:genre:place:restaurant:argentinean",
+            "name": "Argentinean"
+          },
+          {
+            "affinity": 0.8767126798629761,
+            "id": "urn:tag:genre:place:restaurant:piedmontese",
+            "name": "Piedmontese restaurant"
+          },
+          {
+            "affinity": 0.8756234645843506,
+            "id": "urn:tag:genre:place:restaurant:mediterranean",
+            "name": "Mediterranean"
+          },
+          {
+            "affinity": 0.8731814622879028,
+            "id": "urn:tag:genre:place:restaurant:sardinian",
+            "name": "Sardinian restaurant"
+          },
+          {
+            "affinity": 0.8727630376815796,
+            "id": "urn:tag:genre:place:restaurant:southern_italian",
+            "name": "Southern Italian restaurant"
+          },
+          {
+            "affinity": 0.8717877268791199,
+            "id": "urn:tag:genre:place:restaurant:southern_european",
+            "name": "Southern European"
+          },
+          {
+            "affinity": 0.87066650390625,
+            "id": "urn:tag:genre:place:restaurant:latin_american",
+            "name": "Latin American"
+          },
+          {
+            "affinity": 0.8683595061302185,
+            "id": "urn:tag:genre:place:restaurant:neapolitan",
+            "name": "Neapolitan restaurant"
+          },
+          {
+            "affinity": 0.8679042458534241,
+            "id": "urn:tag:genre:place:restaurant:sicilian",
+            "name": "Sicilian restaurant"
+          },
+          {
+            "affinity": 0.8678281307220459,
+            "id": "urn:tag:genre:place:restaurant:ligurian",
+            "name": "Ligurian restaurant"
+          },
+          {
+            "affinity": 0.8654080033302307,
+            "id": "urn:tag:genre:place:restaurant:regional",
+            "name": "Regional"
+          },
+          {
+            "affinity": 0.8617877960205078,
+            "id": "urn:tag:genre:place:restaurant:pan_latin",
+            "name": "Pan-Latin"
+          },
+          {
+            "affinity": 0.8617508411407471,
+            "id": "urn:tag:genre:place:restaurant:japanese",
+            "name": "Japanese"
+          },
+          {
+            "affinity": 0.8609308004379272,
+            "id": "urn:tag:genre:place:restaurant:lombardian",
+            "name": "Lombardian restaurant"
+          },
+          {
+            "affinity": 0.8599271774291992,
+            "id": "urn:tag:genre:place:restaurant:german",
+            "name": "German"
+          },
+          {
+            "affinity": 0.8555381894111633,
+            "id": "urn:tag:genre:place:restaurant:brazilian",
+            "name": "Brazilian"
+          },
+          {
+            "affinity": 0.8549107909202576,
+            "id": "urn:tag:genre:place:restaurant:northern_italian",
+            "name": "Northern Italian restaurant"
+          },
+          {
+            "affinity": 0.8547452688217163,
+            "id": "urn:tag:genre:place:restaurant:",
+            "name": "*"
+          },
+          {
+            "affinity": 0.8545167446136475,
+            "id": "urn:tag:genre:place:restaurant:greek",
+            "name": "Greek"
+          },
+          {
+            "affinity": 0.8525974750518799,
+            "id": "urn:tag:genre:place:restaurant:local",
+            "name": "Local"
+          },
+          {
+            "affinity": 0.852333128452301,
+            "id": "urn:tag:genre:place:restaurant:tuscan",
+            "name": "Tuscan restaurant"
+          },
+          {
+            "affinity": 0.8511984348297119,
+            "id": "urn:tag:genre:place:restaurant:south_american",
+            "name": "South American"
+          },
+          {
+            "affinity": 0.8485977649688721,
+            "id": "urn:tag:genre:place:restaurant:pizza",
+            "name": "Pizza"
+          },
+          {
+            "affinity": 0.8481958508491516,
+            "id": "urn:tag:genre:place:restaurant:portuguese_japanese",
+            "name": "Portuguese-Japanese"
+          }
+        ],
+        "fetchedAt": "2026-10-26T08:43:36.134Z",
+        "message": "Qloo returned aggregate cultural affinities. CareTable maps dining tags to its original recipe suggestions; Qloo does not supply or certify these recipes.",
+        "mode": "live",
+        "provider": "Qloo",
+        "seeds": [
+          {
+            "id": "urn:tag:genre:place:restaurant:italian",
+            "name": "Italian"
+          }
+        ],
+        "unresolved": []
+      }
+    }
+  ],
+  "summary": {
+    "scenarios": 9,
+    "completed": 9,
+    "unavailable": 0,
+    "top3Changed": 6,
+    "changedMealSlots": 12,
+    "eligibleSetPreserved": true,
+    "hardCheckFailures": 0
+  }
+}

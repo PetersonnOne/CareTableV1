@@ -5,6 +5,7 @@ import { api } from "../../../convex/_generated/api";
 import type { Id } from "../../../convex/_generated/dataModel";
 import { requestSchema } from "./domain/schema.mjs";
 import { PlanCompanion, type MealFeedback } from "./plan-companion";
+import { MealEvidence } from "./meal-evidence";
 import {
   previewPlan,
   type PlanRequest,
@@ -593,6 +594,7 @@ function MealCard({
               {meal.tasteLinks.map((l) => l.name).join(", ")}.
             </p>
           )}
+          <MealEvidence meal={meal} />
           <details>
             <summary>Ingredients & preparation</summary>
             <ul>

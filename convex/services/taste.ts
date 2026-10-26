@@ -58,6 +58,8 @@ export async function discoverTaste(
       else unresolved.push(input);
     }),
   );
+  seeds.sort((a,b)=>a.id.localeCompare(b.id));
+  unresolved.sort();
   if (!seeds.length)
     return {
       provider: "Qloo",
@@ -71,8 +73,9 @@ export async function discoverTaste(
     };
   const data = await get("/v2/insights", {
     "filter.type": "urn:tag",
+    "filter.tag.types": "urn:tag:genre:place",
     "signal.interests.tags": seeds.map((s) => s.id).join(","),
-    take: "20",
+    take: "40",
   });
   const connections: TasteConnection[] = (data.results?.tags || [])
     .filter(

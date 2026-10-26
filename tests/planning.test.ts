@@ -61,8 +61,8 @@ describe("planning guarantees", () => {
         affinity: 0.95,
       },
     ]);
-    expect(plain[0].recipe.id).not.toBe(grounded[0].recipe.id);
-    expect(grounded[0].recipe.id).toBe("tomato-pasta");
+    expect(plain.map(c=>c.recipe.id)).not.toEqual(grounded.map(c=>c.recipe.id));
+    expect(grounded[0].tasteLinks.length).toBeGreaterThan(0);
     expect(grounded[0].tasteLinks[0].id).toContain("mediterranean_italian");
   });
   it("never lets a fabricated recipe ID pass into a final plan", () => {

@@ -1,6 +1,6 @@
 # CareTable data and attribution
 
-The catalog in `src/modules/meals/domain/catalog.mjs` contains 20 original prototype recipe suggestions authored for CareTable, distributed with this repository under MIT. Ingredients, preparation steps, times, tags, and servings are application data. Preparations have not been independently tested. No third-party recipe catalog was scraped or copied. Culture tags describe a loose recipe mapping and do not assert cultural authenticity.
+The catalog in `src/modules/meals/domain/catalog.mjs` contains 26 original prototype recipe suggestions authored for CareTable, distributed with this repository under MIT. Six additions are cuisine-inspired application suggestions; the mapping vocabulary was reviewed against returned dining tags during the 26 October evaluation. Ingredients, preparation steps, times, tags, and servings are application data. Preparations have not been independently tested. No third-party recipe catalog was scraped or copied. Culture tags describe a loose recipe mapping and do not assert cultural authenticity.
 
 [Qloo](https://www.qloo.com/) supplies dining/cuisine tag resolution and aggregate affinities through the hackathon API. Returned identifiers, names, scores when present, and fetch timestamps are retained in the private plan. These responses are external service data governed by Qloo's applicable terms, not relicensed as MIT by this repository. Private probe responses and provider instructions are excluded from Git. Qloo does not supply or certify the recipes.
 
