@@ -1,6 +1,6 @@
 # CareTable
 
-A little more care at every meal. CareTable helps caregivers and households find appealing meal suggestions without losing each person's explicit needs. Qloo supplies aggregate dining affinities; GPT-6 Luna selects from an original recipe catalog; application code checks ingredients, equipment, time, and completeness before saving the result.
+A little more care at every meal. CareTable helps caregivers and households find appealing meal suggestions without losing each person's explicit needs. Qloo supplies aggregate dining affinities; CareTable Meal Guide selects from an original recipe catalog; application code checks ingredients, equipment, time, and completeness before saving the result.
 
 ## Why CareTable stands out
 
@@ -115,3 +115,9 @@ Hosted Chromium verification confirms both welcome-first voice modes and the edi
 Voice recovery keeps captured text available after an interruption, offers an explicit review retry, and preserves captions and notes across a user-requested reconnect. Saved changes still require confirmation.
 
 A hosted controlled-recovery check also passed captured-text review retry through to a saved plan, without restarting voice.
+
+The reusable voice implementation handover is stored locally in `GPT Live 1/` (Git-ignored), with separate mode guides and a portable ZIP. The current deployment/sign-off record is in [production readiness](PRODUCTION_READINESS.md); historical audit entries remain available there.
+
+Production owner acceptance: the owner confirmed successful admin access and satisfactory Administration screens on 27 October 2026. Voice sessions provide up to five minutes, with the allowance shown in both voice modes.
+
+Voice access for judging: up to five minutes per session, six starts per account/day and 24 shared starts per UTC day across both voice modes.

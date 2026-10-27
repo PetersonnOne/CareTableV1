@@ -66,3 +66,16 @@ Voice recovery update: 51/51 regressions, TypeScript and optimized build pass. B
 
 
 Hosted recovery follow-up: one real voice session plus controlled client interruption/review rejection passed captured-text recovery, explicit retry without another voice start, confirmation and saved plan generation; server cleanup confirmed and zero page errors. Both modes separately passed mocked-transport recovery scenarios. Fault injection is labelled and is not evidence of a naturally occurring provider outage.
+
+
+Documentation update: a local, Git-ignored GPT Live 1 handover preserves separate mode guides, shared recovery lessons and credential-free source snapshots. It is an engineering reuse artifact, not an additional independently tested product feature. Current deployment versus final sign-off is consolidated at the top of PRODUCTION_READINESS.md. Demo rehearsal remains paused.
+
+
+## Owner acceptance and voice-policy clarification — 27 October 2026
+
+The owner reports successful production admin login and satisfactory Administration screens; record this as user acceptance, closing the outstanding owner UI check. The owner approves the existing five-minute per-session duration after their demo. Both Interactive Mode and Discuss with AI already show the five-minute maximum before starting (src/modules/meals/voice-session.tsx). Session duration is separate from six starts/account/day and twelve shared starts/deployment/day plus cooldown; these quotas remain unchanged. Wider-audience usage/quota planning is an operating decision, not evidence of a broken core flow. No new automated or hosted test was run for this documentation update. Remaining project deliverables are the paused walkthrough rehearsal/final demo and submission materials, including the source-publication decision.
+
+
+## Shared judging voice allowance - 27 October 2026
+
+Owner-authorized change: shared voice starts increase from 12 to 24 per deployment per UTC day across Interactive Mode and Discuss with AI. Six starts per account/day, five-minute sessions, cooldown, cleanup and explicit review remain unchanged. Existing daily counts are preserved; no reset or paid provider session is needed. Both voice entry points display 24 shared/day. Boundary coverage checks the 24th start succeeds and a different account's next start is rejected without consuming its account quota. Hosted delivery follows GitHub main through the Vercel/Convex build; record the delivery result separately. Demo rehearsal, recording and generation remain paused.

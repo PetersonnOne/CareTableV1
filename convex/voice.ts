@@ -25,7 +25,7 @@ export const reserve = internalMutation({
       if(!meals.length)throw new ConvexError("Selected meal not found.");
       context=JSON.stringify({mode:"discussion",request:{...result.request,members:result.request.members.map((m:{name:string;[key:string]:unknown},i:number)=>({...m,name:`Person ${i+1}`}))},meals,taste:result.taste,summary:result.summary}).slice(0,18000);
     }
-    for(const [key,limit]of [[`voice:${user._id}:${new Date().toISOString().slice(0,10)}`,6],[`voice:global:${new Date().toISOString().slice(0,10)}`,12]]as const){
+    for(const [key,limit]of [[`voice:${user._id}:${new Date().toISOString().slice(0,10)}`,6],[`voice:global:${new Date().toISOString().slice(0,10)}`,24]]as const){
       const bucket=await ctx.db.query("usageBuckets").withIndex("by_key",q=>q.eq("key",key)).unique();
       if((bucket?.count||0)>=limit)throw new ConvexError("Daily voice start allowance reached.");
       if(bucket)await ctx.db.patch(bucket._id,{count:bucket.count+1});else await ctx.db.insert("usageBuckets",{key,count:1});

@@ -1,10 +1,26 @@
-# CareTable production readiness — 23 October 2026
+# CareTable production readiness
+
+## Current release status — 27 October 2026
+
+**Deployment:** already live in production at https://caretable-v1.vercel.app. The latest accepted application source is `5202ac8`; its Vercel production deployment was confirmed Ready in the recovery work. A fresh check during handover preparation returned HTTP 200 for both the public homepage and `/api/health`. One control-plane metadata refresh timed out from this machine; that alone is not evidence of a website outage.
+
+**Functional status:** the tested core is ready for controlled hackathon use. Recorded evidence includes 51/51 regressions, TypeScript/build, hosted plan generation, targeted revision/history, account verification/recovery, both voice entry points, welcome-first behaviour, editable review and controlled interruption/review retry through to a saved plan. The user reports both hosted voice modes and a saved discussion change working. Owner signup, email verification and the superadmin grant are complete. The niece/caregiver review is removed from the project scope.
+
+**Owner acceptance:** on 27 October the owner confirmed logging in as admin and that the Administration screens look good. The owner UI check is therefore accepted as user-reported evidence, rather than an additional automated walkthrough.
+
+**Voice policy:** the owner approved 24 shared voice starts per deployment per UTC day for judging, retaining six starts per account/day, five minutes per session and the one-minute cooldown. Both voice modes display the shared allowance. The app will not be publicly promoted during judging; the owner will monitor actual provider costs. Twenty-four full sessions represent at most two hours of session duration, not a fixed price guarantee. Deployment confirmation is recorded in VERIFICATION.md.
+
+**Project deliverables still to finish:** resume the paused walkthrough rehearsal when the user requests it; review/produce the final demo materials; finalize submission copy, screenshots and the repository-publication decision against the PRD submission requirements. The repository already contains a LICENSE. Application hosting and source publication are separate decisions; do not make the repository public without the user's direction.
+
+This classification means production-deployed and functionally verified for the tested paths, while final public-launch sign-off and submission work are distinct unfinished steps. It is not a claim that every future outage, device or traffic level has been certified. The old voice/hosting/signup blockers below are historical and have been superseded by the dated acceptance records.
+
+## Historical audit and continuation records
 
 **26 October continuation:** the user resumed competitive improvements and the associated judge-journey verification. Video rehearsal stays paused. Current Qloo evaluation, meal receipts, catalog changes and verification are recorded in JUDGING_EVIDENCE.md and VERIFICATION.md. Earlier pause/status notes below are historical.
 
 **Work paused by the user on 23 October 2026.** Current priority is reference review and a CareTable demo rehearsal pipeline. Outstanding gates below are retained for resumption; no production completion percentage is inferred from the pause. No deployment or readiness claim follows from demo preparation.
 
-**Verdict: release candidate under verification; not approved as fully production-ready.** The PRD core and the added mode/theme features have implementation and test evidence. Live voice transport and hosted release verification remain blockers. A passing build or a created voice session is not end-to-end evidence.
+**Historical 23 October verdict: release candidate under verification; not approved as fully production-ready.** The PRD core and the added mode/theme features have implementation and test evidence. Live voice transport and hosted release verification remain blockers. A passing build or a created voice session is not end-to-end evidence.
 
 ## Scope and evidence
 
@@ -61,7 +77,7 @@ Automated logic, live provider calls, browser tests and historical production ev
 - TypeScript, Next.js build, development deployment and configured-secret scan must pass for the final source revision; see the final continuation below.
 - Private QA scripts, tokens, credentials, reports, audio and screenshots remain Git-ignored. The retrospective catalog remains ignored.
 
-## Remaining release actions
+## Historical remaining release actions — 23 October 2026
 
 1. Resolve the WebRTC startup failure; then repeat real input/output, captions, mute/unmute, stop, mode switching, idle/expiry and both complete spoken handoffs. Do not label note-based recovery as a voice conversation.
 2. Restore GitHub/Vercel connectivity, publish the reviewed release through the existing GitHub workflow, and repeat all required hosted acceptance checks against that exact deployment.

@@ -208,3 +208,22 @@ Validation: 51/51 regressions pass with a single worker and an explicit 60-secon
 GitHub main commit 9a7eaaf33ed8f0168e9a265c1a8e7dd0bfb0afe7 automatically produced Ready Vercel production deployment dpl_54dBcpq2KERrKWC9S8xckqa8bqgD. The public app was exercised with one real GPT Live session using a fictional synthetic microphone fixture. After received user speech, the test forced the client peer-failure branch. Captured speech remained in the UI. The test then injected one ActionResponse rejection locally in Chromium before the review request could reach the server, demonstrating the failure panel without causing a provider review charge. The explicit retry submitted identical captured text to the real backend without a second voice start, returned a review, and confirmation generated a saved three-day plan. Reset passed, provider cleanup was confirmed closed, and there were zero browser page errors. This is controlled client fault injection, not a claim that an actual provider outage occurred during this test. Report: .private/hosted-voice-recovery-report.json.
 
 Both mode-specific UI recovery scenarios separately passed in the mocked-transport harness. No voice limits were increased or bypassed, no automatic paid retry was introduced, and no demo recording was resumed.
+
+
+## GPT Live handover and completion-status consolidation — 26 October 2026
+
+Created the local GPT Live 1 handover: nine Markdown guides, including separate Interactive Mode and Discuss with AI files, twelve credential-free source snapshots with hashes, and a portable ZIP. It records the original Life Maxim reuse, transport/credential diagnosis, welcome, review validation, recovery, reconnect races, value retention, auth/deployment lessons and testing evidence. The user called it GPT-9 in a follow-up; the existing requested folder is GPT Live 1, which is now explicitly Git-ignored. It contains no copied private environment/session/account files. Archive integrity, snapshot hashes, UTF-8 and 28 local documentation links passed validation. No application features or provider calls were changed or rerun for this documentation task.
+
+PRODUCTION_READINESS.md now opens with a consolidated current status so the older 23 October blockers cannot be mistaken for current ones. CareTable is production-deployed; the tested core is ready for controlled use. Final owner Administration UI sign-off, public voice-allowance policy, paused demo work and submission/source-publication decisions remain distinct completion steps. Public homepage and health checks returned HTTP 200. Source publication and changing paid usage limits were not authorized by this status question.
+
+
+## Owner acceptance and voice-policy clarification — 27 October 2026
+
+The owner reports successful production admin login and satisfactory Administration screens; record this as user acceptance, closing the outstanding owner UI check. The owner approves the existing five-minute per-session duration after their demo. Both Interactive Mode and Discuss with AI already show the five-minute maximum before starting (src/modules/meals/voice-session.tsx). Session duration is separate from six starts/account/day and twelve shared starts/deployment/day plus cooldown; these quotas remain unchanged. Wider-audience usage/quota planning is an operating decision, not evidence of a broken core flow. No new automated or hosted test was run for this documentation update. Remaining project deliverables are the paused walkthrough rehearsal/final demo and submission materials, including the source-publication decision.
+
+
+## Shared judging voice allowance - 27 October 2026
+
+Owner-authorized change: shared voice starts increase from 12 to 24 per deployment per UTC day across Interactive Mode and Discuss with AI. Six starts per account/day, five-minute sessions, cooldown, cleanup and explicit review remain unchanged. Existing daily counts are preserved; no reset or paid provider session is needed. Both voice entry points display 24 shared/day. Boundary coverage checks the 24th start succeeds and a different account's next start is rejected without consuming its account quota. Hosted delivery follows GitHub main through the Vercel/Convex build; record the delivery result separately. Demo rehearsal, recording and generation remain paused.
+
+Validation for the 24-start change: 12/12 targeted voice/recovery tests passed, TypeScript passed, documentation link/CSV checks passed and git diff --check passed. No paid voice calls were made.

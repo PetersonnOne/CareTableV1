@@ -21,3 +21,4 @@ retrospective-catalog/
 
 .vercel
 .env*
+/GPT Live 1/
