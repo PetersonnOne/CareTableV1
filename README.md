@@ -15,7 +15,7 @@ A little more care at every meal. CareTable helps caregivers and households find
 | **People stay in control** | Reviewed settings and proposed changes need confirmation. Sample access, numbered guidance and contextual mode descriptions make the workflow approachable. | Fictional sample → review → generate → inspect → improve. |
 | **A workflow you can follow** | Taste evidence, original recipe attribution, durable jobs and saved-version recovery keep the process inspectable. | Source-backed explanations, job progress and previous plan versions. |
 
-**Measured Qloo contribution:** a [nine-scenario development evaluation](research/qloo-competitive-review-2026-10-24/evidence/README.md) changed the top-three ordering in six scenarios and 12 slots in deterministic control plans, while preserving eligible sets and recording no failed hard checks in selected recipes. Both variants recognize the same known cuisine mappings. The study measures Qloo's effect on our selection logic, not human meal preferences or superiority over a generic LLM.
+**Measured Qloo contribution:** a nine-scenario development evaluation changed the top-three ordering in six scenarios and 12 slots in deterministic control plans, while preserving eligible sets and recording no failed hard checks in selected recipes. Both variants recognize the same known cuisine mappings. The study measures Qloo's effect on our selection logic, not human meal preferences or superiority over a generic LLM.
 
 **Demonstrated in development:** live Qloo-backed planning, targeted meal revision, saved receipts and refresh recovery. The current regression suite passes 51 tests; dated results and browser checks are recorded in [verification](VERIFICATION.md).
 
@@ -94,12 +94,11 @@ The planner has **User Mode / Interactive Mode**, and feedback has **Chat / Disc
 - [Recipe/data attribution](DATA_ATTRIBUTION.md)
 - [Verification and release gates](VERIFICATION.md)
 - [Judging evidence and future validation](JUDGING_EVIDENCE.md)
-- [Competitive assessment](research/qloo-competitive-review-2026-10-24/ASSESSMENT.md)
 - [Deployment](DEPLOYMENT.md)
 
 The local retrospective catalog, private credentials, provider PDFs, browser artifacts, and archived Vite/Express prototype are Git-ignored. `Post Hackathon App Idea.txt` belongs to a separate app and is excluded.
 
-Video submission materials are kept locally in [Submission Video Workspace](<Submission Video Workspace/README.md>). The entire folder is Git-ignored, including scripts, drafts, references, recordings and exports.
+Video submission materials are kept locally in `Submission Video Workspace/`. The entire folder is Git-ignored, including scripts, drafts, references, recordings and exports. The competitive-review research folder is also retained locally and Git-ignored.
 
 
 26 October hosted verification: the updated [CareTable website](https://caretable-v1.vercel.app) was delivered automatically from GitHub main. Chromium checks passed live plan generation, saved evidence receipts, refresh recovery and mobile layout.
@@ -121,3 +120,7 @@ The reusable voice implementation handover is stored locally in `GPT Live 1/` (G
 Production owner acceptance: the owner confirmed successful admin access and satisfactory Administration screens on 27 October 2026. Voice sessions provide up to five minutes, with the allowance shown in both voice modes.
 
 Voice access for judging: up to five minutes per session, six starts per account/day and 24 shared starts per UTC day across both voice modes.
+
+Presentation preparation: the voice-only walkthrough covers hosted manual planning, Qloo evidence, both voice paths and a saved fish revision. A captioned final cut and editable subtitle resources are prepared locally for submission.
+
+Local submission resources: Submit Projects/ contains the CareTable story, Built With copy, project pitch, matching thumbnail/poster and editable artwork prompts. It is Git-ignored alongside the video workspace.

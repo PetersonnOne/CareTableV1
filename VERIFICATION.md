@@ -227,3 +227,43 @@ The owner reports successful production admin login and satisfactory Administrat
 Owner-authorized change: shared voice starts increase from 12 to 24 per deployment per UTC day across Interactive Mode and Discuss with AI. Six starts per account/day, five-minute sessions, cooldown, cleanup and explicit review remain unchanged. Existing daily counts are preserved; no reset or paid provider session is needed. Both voice entry points display 24 shared/day. Boundary coverage checks the 24th start succeeds and a different account's next start is rejected without consuming its account quota. Hosted delivery follows GitHub main through the Vercel/Convex build; record the delivery result separately. Demo rehearsal, recording and generation remain paused.
 
 Validation for the 24-start change: 12/12 targeted voice/recovery tests passed, TypeScript passed, documentation link/CSV checks passed and git diff --check passed. No paid voice calls were made.
+
+
+## Audio-first storytelling rehearsal - 27 October 2026
+
+The user authorized an under-three-minute audio-only walkthrough before visuals. Reusable doctrine and CareTable-specific voice decisions are saved in the ignored Submission Video Workspace/doctrine folder. Draft 1 has 311 spoken words: emotional hook, manual User Mode, inspectable Qloo affinity/mapping/ranking path, Interactive Mode, text Chat and Discuss with AI, reviewed saved change, benefit-led close and explicit thanks to Qloo. Sarah narrates through OpenRouter ElevenLabs v4; Will portrays the caregiver; Alice stands in for the assistant in this scripted planning audio only. The application retains Tango. Audio planning is not new live feature acceptance or footage, and does not authorize video recording/publication. Generation and measured runtime are recorded with the artifact; human listening review follows.
+
+Audio draft 1 exported successfully: 133.08 seconds (2:13), all fourteen original segments preserved, MP3 decode check passed, no time stretching. A transient DNS failure affected only the final two speech requests; the completed twelve files were reused and only missing takes were retried. No GPT Live session or video was recorded. Human listening and creative approval are pending. Script, generation hashes, cue sheet and verification are retained in work/audio-rehearsal-001.
+
+
+## Rehearsal authorization and sound decision - 27 October 2026
+
+The user approved the voice-only narration and rejected the instrumental because it masks warmth and emotional delivery. Use the clean voice master with no music. Preserve the instrumental audition as an unused option, not an approved soundtrack. The user now authorizes rehearsals. Capture User Mode first with a visible pointer, deliberate clicks and live typing, then Interactive Mode, Chat and Discuss with AI, following the approved story. Rehearsal recording and the necessary real application/provider interactions are in scope; final publication remains unrequested. Keep scripted audio planning separate from exact real-run responses in the production records.
+
+
+## Live rehearsal R2 - 27 October 2026
+
+A complete hosted Chromium capture passed manual live planning, Qloo provenance/meal receipt, both real GPT Live speech paths, reviewed setup confirmation and saved discussion revision, with zero page errors. The 45-minute scenario resulted in Poached fish with potato (35 minutes), replacing the selected meal. Separate actual assistant audio and exact transcript/event records were captured. Sarah narration remains the approved original; only the caregiver's time allowance was regenerated. No music. R1's incompatible 30-minute fish request remains documented rather than being promoted as a fulfilled request. The review workprint uses editorial excerpts and omitted waits; it is not a claim of real-time three-minute end-to-end processing. Final watch/listen approval and submission remain separate. No app source changed during rehearsal.
+
+R2 saved-result read-back passed: final status complete; fish-potato saved at 35 minutes within maxMinutes 45; non-target meals exactly unchanged; original plan requirements exactly preserved. Verification used the rehearsal guest identity and read-only Convex queries, with no provider-generation calls. Evidence is in the R2 saved-result-verification.json.
+
+R2 workprint exported and fully decoded: 138.916667 seconds, 1440x810, H.264/AAC, no music. Actual assistant excerpts are used alongside Sarah narration and Will input. Contact sheet inspected; full human watch/listen approval remains pending. A hash-identical review copy is at review/CareTable-Rehearsal-02.mp4; editable cut manifest and original stems remain in the source take.
+
+
+## Live-voice edit repair - 27 October 2026
+
+The user approved the R2 visual rehearsal but reported glitches in GPT Live audio. Audio-file word alignment confirms incorrect cuts in four assistant clips: truncated words and a discussion cut drawn from a later sentence. The prior constant-offset session-timeline calibration was insufficient. Source originals, approved narration and visual streams are preserved. Repair uses original real assistant recordings, recorded-file word boundaries, quiet margins and short edge ramps; no replacement voice or new live session is required. Two OpenRouter ElevenLabs Scribe alignment requests were used. No app runtime code changed. Do not call this a diagnosed network failure or audible repair acceptance before the user listens. Cross-project lesson is saved under GPT Live 1/09_RECORDING_AND_EDITING_TIMELINES.md.
+
+Audio repair 03 exported and fully decoded: 138.916667 seconds. Video stream hash matches the approved R2 bit-for-bit. Decoded approved-master audio outside four assistant slots was preserved before final output encoding; no voice time stretching. Two word-alignment calls, zero new Live sessions and zero new synthesized speech. Earlier -shortest remux briefly omitted a terminal packet because audio padding differed by milliseconds; finalization removes that truncation and verifies the complete video hash. Listening approval remains pending. Review copy: Submission Video Workspace/review/CareTable-Rehearsal-03-Audio-Repair.mp4.
+
+
+## Final captioned cut - 27 October 2026
+
+The user accepted the remaining minor voice artifact and authorized the final content with bottom subtitles. No apology or unconfirmed connectivity attribution is added. The approved repaired soundtrack is retained; no music or new live sessions. Full-track word alignment yields 337 words and 49 non-overlapping English cues, at most two lines, with CareTable/Caregiver conversation labels and corrected Qloo/CareTable spellings. A separate bottom band keeps captions off the interface controls. Final 1080p render and sidecar SRT/VTT plus editable cues are prepared in the ignored Submission Video Workspace/final folder. Record encoded checks after rendering. Public upload/submission is not part of this authorization.
+
+Final captioned master completed: 138.916667 seconds, 1920x1080 H.264/24fps with the approved AAC audio stream preserved bit-for-bit. Full video decode, complete 337-word/49-cue coverage, non-overlap and maximum-two-line checks passed. Representative caption and dialogue/end frames inspected; controls remain above the subtitle band. English SRT/VTT, editable ASS/JSON/CSV and transcript included in the verified ten-file Video Package ZIP; archive CRC and master-video byte match passed. Final human watch approval and public publication/submission remain separate.
+
+
+## CareTable submission story and artwork - 27 October 2026
+
+Created the Git-ignored Submit Projects folder with project name/pitch, links, the seven-section story, 20 Built With tags grouped by actual role, a matching landscape thumbnail and portrait poster. Qloo is foregrounded through seed/connection/mapping/ranking receipts and the controlled nine-scenario result. Original CareTable branding and a new caregiver/aunt promotional scene are used; the supplied Tonight Together assets inform structure/tone only. The story makes no endorsement or clinical-results claim and does not reinstate a niece review requirement. Runtime AI and media-production technologies remain separate. Artwork prompts, sources, dimensions, hashes and local-link checks are retained in Production Notes. No artwork publication, repository-visibility change or submission is performed.
